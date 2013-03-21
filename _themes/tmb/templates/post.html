@@ -1,0 +1,55 @@
+<div class="post index">
+
+  <div class="pre-bar">
+    <a href="{{ url }}" class="date-ball {{ categories }} {{ name }} {{ /categories }}">
+      <div class="nice-date">{{ datestamp format="M d, 'y" }}</div>
+      <div class="time">{{ datestamp format="g:i A" }}</div>
+    </a>
+    {{ tags }}
+      <a class="icon {{ name }}" href="{{ _site_root }}tags/{{ name|slugify }}"></a>
+    {{ /tags }}
+  </div>
+  <div class="post-body">
+    <h2 class="title">
+      {{ if link }}
+        <a href="{{ link }}">{{ title }}&nbsp;&rArr;</a>
+      {{ else }}
+        <a href="{{ url }}">{{ title }}</a>
+      {{ endif }}
+    </h2> 
+    <div class="title-date">Posted <span class="nice-date">{{ datestamp format="M d, 'y" }}</span> at <span class="time">{{ datestamp format="g:i A" }}</span></div>
+
+    {{ content|widont }}
+
+    {{ if link }}
+        <div class="permalink"><a href="{{ url }}">&#8251;</a></div>
+    {{ endif }}
+
+<!--     <div class="more">
+      <a href="{{url}}" class="btn">read more...</a>
+    </div> -->
+
+    <div class="post-footer">
+      <p class="title">Themes</p>
+      <ul class="category-list">
+        {{ categories }}
+          <li><a href="{{ _site_root }}blog/categories/{{ name }}">{{ name }}</a></li>
+        {{ /categories }}     
+      </ul>
+      {{ if tags }}
+        <p class="title">Topics</p>
+        <ul class="tag-list">
+          {{ tags }}
+            <li><a href="{{ _site_root }}blog/tags/{{ name }}">{{ name }}</a></li>
+          {{ /tags }}    
+        </ul>
+      {{ endif }}
+      <p class="title">Related Posts</p>
+      <ul class="related-list">
+        {{ entries:listing folder="blog" conditions="tags:{ tags_option_list },url:not {page_url}" }}
+          <li><a href="{{ url }}">{{ title }}</a></li>
+        {{ /entries:listing }}
+      </ul>
+    </div>
+  </div>
+</div>

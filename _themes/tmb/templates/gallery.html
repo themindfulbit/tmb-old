@@ -1,0 +1,11 @@
+<h2>Gallery</h2>
+<ul id="gallery" data-swiftype-index='false'>
+
+  {{ entries:listing folder="gallery" }}
+    <li class="photo-post">
+      <h3><a href="{{ url }}">{{ title }}</a></h3>
+      {{ theme:partial src="gallery-thumb" file="{{ image }}" }}
+      <p>{{ caption|markdown }} </p>
+    </li>
+  {{ /entries:listing }}
+</li>

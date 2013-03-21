@@ -1,0 +1,8 @@
+<h2>{{ title }}</h2>
+<ul id="tag-index" data-swiftype-index='false'>
+    {{ taxonomy:listing folder="blog|gallery" type="tags" sort_by="name"}}
+    <li>
+      <a href="{{ url }}"><span class="tag-name">{{ name }}</span> <span class="entry-count">{{ results }}</span></a>
+    </li>
+    {{ /taxonomy:listing }}
+</ul>

@@ -1,0 +1,38 @@
+{{ entries:listing folder="blog" limit="{home_blog_items}" }}
+<div class="post index" data-swiftype-index='false'>
+
+  <div class="pre-bar">
+    <a href="{{ url }}" class="date-ball {{ categories }} {{ name }} {{ /categories }}">
+      <div class="nice-date">{{ datestamp format="M d, 'y" }}</div>
+      <div class="time">{{ datestamp format="g:i A" }}</div>
+    </a>
+    {{ tags }}
+      <a class="icon {{ name }}" href="{{ _site_root }}blog/tags/{{ name }}"></a>
+    {{ /tags }}
+  </div>
+  <div class="post-body">
+    <h2 class="title"><a href="{{ url }}">{{ title }}</a></h2> 
+    <div class="title-date">Posted <span class="nice-date">{{ datestamp format="M d, 'y" }}</span> at <span class="time">{{ datestamp format="g:i A" }}</span></div>
+
+    {{ content|widont }}
+
+    <div class="post-footer">
+      <p class="title">Themes</p>
+      <ul class="category-list">
+        {{ categories }}
+          <li><a href="{{ _site_root }}blog/categories/{{ name }}">{{ name }}</a></li>
+        {{ /categories }}     
+      </ul>
+      <p class="title">Topics</p>
+      <ul class="tag-list">
+        {{ tags }}
+          <li><a href="{{ _site_root }}blog/tags/{{ name }}">{{ name }}</a></li>
+        {{ /tags }}    
+      </ul>
+    </div>
+  </div>
+</div> 
+
+{{ /entries:listing }}
+
+{{ theme:partial src="home-pagination" }}

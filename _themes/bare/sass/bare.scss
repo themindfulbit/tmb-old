@@ -1,0 +1,24 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "takitapart/normalize";
+@import "takitapart/typography";
+@import "takitapart/grid";
+@import "takitapart/form";
+@import "takitapart/print";
+
+// Base font-size in pixels.
+$font-size: 16;
+
+// Base line-height.
+$line: $font-size * 1.5;
+$em: $font-size * 1;
+
+// Number of columns.
+$columns: 12;
+
+// Width of the outer margin, in percent.
+$outer-margin: 5.55555%;

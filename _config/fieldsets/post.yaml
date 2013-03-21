@@ -1,0 +1,8 @@
+fields:
+  categories:
+    display: Categories
+    required: false
+    default: 
+    type: tags
+
+hide: true

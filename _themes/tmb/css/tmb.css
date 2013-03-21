@@ -1,0 +1,3921 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 17, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/*
+*  Normalization, bugfixes, workarounds, and defaults.
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/*  mostly adopted from http://necolas.github.com/normalize.css/ */
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================== */
+/*
+ * Corrects block display not defined in IE6/7/8/9 & FF3
+ */
+/* line 30, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/*
+ * Corrects inline-block display not defined in IE6/7/8/9 & FF3
+ */
+/* line 40, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+/*
+ * Prevents modern browsers from displaying 'audio' without controls
+ */
+/* line 50, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+audio:not([controls]) {
+  display: none;
+}
+
+/*
+ * Addresses styling for 'hidden' attribute not present in IE7/8/9, FF3, S4
+ * Known issue: no IE6 support
+ */
+/* line 59, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+[hidden] {
+  display: none;
+}
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+/* line 69, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * 1. Corrects text resizing oddly in IE6/7 when body font-size is set using em units
+ *    http://clagnut.com/blog/348/#c790
+ * 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
+ *    www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
+ */
+/* line 82, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+html {
+  font-size: 100%;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/*
+ * Addresses font-family inconsistency between 'textarea' and other form elements.
+ */
+/* line 96, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+html,
+button,
+input,
+select,
+textarea {
+  font-family: sans-serif;
+}
+
+/*
+ * Addresses margins handled incorrectly in IE6/7
+ */
+/* line 104, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+body {
+  margin: 0;
+}
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+/*
+ * Addresses outline displayed oddly in Chrome
+ */
+/* line 119, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+a:focus {
+  outline: thin dotted;
+}
+
+/*
+ * Improves readability when focused and also mouse hovered in all browsers
+ * people.opera.com/patrickl/experiments/keyboard/test
+ */
+/* line 129, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+a:hover,
+a:active {
+  outline: 0;
+}
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+/*
+ * Addresses styling not present in IE7/8/9, S5, Chrome
+ */
+/* line 141, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/*
+ * Addresses style set to 'bolder' in FF3+, S4/5, Chrome
+*/
+/* line 150, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/* line 154, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+blockquote {
+  margin: 1em 40px;
+}
+
+/*
+ * Addresses styling not present in S5, Chrome
+ */
+/* line 162, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/*
+ * Addresses styling not present in IE6/7/8/9
+ */
+/* line 170, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/*
+ * Addresses margins set differently in IE6/7
+ */
+/* line 180, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+p,
+pre {
+  margin: 1em 0;
+}
+
+/*
+ * Corrects font family set oddly in IE6, S4/5, Chrome
+ * en.wikipedia.org/wiki/User:Davidgothberg/Test59
+ */
+/* line 192, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, serif;
+  _font-family: 'courier new', monospace;
+  font-size: 1em;
+}
+
+/*
+ * Improves readability of pre-formatted text in all browsers
+ */
+/* line 202, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/*
+ * 1. Addresses CSS quotes not supported in IE6/7
+ * 2. Addresses quote property not supported in S4
+ */
+/* 1 */
+/* line 215, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+q {
+  quotes: none;
+}
+
+/* 2 */
+/* line 222, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+/* line 227, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+small {
+  font-size: 75%;
+}
+
+/*
+ * Prevents sub and sup affecting line-height in all browsers
+ * gist.github.com/413930
+ */
+/* line 237, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 244, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 248, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+/*
+ * Addresses margins set differently in IE6/7
+ */
+/* line 264, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+dl,
+menu,
+ol,
+ul {
+  margin: 1em 0;
+}
+
+/* line 268, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+dd {
+  margin: 0 0 0 40px;
+}
+
+/*
+ * Addresses paddings set differently in IE6/7
+ */
+/* line 278, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+menu,
+ol,
+ul {
+  padding: 0 0 0 40px;
+}
+
+/*
+ * Corrects list images handled incorrectly in IE7
+ */
+/* line 287, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+nav ul,
+nav ol {
+  list-style: none;
+  list-style-image: none;
+}
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+/*
+ * 1. Removes border when inside 'a' element in IE6/7/8/9, FF3
+ * 2. Improves image quality when scaled in IE7
+ *    code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+ */
+/* line 303, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+img {
+  border: 0;
+  /* 1 */
+  -ms-interpolation-mode: bicubic;
+  /* 2 */
+}
+
+/*
+ * Corrects overflow displayed oddly in IE9
+ */
+/* line 312, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* =============================================================================
+   Figures
+   ========================================================================== */
+/*
+ * Addresses margin not present in IE6/7/8/9, S5, O11
+ */
+/* line 325, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+figure {
+  margin: 0;
+}
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+/*
+ * Corrects margin displayed oddly in IE6/7
+ */
+/* line 338, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+form {
+  margin: 0;
+}
+
+/*
+ * Define consistent border, margin, and padding
+ */
+/* line 346, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/*
+ * 1. Corrects color not being inherited in IE6/7/8/9
+ * 2. Corrects text not wrapping in FF3 
+ * 3. Corrects alignment displayed oddly in IE6/7
+ */
+/* line 358, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  white-space: normal;
+  /* 2 */
+  *margin-left: -7px;
+  /* 3 */
+}
+
+/*
+ * 1. Corrects font size not being inherited in all browsers
+ * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome
+ * 3. Improves appearance and consistency in all browsers
+ */
+/* line 374, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  vertical-align: baseline;
+  /* 3 */
+  *vertical-align: middle;
+  /* 3 */
+}
+
+/*
+ * Addresses FF3/4 setting line-height on 'input' using !important in the UA stylesheet
+ */
+/* line 386, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+button,
+input {
+  line-height: normal;
+  /* 1 */
+}
+
+/*
+ * 1. Improves usability and consistency of cursor style between image-type 'input' and others
+ * 2. Corrects inability to style clickable 'input' types in iOS
+ * 3. Removes inner spacing in IE7 without affecting normal text inputs
+ *    Known issue: inner spacing remains in IE6
+ */
+/* line 400, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  /* 1 */
+  -webkit-appearance: button;
+  /* 2 */
+  *overflow: visible;
+  /* 3 */
+}
+
+/*
+ * Re-set default cursor for disabled elements
+ */
+/* line 411, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+
+/*
+ * 1. Addresses box sizing set to content-box in IE8/9
+ * 2. Removes excess padding in IE8/9
+ * 3. Removes excess padding in IE7
+      Known issue: excess padding remains in IE6
+ */
+/* line 423, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+  *height: 13px;
+  /* 3 */
+  *width: 13px;
+  /* 3 */
+}
+
+/*
+ * 1. Addresses appearance set to searchfield in S5, Chrome
+ * 2. Addresses box-sizing set to border-box in S5, Chrome (include -moz to future-proof)
+ */
+/* line 435, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/*
+ * Removes inner padding and search cancel button in S5, Chrome on OS X
+ */
+/* line 447, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/*
+ * Removes inner padding and border in FF3+
+ * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
+ */
+/* line 457, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/*
+ * 1. Removes default vertical scrollbar in IE6/7/8/9
+ * 2. Improves readability and alignment in all browsers
+ */
+/* line 467, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+textarea {
+  overflow: auto;
+  /* 1 */
+  vertical-align: top;
+  /* 2 */
+}
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+/*
+ * Remove most spacing between table cells
+ */
+/* line 481, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*
+*  Zoomable baseline grid, with mixins intended for responsive zooming.
+*  Along with some sensible typographic defaults. 
+*
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/*
+*  Base configuration stylesheet for the takitapart CSS framework.
+*  This module will be included by the other modules.
+*  These variables can be overridden in your site's stylesheets.
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/* line 42, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+body {
+  /* 16px / 24px */
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+/* line 52, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+.small {
+  /* 13px / 18px */
+  font-size: 0.813em;
+  line-height: 1.385em;
+  margin: 1.5em 0;
+}
+
+/* line 60, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+.medium, .normal, h3, p {
+  /* 16px / 24px */
+  font-size: 1em;
+  line-height: 1.5em;
+  /* 24 */
+  margin: 1.5em 0;
+}
+
+/* line 68, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+.large, h2, h1 {
+  /* 26 / 36px */
+  font-size: 1.625em;
+  line-height: 1.385em;
+  margin: 0.923em 0;
+}
+
+/* line 76, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+.huge {
+  /* 42px / 48px */
+  font-size: 2.625em;
+  line-height: 1.143em;
+  margin: 0.571em 0;
+}
+
+/* line 84, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+.massive {
+  /* 68px / 72px */
+  font-size: 4.25em;
+  line-height: 1.059em;
+  margin: 1.5em 0;
+}
+
+/* line 92, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+.gigantic {
+  /* 110px / 120px */
+  font-size: 6.875em;
+  line-height: 1.091em;
+  margin: 1.5em 0;
+}
+
+/*
+*  A semantic, fluid, responsive grid system.
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/*
+*  Base configuration stylesheet for the takitapart CSS framework.
+*  This module will be included by the other modules.
+*  These variables can be overridden in your site's stylesheets.
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/*
+*  A fluid, responsive-friendly form framework. 
+*
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*
+*  Notes on use
+*  ------------
+*  + Wrap field elements with label elements. 
+*
+*/
+/*
+*  Base configuration stylesheet for the takitapart CSS framework.
+*  This module will be included by the other modules.
+*  These variables can be overridden in your site's stylesheets.
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/* line 25, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
+form {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 32, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
+form fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+/* line 42, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
+form fieldset input, form fieldset textarea, form fieldset select {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0 0.25em;
+}
+/* line 53, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
+form fieldset label {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+*  Print specifc style defaults. From HTML5 Boilerplate.
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/* ==|== print styles =======================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+  /* line 16, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  /* Black prints faster: h5bp.com/s */
+  /* line 17, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  a, a:visited {
+    text-decoration: underline;
+  }
+
+  /* line 18, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* line 19, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /* line 20, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: "";
+  }
+
+  /* Don't show links for images, or javascript/internal links */
+  /* line 21, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /* line 22, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  thead {
+    display: table-header-group;
+  }
+
+  /* h5bp.com/t */
+  /* line 23, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  tr, img {
+    page-break-inside: avoid;
+  }
+
+  /* line 24, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  /* line 26, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* line 27, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}
+/* line 51, ../sass/tmb.scss */
+.icon {
+  display: none;
+}
+/* line 92, ../sass/tmb.scss */
+.icon.skype, .icon.tomcat, .icon.textexpander, .icon.nasa, .icon.type2phone, .icon.high90, .icon.typekit, .icon.keyboard.maestro, .icon.dayone, .icon.sublime.text, .icon.apple, .icon.dropbox, .icon.siri, .icon.verizon, .icon.swiftype, .icon.hazel, .icon.textastic, .icon.squarespace, .icon.nerdquery, .icon.colorschemer, .icon.pad.and.quill, .icon.twelve.south, .icon.beast, .icon.manos, .icon.server, .icon.the.oatmeal, .icon.mst3k, .icon.compass, .icon.typography, .icon.bitly, .icon.ifttt, .icon.zagg, .icon.love, .icon.yosemite, .icon.tiger, .icon.generational, .icon.appletv, .icon.statamic, .icon.keynote {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  height: 5em;
+  background-image: none;
+  background-position: 50% 50%;
+  background-size: 3.5em auto;
+  background-repeat: no-repeat;
+}
+/* line 102, ../sass/tmb.scss */
+.icon.skype {
+  background-image: url("../../../assets/img/icons/skype.png");
+}
+/* line 106, ../sass/tmb.scss */
+.icon.tomcat {
+  background-image: url("../../../assets/img/icons/flying.png");
+  background-size: 4.5em auto;
+}
+/* line 111, ../sass/tmb.scss */
+.icon.textexpander {
+  background-image: url("../../../assets/img/icons/textexpander.png");
+  background-size: 4em auto;
+}
+/* line 116, ../sass/tmb.scss */
+.icon.nasa {
+  background-image: url("../../../assets/img/icons/nasa.png");
+  background-size: 4.25em auto;
+}
+/* line 121, ../sass/tmb.scss */
+.icon.type2phone {
+  background-image: url("../../../assets/img/icons/type2phone.png");
+  background-size: 3.3em auto;
+}
+/* line 126, ../sass/tmb.scss */
+.icon.high90 {
+  background-image: url("../../../assets/img/icons/high90.png");
+}
+/* line 130, ../sass/tmb.scss */
+.icon.typekit {
+  background-image: url("../../../assets/img/icons/typekit.png");
+}
+/* line 134, ../sass/tmb.scss */
+.icon.keyboard.maestro {
+  background-image: url("../../../assets/img/icons/keyboardmaestro.png");
+  background-size: 3.3em auto;
+}
+/* line 139, ../sass/tmb.scss */
+.icon.dayone {
+  background-image: url("../../../assets/img/icons/dayone.png");
+}
+/* line 143, ../sass/tmb.scss */
+.icon.sublime.text {
+  background-image: url("../../../assets/img/icons/sublime-text.png");
+}
+/* line 147, ../sass/tmb.scss */
+.icon.apple {
+  background-image: url("../../../assets/img/icons/apple.png");
+}
+/* line 151, ../sass/tmb.scss */
+.icon.dropbox {
+  background-image: url("../../../assets/img/icons/dropbox.png");
+}
+/* line 155, ../sass/tmb.scss */
+.icon.siri {
+  background-image: url("../../../assets/img/icons/siri.png");
+  background-size: 3.7em auto;
+}
+/* line 160, ../sass/tmb.scss */
+.icon.verizon {
+  background-image: url("../../../assets/img/icons/verizon.png");
+  background-size: 4.5em auto;
+}
+/* line 165, ../sass/tmb.scss */
+.icon.swiftype {
+  background-image: url("../../../assets/img/icons/swiftype.jpg");
+  background-size: 4em auto;
+}
+/* line 170, ../sass/tmb.scss */
+.icon.hazel {
+  background-image: url("../../../assets/img/icons/hazel.png");
+}
+/* line 174, ../sass/tmb.scss */
+.icon.textastic {
+  background-image: url("../../../assets/img/icons/textastic.png");
+}
+/* line 178, ../sass/tmb.scss */
+.icon.squarespace {
+  background-image: url("../../../assets/img/icons/squarespace.jpg");
+  background-size: 4.5em auto;
+}
+/* line 183, ../sass/tmb.scss */
+.icon.nerdquery {
+  background-image: url("../../../assets/img/icons/nerdquery.png");
+}
+/* line 187, ../sass/tmb.scss */
+.icon.colorschemer {
+  background-image: url("../../../assets/img/icons/colorschemer.png");
+}
+/* line 191, ../sass/tmb.scss */
+.icon.pad.and.quill {
+  background-image: url("../../../assets/img/icons/pq.png");
+}
+/* line 195, ../sass/tmb.scss */
+.icon.twelve.south {
+  background-image: url("../../../assets/img/icons/twelvesouth.png");
+}
+/* line 200, ../sass/tmb.scss */
+.icon.beast, .icon.the.oatmeal {
+  background-image: url("../../../assets/img/icons/beast.png");
+  height: 7em;
+}
+/* line 209, ../sass/tmb.scss */
+.icon.manos, .icon.mst3k {
+  background-image: url("../../../assets/img/icons/manos.png");
+  height: 7em;
+  background-size: 6em 6em;
+}
+/* line 215, ../sass/tmb.scss */
+.icon.server {
+  background-image: url("../../../assets/img/icons/server.png");
+  height: 7em;
+}
+/* line 220, ../sass/tmb.scss */
+.icon.compass {
+  background-image: url("../../../assets/img/icons/compass.png");
+}
+/* line 224, ../sass/tmb.scss */
+.icon.typography {
+  background-image: url("../../../assets/img/icons/typography.png");
+}
+/* line 228, ../sass/tmb.scss */
+.icon.bitly {
+  background-image: url("../../../assets/img/icons/bitly.png");
+}
+/* line 232, ../sass/tmb.scss */
+.icon.ifttt {
+  background-image: url("../../../assets/img/icons/ifttt.png");
+}
+/* line 236, ../sass/tmb.scss */
+.icon.zagg {
+  background-image: url("../../../assets/img/icons/zagg.png");
+}
+/* line 240, ../sass/tmb.scss */
+.icon.love {
+  background-image: url("../../../assets/img/icons/love.png");
+}
+/* line 244, ../sass/tmb.scss */
+.icon.yosemite {
+  background-image: url("../../../assets/img/icons/yosemite.png");
+}
+/* line 248, ../sass/tmb.scss */
+.icon.tiger {
+  background-image: url("../../../assets/img/icons/tiger.png");
+  background-size: 4.5em auto;
+}
+/* line 253, ../sass/tmb.scss */
+.icon.generational {
+  background-image: url("../../../assets/img/icons/generational.png");
+}
+/* line 257, ../sass/tmb.scss */
+.icon.appletv {
+  background-image: url("../../../assets/img/icons/appletv.png");
+}
+/* line 261, ../sass/tmb.scss */
+.icon.statamic {
+  background-image: url("../../../assets/img/icons/statamic.png");
+}
+/* line 265, ../sass/tmb.scss */
+.icon.keynote {
+  background-image: url("../../../assets/img/icons/keynote.png");
+}
+
+/* line 271, ../sass/tmb.scss */
+body {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  margin: 0 0%;
+  *zoom: 1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: "adobe-caslon-pro", serif;
+  color: #333333;
+}
+/* line 23, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_grid.scss */
+body:before, body:after {
+  content: "";
+  display: table;
+}
+/* line 27, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_grid.scss */
+body:after {
+  clear: both;
+}
+/* line 282, ../sass/tmb.scss */
+body a,
+body a:visited,
+body a:hover,
+body a:active {
+  text-decoration: none;
+  color: red;
+}
+/* line 287, ../sass/tmb.scss */
+body a:hover {
+  text-decoration: underline;
+}
+/* line 296, ../sass/tmb.scss */
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  font-family: "futura-pt", sans-serif;
+  text-transform: uppercase;
+  color: #333333;
+}
+/* line 303, ../sass/tmb.scss */
+body p,
+body li {
+  margin: 0 0 0.5em;
+}
+/* line 307, ../sass/tmb.scss */
+body .twitter-tweet-rendered {
+  padding: 0 0 0.5em;
+}
+/* line 312, ../sass/tmb.scss */
+body blockquote {
+  margin: 1em 0 1.5em 0;
+  padding: 1em 1.5em 0.5em 1.5em;
+  color: #777777;
+  background-color: #f4f4f4;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  font-size: 0.9em;
+  border-left: 0.4em solid red;
+  border-top: 0.1em solid #cccccc;
+  border-right: 0.1em solid #cccccc;
+  border-bottom: 0.1em solid #cccccc;
+}
+/* line 327, ../sass/tmb.scss */
+body blockquote p {
+  margin-bottom: 0;
+  line-height: 1.4em;
+}
+/* line 333, ../sass/tmb.scss */
+body blockquote p + p {
+  text-indent: 1.5em;
+  margin-top: 0;
+}
+/* line 340, ../sass/tmb.scss */
+body ul {
+  list-style-type: disc;
+  padding-left: 1.4em;
+  line-height: 1.5em;
+}
+/* line 346, ../sass/tmb.scss */
+body ol {
+  list-style-type: decimal;
+  padding-left: 1.4em;
+  line-height: 1.5em;
+}
+/* line 352, ../sass/tmb.scss */
+body em, body i {
+  font-style: italic;
+}
+/* line 356, ../sass/tmb.scss */
+body strong, body b {
+  font-weight: bold;
+}
+/* line 360, ../sass/tmb.scss */
+body hr {
+  display: none;
+}
+/* line 364, ../sass/tmb.scss */
+body code {
+  font-size: 0.9em;
+}
+
+/* line 382, ../sass/tmb.scss */
+.container {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 320px;
+  margin: 0 auto;
+  float: none;
+}
+
+/* line 389, ../sass/tmb.scss */
+header {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0.5em 0;
+}
+/* line 397, ../sass/tmb.scss */
+header a,
+header a:hover,
+header a:visited,
+header a:active {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+/* line 403, ../sass/tmb.scss */
+header a .logo,
+header a:hover .logo,
+header a:visited .logo,
+header a:active .logo {
+  display: block;
+  float: left;
+  width: 16.667%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  line-height: 0.5em;
+}
+/* line 408, ../sass/tmb.scss */
+header a .logo img,
+header a:hover .logo img,
+header a:visited .logo img,
+header a:active .logo img {
+  padding-top: 0.2em;
+  width: 100%;
+}
+/* line 414, ../sass/tmb.scss */
+header a h1,
+header a:hover h1,
+header a:visited h1,
+header a:active h1 {
+  display: block;
+  float: left;
+  width: 83.333%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.4em 0.3em 0;
+  margin: 0;
+  font-family: "adobe-caslon-pro";
+  font-size: 2em;
+  text-transform: none;
+}
+/* line 425, ../sass/tmb.scss */
+header #st-search-input.st-search-input {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.3em 0.5em 0.3em 2.5em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-family: "adobe-caslon-pro";
+  border: 0;
+  border-radius: 1em;
+  box-shadow: none;
+  line-height: 1.4em;
+  height: 2.5em;
+  background-color: #eee;
+  font-size: 0.7em;
+}
+/* line 440, ../sass/tmb.scss */
+header #header-index {
+  display: none;
+}
+/* line 444, ../sass/tmb.scss */
+header .header-menu {
+  display: none;
+}
+
+/* line 450, ../sass/tmb.scss */
+.content {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* line 455, ../sass/tmb.scss */
+.content .swiftype-widget {
+  font-family: "futura-pt", sans-serif;
+  color: #333333;
+}
+/* line 461, ../sass/tmb.scss */
+.content .block h1,
+.content h1.page-title {
+  font-size: 1.2em;
+  color: red;
+  margin: 0.5em 0;
+}
+/* line 469, ../sass/tmb.scss */
+.content #st-results-container h3 {
+  font-size: 1.2em;
+}
+/* line 474, ../sass/tmb.scss */
+.content #st-results-container h3 a,
+.content #st-results-container h3 a:active,
+.content #st-results-container h3 a:visited {
+  color: red;
+}
+/* line 477, ../sass/tmb.scss */
+.content #st-results-container h3 a:hover,
+.content #st-results-container h3 a:active:hover,
+.content #st-results-container h3 a:visited:hover {
+  color: #333333;
+}
+/* line 483, ../sass/tmb.scss */
+.content #st-results-container .st-metadata {
+  margin: 0 1em 0.5em 0;
+  padding-left: 0.6em;
+  border-left: 0.4em solid #f4f4f4;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+/* line 490, ../sass/tmb.scss */
+.content #st-results-container .st-metadata .st-snippet {
+  color: #777777;
+}
+/* line 495, ../sass/tmb.scss */
+.content #st-results-container .st-pagination {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+/* line 501, ../sass/tmb.scss */
+.content .post {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 1em;
+}
+/* line 506, ../sass/tmb.scss */
+.content .post .pre-bar {
+  display: none;
+}
+/* line 510, ../sass/tmb.scss */
+.content .post img {
+  display: block;
+  margin: 1em auto 1.5em;
+}
+/* line 515, ../sass/tmb.scss */
+.content .post .prettyprint {
+  font-size: 0.7em;
+}
+/* line 518, ../sass/tmb.scss */
+.content .post .prettyprint ol.linenums {
+  margin-left: 2em;
+}
+/* line 521, ../sass/tmb.scss */
+.content .post .prettyprint ol.linenums li {
+  margin-bottom: 0;
+}
+/* line 527, ../sass/tmb.scss */
+.content .post .post-body ul {
+  font-size: 0.9em;
+}
+/* line 533, ../sass/tmb.scss */
+.content h2 {
+  font-size: 1.3em;
+  margin: 0 0 0.5em;
+}
+/* line 538, ../sass/tmb.scss */
+.content h3 {
+  font-size: 1.2em;
+  margin: 0 0 0.5em;
+}
+/* line 543, ../sass/tmb.scss */
+.content h4 {
+  font-size: 1.1em;
+  margin: 0 0 0.5em;
+}
+/* line 548, ../sass/tmb.scss */
+.content h5 {
+  font-size: 1.0em;
+  margin: 0 0 0.5em;
+}
+/* line 553, ../sass/tmb.scss */
+.content h6 {
+  font-size: 0.9em;
+  margin: 0 0 0.5em;
+}
+/* line 558, ../sass/tmb.scss */
+.content h3.references {
+  font-size: 1em;
+  padding-bottom: 0.5em;
+  margin: 1em 0 0.5em;
+  border-bottom: 1px solid #cccccc;
+}
+/* line 582, ../sass/tmb.scss */
+.content h1 a,
+.content h1 a:visited,
+.content h1 a:active,
+.content h2 a,
+.content h2 a:visited,
+.content h2 a:active,
+.content h3 a,
+.content h3 a:visited,
+.content h3 a:active,
+.content h4 a,
+.content h4 a:visited,
+.content h4 a:active,
+.content h5 a,
+.content h5 a:visited,
+.content h5 a:active,
+.content h6 a,
+.content h6 a:visited,
+.content h6 a:active {
+  color: #333333;
+}
+/* line 591, ../sass/tmb.scss */
+.content h1 a:hover,
+.content h2 a:hover,
+.content h3 a:hover,
+.content h4 a:hover,
+.content h5 a:hover,
+.content h6 a:hover {
+  text-decoration: none;
+  color: red;
+}
+/* line 596, ../sass/tmb.scss */
+.content h2.title {
+  margin: 0;
+}
+/* line 600, ../sass/tmb.scss */
+.content .title-date {
+  font-family: "futura-pt", sans-serif;
+  text-transform: uppercase;
+  color: #999999;
+  font-size: 0.8em;
+  line-height: 1.2em;
+  margin-bottom: 1em;
+}
+/* line 609, ../sass/tmb.scss */
+.content .title-date .nice-date,
+.content .title-date .time {
+  color: #999999;
+}
+/* line 615, ../sass/tmb.scss */
+.content img {
+  max-width: 100%;
+}
+/* line 619, ../sass/tmb.scss */
+.content .more {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin-bottom: 0.5em;
+}
+/* line 625, ../sass/tmb.scss */
+.content .permalink {
+  margin-top: 0.7em;
+  font-size: 1.5em;
+  margin-bottom: 0.7em;
+}
+/* line 630, ../sass/tmb.scss */
+.content .permalink a:hover {
+  text-decoration: none;
+}
+/* line 635, ../sass/tmb.scss */
+.content .post-footer {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.5em 0 0;
+  margin-bottom: 0.5em;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+/* line 642, ../sass/tmb.scss */
+.content .post-footer .title {
+  display: block;
+  float: left;
+  width: 33.333%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  clear: both;
+  padding: 0;
+  margin-bottom: 0.4em;
+  font-family: "futura-pt", sans-serif;
+  text-transform: uppercase;
+  color: #999999;
+  font-size: 0.8em;
+  line-height: 1.1em;
+}
+/* line 655, ../sass/tmb.scss */
+.content .post-footer ul.category-list,
+.content .post-footer ul.tag-list {
+  display: block;
+  float: left;
+  width: 66.667%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0.4em;
+  text-align: right;
+  font-size: 0.8em;
+  line-height: 1.1em;
+}
+/* line 664, ../sass/tmb.scss */
+.content .post-footer ul.category-list li,
+.content .post-footer ul.tag-list li {
+  display: inline;
+  font-family: "futura-pt", sans-serif;
+  text-transform: uppercase;
+  padding-left: 0.3em;
+}
+/* line 672, ../sass/tmb.scss */
+.content .post-footer ul.category-list li a,
+.content .post-footer ul.category-list li a:active,
+.content .post-footer ul.category-list li a:visited,
+.content .post-footer ul.tag-list li a,
+.content .post-footer ul.tag-list li a:active,
+.content .post-footer ul.tag-list li a:visited {
+  color: #333333;
+  text-decoration: none;
+}
+/* line 676, ../sass/tmb.scss */
+.content .post-footer ul.category-list li a:hover,
+.content .post-footer ul.category-list li a:active:hover,
+.content .post-footer ul.category-list li a:visited:hover,
+.content .post-footer ul.tag-list li a:hover,
+.content .post-footer ul.tag-list li a:active:hover,
+.content .post-footer ul.tag-list li a:visited:hover {
+  color: red;
+}
+/* line 683, ../sass/tmb.scss */
+.content .post-footer ul.related-list {
+  display: block;
+  float: left;
+  width: 66.667%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0.4em;
+  text-align: right;
+  font-size: 0.8em;
+  line-height: 1.1em;
+}
+/* line 692, ../sass/tmb.scss */
+.content .post-footer ul.related-list li {
+  display: block;
+  font-family: "futura-pt", sans-serif;
+  text-transform: uppercase;
+  padding-left: 0.3em;
+}
+/* line 700, ../sass/tmb.scss */
+.content .post-footer ul.related-list li a,
+.content .post-footer ul.related-list li a:active,
+.content .post-footer ul.related-list li a:visited {
+  color: #333333;
+  text-decoration: none;
+}
+/* line 704, ../sass/tmb.scss */
+.content .post-footer ul.related-list li a:hover,
+.content .post-footer ul.related-list li a:active:hover,
+.content .post-footer ul.related-list li a:visited:hover {
+  color: red;
+}
+/* line 713, ../sass/tmb.scss */
+.content .pagination {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin-bottom: 1.5em;
+  font-family: "futura-pt", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  line-height: 1em;
+}
+/* line 722, ../sass/tmb.scss */
+.content .pagination h3 {
+  text-align: center;
+}
+/* line 730, ../sass/tmb.scss */
+.content .pagination .first,
+.content .pagination .prev,
+.content .pagination .current,
+.content .pagination .last,
+.content .pagination .next {
+  display: block;
+  float: left;
+  width: 20%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.5em 0 1em;
+  height: 2em;
+}
+/* line 737, ../sass/tmb.scss */
+.content .pagination .first,
+.content .pagination .prev {
+  color: #333333;
+  text-align: right;
+  padding-left: 0.5em;
+}
+/* line 742, ../sass/tmb.scss */
+.content .pagination .first .arrow,
+.content .pagination .prev .arrow {
+  font-size: 2em;
+  text-align: left;
+}
+/* line 747, ../sass/tmb.scss */
+.content .pagination .first .arrow .title,
+.content .pagination .prev .arrow .title {
+  font-size: 0.5em;
+  position: relative;
+  top: -0.1em;
+}
+/* line 755, ../sass/tmb.scss */
+.content .pagination .current {
+  color: #333333;
+  text-align: center;
+  position: relative;
+  top: 0.2em;
+}
+/* line 764, ../sass/tmb.scss */
+.content .pagination .last,
+.content .pagination .next {
+  color: #333333;
+  text-align: left;
+  padding-right: 0.5em;
+}
+/* line 769, ../sass/tmb.scss */
+.content .pagination .last .arrow,
+.content .pagination .next .arrow {
+  font-size: 2em;
+  text-align: right;
+}
+/* line 774, ../sass/tmb.scss */
+.content .pagination .last .arrow .title,
+.content .pagination .next .arrow .title {
+  font-size: 0.5em;
+  position: relative;
+  top: -0.1em;
+}
+/* line 782, ../sass/tmb.scss */
+.content .pagination a:hover {
+  background-color: #eeeeee;
+  text-decoration: none;
+}
+/* line 788, ../sass/tmb.scss */
+.content .pagination .inactive .arrow {
+  color: #999999;
+}
+/* line 792, ../sass/tmb.scss */
+.content .pagination .inactive:hover {
+  background: transparent;
+}
+/* line 799, ../sass/tmb.scss */
+.content ul#gallery {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  list-style-type: none;
+}
+/* line 804, ../sass/tmb.scss */
+.content ul#gallery li {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.5em 1em;
+  background-color: #f3f3f3;
+  text-align: center;
+}
+/* line 818, ../sass/tmb.scss */
+.content ul#tag-index {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 0 1em;
+  list-style-type: none;
+  font-family: "futura-pt", sans-serif;
+  text-transform: uppercase;
+  color: #333333;
+  font-size: 0.9em;
+  margin-top: 0;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+/* line 830, ../sass/tmb.scss */
+.content ul#tag-index li {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  clear: both;
+}
+/* line 838, ../sass/tmb.scss */
+.content ul#tag-index li a,
+.content ul#tag-index li a:visited,
+.content ul#tag-index li a:active {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  color: #555555;
+  border-bottom: 1px dotted #ccc;
+  padding-top: 1em;
+  line-height: 1em;
+}
+/* line 846, ../sass/tmb.scss */
+.content ul#tag-index li a .tag-name,
+.content ul#tag-index li a:visited .tag-name,
+.content ul#tag-index li a:active .tag-name {
+  float: left;
+  position: relative;
+  top: 0.1em;
+  background-color: #fff;
+  line-height: 1em;
+  padding-bottom: 0.1em;
+}
+/* line 855, ../sass/tmb.scss */
+.content ul#tag-index li a .entry-count,
+.content ul#tag-index li a:visited .entry-count,
+.content ul#tag-index li a:active .entry-count {
+  float: right;
+  position: relative;
+  top: 0.1em;
+  background-color: #fff;
+  line-height: 1em;
+  padding-bottom: 0.1em;
+}
+/* line 864, ../sass/tmb.scss */
+.content ul#tag-index li a:hover,
+.content ul#tag-index li a:visited:hover,
+.content ul#tag-index li a:active:hover {
+  border-color: red;
+}
+/* line 868, ../sass/tmb.scss */
+.content ul#tag-index li a:hover .tag-name,
+.content ul#tag-index li a:hover .entry-count,
+.content ul#tag-index li a:visited:hover .tag-name,
+.content ul#tag-index li a:visited:hover .entry-count,
+.content ul#tag-index li a:active:hover .tag-name,
+.content ul#tag-index li a:active:hover .entry-count {
+  color: red;
+}
+/* line 876, ../sass/tmb.scss */
+.content h1.page-header {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+/* line 883, ../sass/tmb.scss */
+.content h1.year {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  background-color: #eeeeee;
+}
+/* line 893, ../sass/tmb.scss */
+.content ul#tag-post-blocks,
+.content ul#category-posts,
+.content ul#month-posts {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin-top: 0;
+  list-style-type: none;
+  font-family: "futura-pt", sans-serif;
+  text-transform: uppercase;
+  color: #333333;
+}
+/* line 904, ../sass/tmb.scss */
+.content ul#tag-post-blocks li.tag-name,
+.content ul#tag-post-blocks li.category-name,
+.content ul#tag-post-blocks li.month-name,
+.content ul#category-posts li.tag-name,
+.content ul#category-posts li.category-name,
+.content ul#category-posts li.month-name,
+.content ul#month-posts li.tag-name,
+.content ul#month-posts li.category-name,
+.content ul#month-posts li.month-name {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin-top: 1em;
+  margin-bottom: 0;
+  border-bottom: 1px solid #cccccc;
+}
+/* line 912, ../sass/tmb.scss */
+.content ul#tag-post-blocks li.category-name,
+.content ul#category-posts li.category-name,
+.content ul#month-posts li.category-name {
+  margin-top: 0.2em;
+}
+/* line 916, ../sass/tmb.scss */
+.content ul#tag-post-blocks li.month-name,
+.content ul#category-posts li.month-name,
+.content ul#month-posts li.month-name {
+  margin-top: 0;
+}
+/* line 920, ../sass/tmb.scss */
+.content ul#tag-post-blocks li.post-link,
+.content ul#category-posts li.post-link,
+.content ul#month-posts li.post-link {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 0;
+}
+/* line 928, ../sass/tmb.scss */
+.content ul#tag-post-blocks li.post-link a,
+.content ul#tag-post-blocks li.post-link a:visited,
+.content ul#tag-post-blocks li.post-link a:active,
+.content ul#category-posts li.post-link a,
+.content ul#category-posts li.post-link a:visited,
+.content ul#category-posts li.post-link a:active,
+.content ul#month-posts li.post-link a,
+.content ul#month-posts li.post-link a:visited,
+.content ul#month-posts li.post-link a:active {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.3em 0;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+/* line 934, ../sass/tmb.scss */
+.content ul#tag-post-blocks li.post-link a table,
+.content ul#tag-post-blocks li.post-link a:visited table,
+.content ul#tag-post-blocks li.post-link a:active table,
+.content ul#category-posts li.post-link a table,
+.content ul#category-posts li.post-link a:visited table,
+.content ul#category-posts li.post-link a:active table,
+.content ul#month-posts li.post-link a table,
+.content ul#month-posts li.post-link a:visited table,
+.content ul#month-posts li.post-link a:active table {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+/* line 938, ../sass/tmb.scss */
+.content ul#tag-post-blocks li.post-link a table tr,
+.content ul#tag-post-blocks li.post-link a:visited table tr,
+.content ul#tag-post-blocks li.post-link a:active table tr,
+.content ul#category-posts li.post-link a table tr,
+.content ul#category-posts li.post-link a:visited table tr,
+.content ul#category-posts li.post-link a:active table tr,
+.content ul#month-posts li.post-link a table tr,
+.content ul#month-posts li.post-link a:visited table tr,
+.content ul#month-posts li.post-link a:active table tr {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+/* line 948, ../sass/tmb.scss */
+.content ul#tag-post-blocks li.post-link a td .circle,
+.content ul#tag-post-blocks li.post-link a:visited td .circle,
+.content ul#tag-post-blocks li.post-link a:active td .circle,
+.content ul#category-posts li.post-link a td .circle,
+.content ul#category-posts li.post-link a:visited td .circle,
+.content ul#category-posts li.post-link a:active td .circle,
+.content ul#month-posts li.post-link a td .circle,
+.content ul#month-posts li.post-link a:visited td .circle,
+.content ul#month-posts li.post-link a:active td .circle {
+  display: block;
+  float: left;
+  width: 25%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.25em 0 0;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  background-color: #dddddd;
+  vertical-align: middle;
+  color: #333333;
+  text-align: center;
+}
+/* line 963, ../sass/tmb.scss */
+.content ul#tag-post-blocks li.post-link a td.post-title h3,
+.content ul#tag-post-blocks li.post-link a:visited td.post-title h3,
+.content ul#tag-post-blocks li.post-link a:active td.post-title h3,
+.content ul#category-posts li.post-link a td.post-title h3,
+.content ul#category-posts li.post-link a:visited td.post-title h3,
+.content ul#category-posts li.post-link a:active td.post-title h3,
+.content ul#month-posts li.post-link a td.post-title h3,
+.content ul#month-posts li.post-link a:visited td.post-title h3,
+.content ul#month-posts li.post-link a:active td.post-title h3 {
+  width: 220px;
+  padding: 0 0 0 1em;
+  margin-bottom: 0;
+  font-size: 1em;
+  line-height: 1.2em;
+  vertical-align: middle;
+}
+/* line 973, ../sass/tmb.scss */
+.content ul#tag-post-blocks li.post-link a:hover,
+.content ul#tag-post-blocks li.post-link a:visited:hover,
+.content ul#tag-post-blocks li.post-link a:active:hover,
+.content ul#category-posts li.post-link a:hover,
+.content ul#category-posts li.post-link a:visited:hover,
+.content ul#category-posts li.post-link a:active:hover,
+.content ul#month-posts li.post-link a:hover,
+.content ul#month-posts li.post-link a:visited:hover,
+.content ul#month-posts li.post-link a:active:hover {
+  background-color: #eeeeee;
+}
+/* line 984, ../sass/tmb.scss */
+.content .archive-link {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 0 1em;
+  margin: 0;
+  text-align: center;
+}
+/* line 990, ../sass/tmb.scss */
+.content .archive-link a {
+  display: block;
+  float: left;
+  width: 83.333%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-left: 8.333%;
+  padding: 0.5em 1em;
+  font-family: "futura-pt", sans-serif;
+  text-transform: uppercase;
+  color: #333333;
+  font-size: 0.8em;
+  line-height: 1.2em;
+  background-color: #eeeeee;
+  border: 1px solid #ddd;
+}
+/* line 1002, ../sass/tmb.scss */
+.content .archive-link a:hover {
+  text-decoration: none;
+  background-color: red;
+  color: #fff;
+}
+
+/* line 1013, ../sass/tmb.scss */
+.sidebar {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+/* line 1017, ../sass/tmb.scss */
+.sidebar ul {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 1em;
+  list-style-type: none;
+  padding: 0;
+  font-family: "futura-pt", sans-serif;
+  text-transform: uppercase;
+  color: #999999;
+  font-size: 0.9em;
+}
+/* line 1029, ../sass/tmb.scss */
+.sidebar ul li {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 0;
+  padding: 0;
+  border-bottom: 1px solid #cccccc;
+  line-height: 2.4em;
+}
+/* line 1040, ../sass/tmb.scss */
+.sidebar ul li a {
+  display: block;
+  width: 100%;
+  color: #333333;
+}
+/* line 1045, ../sass/tmb.scss */
+.sidebar ul li a:hover {
+  background-color: #eeeeee;
+  text-decoration: none;
+}
+/* line 1054, ../sass/tmb.scss */
+.sidebar ul.mini-gallery li.menu-title {
+  border: none;
+}
+/* line 1058, ../sass/tmb.scss */
+.sidebar ul.mini-gallery a img {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+/* line 1065, ../sass/tmb.scss */
+.sidebar ul.tag-cloud {
+  display: none;
+}
+/* line 1125, ../sass/tmb.scss */
+.sidebar ul.category-menu li.-link {
+  display: none;
+}
+/* line 1132, ../sass/tmb.scss */
+.sidebar ul.social-menu li a img, .sidebar ul.project-menu li a img, .sidebar ul.feed-menu li a img {
+  height: 16px;
+  position: relative;
+  top: 3px;
+  padding-right: 0.5em;
+}
+
+/* line 1143, ../sass/tmb.scss */
+footer {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  border-top: 1px solid #cccccc;
+  font-family: "futura-pt", sans-serif;
+  text-transform: uppercase;
+  color: #999999;
+  font-size: 0.8em;
+  line-height: 1.3em;
+  margin-top: 0em;
+  margin-bottom: 1em;
+}
+/* line 1159, ../sass/tmb.scss */
+footer a,
+footer a:visited,
+footer a:active {
+  color: #333333;
+}
+/* line 1163, ../sass/tmb.scss */
+footer a:hover {
+  color: red;
+}
+/* line 1167, ../sass/tmb.scss */
+footer .cc-text {
+  padding-top: 0.5em;
+}
+/* line 1170, ../sass/tmb.scss */
+footer .cc-text img {
+  padding: 0.3em 0.5em 0.5em 0;
+  float: left;
+}
+
+/* line 1179, ../sass/tmb.scss */
+.Index .content a.tag-name:hover {
+  text-decoration: none;
+}
+
+/* line 1183, ../sass/tmb.scss */
+.Index #badge-index {
+  list-style-type: none;
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+/* line 1188, ../sass/tmb.scss */
+.Index #badge-index li a {
+  display: block;
+  float: left;
+  width: 25%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 8em;
+  padding: 0;
+  background-color: #ddd;
+}
+
+/* line 1197, ../sass/tmb.scss */
+.Index .content #tag-post-blocks li.post-link a div.details {
+  display: none;
+}
+
+/* line 1202, ../sass/tmb.scss */
+.Gallery h2 {
+  margin-top: 1em;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+/* @media screen and (min-width: 480px) */
+@media screen and (min-width: 30em) {
+  /* line 1212, ../sass/tmb.scss */
+  .container {
+    width: 480px;
+  }
+
+  /* line 1223, ../sass/tmb.scss */
+  header a h1,
+  header a:visited h1,
+  header a:active h1,
+  header a:hover h1 {
+    font-size: 3em;
+  }
+  /* line 1228, ../sass/tmb.scss */
+  header #st-search-input.st-search-input {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.5em 0.8em 0.5em 2.5em;
+    margin-top: 1.0em;
+    margin-bottom: 0.8em;
+    border: 0;
+    border-radius: 1.5em;
+    box-shadow: none;
+    line-height: 2em;
+    height: 2.5em;
+    background-color: #eee;
+    background-size: 1.2em 1.2em;
+    background-position: 0.7em 0.7em;
+    font-size: 1em;
+  }
+
+  /* line 1245, ../sass/tmb.scss */
+  .content {
+    font-size: 1.2em;
+    line-height: 1.2em;
+  }
+  /* line 1254, ../sass/tmb.scss */
+  .content ul#month-posts li.post-link a table tbody tr td.post-title h3,
+  .content ul#category-posts li.post-link a table tbody tr td.post-title h3 {
+    width: 380px;
+  }
+  /* line 1258, ../sass/tmb.scss */
+  .content ul#gallery {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    font-size: 0.8em;
+  }
+  /* line 1263, ../sass/tmb.scss */
+  .content ul#gallery li {
+    display: block;
+    float: left;
+    width: 50%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.5em 1em;
+    height: 20em;
+    background-color: #fff;
+    text-align: center;
+  }
+  /* line 1270, ../sass/tmb.scss */
+  .content ul#gallery li p {
+    font-size: 0.9em;
+  }
+  /* line 1277, ../sass/tmb.scss */
+  .content ol.linenums {
+    padding-left: 1.0em;
+  }
+
+  /* line 1284, ../sass/tmb.scss */
+  .sidebar .left-bar {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  /* line 1288, ../sass/tmb.scss */
+  .sidebar .left-bar .left-bar-a {
+    display: block;
+    float: left;
+    width: 50%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 0;
+  }
+  /* line 1293, ../sass/tmb.scss */
+  .sidebar .left-bar .left-bar-b {
+    display: block;
+    float: left;
+    width: 50%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 0;
+  }
+  /* line 1300, ../sass/tmb.scss */
+  .sidebar .right-bar {
+    display: none;
+  }
+
+  /* line 1310, ../sass/tmb.scss */
+  .Index .content ul#tag-index {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  /* line 1314, ../sass/tmb.scss */
+  .Index .content ul#tag-index li {
+    display: block;
+    float: left;
+    width: 50%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 0.8em;
+    clear: none;
+  }
+  /* line 1320, ../sass/tmb.scss */
+  .Index .content ul#tag-index li:nth-child(2n+1) {
+    padding-left: 0;
+  }
+  /* line 1324, ../sass/tmb.scss */
+  .Index .content ul#tag-index li:nth-child(2n) {
+    padding-right: 0;
+  }
+  /* line 1330, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link a table tbody tr td.post-title h3 {
+    width: 380px;
+  }
+}
+/* @media screen and (min-width: 720px) */
+@media screen and (min-width: 45em) {
+  /* line 1349, ../sass/tmb.scss */
+  .container {
+    width: 720px;
+  }
+
+  /* line 1358, ../sass/tmb.scss */
+  header a,
+  header a:visited,
+  header a:active,
+  header a:hover {
+    display: block;
+    float: left;
+    width: 66.667%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 0;
+  }
+  /* line 1362, ../sass/tmb.scss */
+  header a .logo,
+  header a:visited .logo,
+  header a:active .logo,
+  header a:hover .logo {
+    display: block;
+    float: left;
+    width: 12.5%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  /* line 1367, ../sass/tmb.scss */
+  header a h1,
+  header a:visited h1,
+  header a:active h1,
+  header a:hover h1 {
+    display: block;
+    float: left;
+    width: 87.5%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 2.5em;
+    line-height: 1em;
+    padding-left: 0.3em;
+    padding-top: 0.5em;
+    padding-bottom: 0;
+  }
+  /* line 1377, ../sass/tmb.scss */
+  header form {
+    display: block;
+    float: left;
+    width: 33.333%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 0;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+  }
+  /* line 1385, ../sass/tmb.scss */
+  header #st-search-input.st-search-input {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 0.6em;
+    padding-left: 2em;
+  }
+  /* line 1391, ../sass/tmb.scss */
+  header ul.header-menu {
+    display: block;
+    float: left;
+    width: 33.333%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 0;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+    font-family: "futura-pt", sans-serif;
+    text-transform: uppercase;
+    color: #999999;
+    font-size: 1em;
+    display: none;
+  }
+  /* line 1403, ../sass/tmb.scss */
+  header ul.header-menu li {
+    display: block;
+    float: left;
+    width: 33.333%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline;
+    margin-bottom: 0;
+    line-height: 2.4em;
+  }
+  /* line 1409, ../sass/tmb.scss */
+  header ul.header-menu li a {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline;
+    width: auto;
+    color: #333333;
+    border: 0;
+    margin-top: 0;
+    padding: 0;
+    position: relative;
+  }
+  /* line 1419, ../sass/tmb.scss */
+  header ul.header-menu li a:hover {
+    text-decoration: none;
+  }
+  /* line 1427, ../sass/tmb.scss */
+  header ul.header-menu li a .header-title {
+    position: absolute;
+    top: 0.85em;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+  }
+  /* line 1435, ../sass/tmb.scss */
+  header ul.header-menu li a .link-ball {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    background-color: #f6a9a9;
+  }
+  /* line 1441, ../sass/tmb.scss */
+  header ul.header-menu li a .link-ball.About {
+    background-color: #f6a9a9;
+  }
+  /* line 1445, ../sass/tmb.scss */
+  header ul.header-menu li a .link-ball.Gallery {
+    background-color: #a9a9f6;
+  }
+  /* line 1449, ../sass/tmb.scss */
+  header ul.header-menu li a .link-ball.Index {
+    background-color: #a9f6a9;
+  }
+  /* line 1453, ../sass/tmb.scss */
+  header ul.header-menu li a .link-ball.Archive {
+    background-color: #dddddd;
+  }
+
+  /* line 1469, ../sass/tmb.scss */
+  .content {
+    display: block;
+    float: left;
+    width: 66.667%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 0;
+  }
+
+  /* line 1483, ../sass/tmb.scss */
+  .sidebar {
+    display: block;
+    float: left;
+    width: 33.333%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 0;
+  }
+  /* line 1488, ../sass/tmb.scss */
+  .sidebar .left-bar,
+  .sidebar .right-bar {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  /* line 1493, ../sass/tmb.scss */
+  .sidebar .left-bar .left-bar-a,
+  .sidebar .left-bar .left-bar-b,
+  .sidebar .right-bar .left-bar-a,
+  .sidebar .right-bar .left-bar-b {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+
+  /* line 1504, ../sass/tmb.scss */
+  footer {
+    display: block;
+    float: left;
+    width: 66.667%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 0;
+  }
+
+  /* line 1512, ../sass/tmb.scss */
+  .Index .content,
+  .Gallery .content {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  /* line 1519, ../sass/tmb.scss */
+  .Index .content h2,
+  .Gallery .content h2 {
+    margin-top: 1em;
+    clear: both;
+  }
+  /* line 1524, ../sass/tmb.scss */
+  .Index .content ul#gallery,
+  .Gallery .content ul#gallery {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    font-size: 0.8em;
+  }
+  /* line 1529, ../sass/tmb.scss */
+  .Index .content ul#gallery li,
+  .Gallery .content ul#gallery li {
+    display: block;
+    float: left;
+    width: 33.333%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.5em 1em;
+    height: 20em;
+    background-color: #fff;
+    text-align: center;
+  }
+  /* line 1536, ../sass/tmb.scss */
+  .Index .content ul#gallery li p,
+  .Gallery .content ul#gallery li p {
+    font-size: 0.9em;
+  }
+  /* line 1544, ../sass/tmb.scss */
+  .Index .content ul#tag-index li,
+  .Gallery .content ul#tag-index li {
+    display: block;
+    float: left;
+    width: 33.333%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 0.8em;
+    clear: none;
+  }
+  /* line 1548, ../sass/tmb.scss */
+  .Index .content ul#tag-index li:nth-child(2n+1),
+  .Gallery .content ul#tag-index li:nth-child(2n+1) {
+    padding: 0 0.75em;
+  }
+  /* line 1552, ../sass/tmb.scss */
+  .Index .content ul#tag-index li:nth-child(2n),
+  .Gallery .content ul#tag-index li:nth-child(2n) {
+    padding: 0 0.75em;
+  }
+  /* line 1556, ../sass/tmb.scss */
+  .Index .content ul#tag-index li:nth-child(3n+1),
+  .Gallery .content ul#tag-index li:nth-child(3n+1) {
+    padding-left: 0;
+  }
+  /* line 1560, ../sass/tmb.scss */
+  .Index .content ul#tag-index li:nth-child(3n+3),
+  .Gallery .content ul#tag-index li:nth-child(3n+3) {
+    padding-right: 0;
+  }
+  /* line 1568, ../sass/tmb.scss */
+  .Index .content ul#tag-index li a,
+  .Index .content ul#tag-index li a:visited,
+  .Index .content ul#tag-index li a:active,
+  .Gallery .content ul#tag-index li a,
+  .Gallery .content ul#tag-index li a:visited,
+  .Gallery .content ul#tag-index li a:active {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    color: #555555;
+    border-bottom: 1px dotted #ccc;
+    padding-top: 0.7em;
+    line-height: 1em;
+  }
+  /* line 1576, ../sass/tmb.scss */
+  .Index .content ul#tag-index li a .tag-name,
+  .Index .content ul#tag-index li a:visited .tag-name,
+  .Index .content ul#tag-index li a:active .tag-name,
+  .Gallery .content ul#tag-index li a .tag-name,
+  .Gallery .content ul#tag-index li a:visited .tag-name,
+  .Gallery .content ul#tag-index li a:active .tag-name {
+    float: left;
+    position: relative;
+    top: 0.1em;
+    background-color: #fff;
+    line-height: 1em;
+    padding-bottom: 0.1em;
+  }
+  /* line 1585, ../sass/tmb.scss */
+  .Index .content ul#tag-index li a .entry-count,
+  .Index .content ul#tag-index li a:visited .entry-count,
+  .Index .content ul#tag-index li a:active .entry-count,
+  .Gallery .content ul#tag-index li a .entry-count,
+  .Gallery .content ul#tag-index li a:visited .entry-count,
+  .Gallery .content ul#tag-index li a:active .entry-count {
+    float: right;
+    position: relative;
+    top: 0.1em;
+    background-color: #fff;
+    line-height: 1em;
+    padding-bottom: 0.1em;
+  }
+  /* line 1594, ../sass/tmb.scss */
+  .Index .content ul#tag-index li a:hover,
+  .Index .content ul#tag-index li a:visited:hover,
+  .Index .content ul#tag-index li a:active:hover,
+  .Gallery .content ul#tag-index li a:hover,
+  .Gallery .content ul#tag-index li a:visited:hover,
+  .Gallery .content ul#tag-index li a:active:hover {
+    border-color: red;
+  }
+  /* line 1598, ../sass/tmb.scss */
+  .Index .content ul#tag-index li a:hover .tag-name,
+  .Index .content ul#tag-index li a:hover .entry-count,
+  .Index .content ul#tag-index li a:visited:hover .tag-name,
+  .Index .content ul#tag-index li a:visited:hover .entry-count,
+  .Index .content ul#tag-index li a:active:hover .tag-name,
+  .Index .content ul#tag-index li a:active:hover .entry-count,
+  .Gallery .content ul#tag-index li a:hover .tag-name,
+  .Gallery .content ul#tag-index li a:hover .entry-count,
+  .Gallery .content ul#tag-index li a:visited:hover .tag-name,
+  .Gallery .content ul#tag-index li a:visited:hover .entry-count,
+  .Gallery .content ul#tag-index li a:active:hover .tag-name,
+  .Gallery .content ul#tag-index li a:active:hover .entry-count {
+    color: red;
+  }
+  /* line 1606, ../sass/tmb.scss */
+  .Index .content ul#tag-post-list,
+  .Gallery .content ul#tag-post-list {
+    display: none;
+  }
+  /* line 1610, ../sass/tmb.scss */
+  .Index .content a.tag-name,
+  .Gallery .content a.tag-name {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0.75em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: #eeeeee;
+  }
+  /* line 1617, ../sass/tmb.scss */
+  .Index .content a.tag-name:hover,
+  .Gallery .content a.tag-name:hover {
+    text-decoration: none;
+  }
+  /* line 1621, ../sass/tmb.scss */
+  .Index .content a.tag-name h2,
+  .Gallery .content a.tag-name h2 {
+    margin: 0;
+  }
+  /* line 1626, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks,
+  .Gallery .content ul#tag-post-blocks {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  /* line 1630, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link,
+  .Gallery .content ul#tag-post-blocks li.post-link {
+    display: block;
+    float: left;
+    width: 25%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0;
+  }
+  /* line 1636, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link a,
+  .Index .content ul#tag-post-blocks li.post-link a:visited,
+  .Index .content ul#tag-post-blocks li.post-link a:active,
+  .Gallery .content ul#tag-post-blocks li.post-link a,
+  .Gallery .content ul#tag-post-blocks li.post-link a:visited,
+  .Gallery .content ul#tag-post-blocks li.post-link a:active {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 1em 0.5em;
+    text-align: center;
+    height: 10em;
+    text-decoration: none;
+    overflow: hidden;
+  }
+  /* line 1644, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link a table.details,
+  .Index .content ul#tag-post-blocks li.post-link a:visited table.details,
+  .Index .content ul#tag-post-blocks li.post-link a:active table.details,
+  .Gallery .content ul#tag-post-blocks li.post-link a table.details,
+  .Gallery .content ul#tag-post-blocks li.post-link a:visited table.details,
+  .Gallery .content ul#tag-post-blocks li.post-link a:active table.details {
+    display: none;
+  }
+  /* line 1648, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link a div.details,
+  .Index .content ul#tag-post-blocks li.post-link a:visited div.details,
+  .Index .content ul#tag-post-blocks li.post-link a:active div.details,
+  .Gallery .content ul#tag-post-blocks li.post-link a div.details,
+  .Gallery .content ul#tag-post-blocks li.post-link a:visited div.details,
+  .Gallery .content ul#tag-post-blocks li.post-link a:active div.details {
+    display: block;
+  }
+  /* line 1652, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link a .circle,
+  .Index .content ul#tag-post-blocks li.post-link a:visited .circle,
+  .Index .content ul#tag-post-blocks li.post-link a:active .circle,
+  .Gallery .content ul#tag-post-blocks li.post-link a .circle,
+  .Gallery .content ul#tag-post-blocks li.post-link a:visited .circle,
+  .Gallery .content ul#tag-post-blocks li.post-link a:active .circle {
+    font-family: "futura-pt", sans-serif;
+    text-transform: uppercase;
+    color: #333333;
+    font-size: 0.5em;
+    line-height: 1em;
+    background-color: #dddddd;
+    width: 7em;
+    height: 4.3em;
+    padding-top: 2.7em;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  /* line 1666, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link a h3,
+  .Index .content ul#tag-post-blocks li.post-link a:visited h3,
+  .Index .content ul#tag-post-blocks li.post-link a:active h3,
+  .Gallery .content ul#tag-post-blocks li.post-link a h3,
+  .Gallery .content ul#tag-post-blocks li.post-link a:visited h3,
+  .Gallery .content ul#tag-post-blocks li.post-link a:active h3 {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    font-size: 0.8em;
+    line-height: 1.1em;
+    margin-top: 1em;
+  }
+  /* line 1674, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link a:hover,
+  .Index .content ul#tag-post-blocks li.post-link a:visited:hover,
+  .Index .content ul#tag-post-blocks li.post-link a:active:hover,
+  .Gallery .content ul#tag-post-blocks li.post-link a:hover,
+  .Gallery .content ul#tag-post-blocks li.post-link a:visited:hover,
+  .Gallery .content ul#tag-post-blocks li.post-link a:active:hover {
+    background-color: #f7f7f7;
+  }
+  /* line 1683, ../sass/tmb.scss */
+  .Index .sidebar,
+  .Gallery .sidebar {
+    display: none;
+  }
+  /* line 1687, ../sass/tmb.scss */
+  .Index footer,
+  .Gallery footer {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+}
+/* @media screen and (min-width: 960px) */
+@media screen and (min-width: 60em) {
+  /* line 1698, ../sass/tmb.scss */
+  .container {
+    width: 960px;
+  }
+
+  /* line 1707, ../sass/tmb.scss */
+  header a.logo-link,
+  header a.logo-link:active,
+  header a.logo-link:visited,
+  header a.logo-link:hover {
+    display: block;
+    float: left;
+    width: 16.667%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  /* line 1711, ../sass/tmb.scss */
+  header a.logo-link .logo,
+  header a.logo-link:active .logo,
+  header a.logo-link:visited .logo,
+  header a.logo-link:hover .logo {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 1.5em;
+  }
+  /* line 1716, ../sass/tmb.scss */
+  header a.logo-link h1,
+  header a.logo-link:active h1,
+  header a.logo-link:visited h1,
+  header a.logo-link:hover h1 {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.5em 0 0;
+    font-size: 1.3em;
+    text-align: center;
+  }
+  /* line 1724, ../sass/tmb.scss */
+  header .right-block {
+    display: block;
+    float: left;
+    width: 83.333%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 0;
+  }
+  /* line 1729, ../sass/tmb.scss */
+  header ul.header-menu {
+    display: block;
+    float: left;
+    width: 60%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.3em 0 0;
+    border-top: 1px solid #cccccc;
+  }
+  /* line 1734, ../sass/tmb.scss */
+  header ul.header-menu li {
+    display: inline;
+    width: auto;
+    float: right;
+    padding-left: 0;
+    padding-right: 0.75em;
+    height: 45px;
+  }
+  /* line 1744, ../sass/tmb.scss */
+  header ul.header-menu li a,
+  header ul.header-menu li a:visited,
+  header ul.header-menu li a:active {
+    float: left;
+  }
+  /* line 1747, ../sass/tmb.scss */
+  header ul.header-menu li a .header-title,
+  header ul.header-menu li a:visited .header-title,
+  header ul.header-menu li a:active .header-title {
+    top: 0.5em;
+    font-size: 0.6em;
+  }
+  /* line 1752, ../sass/tmb.scss */
+  header ul.header-menu li a .link-ball,
+  header ul.header-menu li a:visited .link-ball,
+  header ul.header-menu li a:active .link-ball {
+    height: 2.8em;
+    width: 2.8em;
+  }
+  /* line 1769, ../sass/tmb.scss */
+  header form {
+    display: block;
+    float: left;
+    width: 40%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 0;
+    border: 0;
+    border-top: 1px solid #cccccc;
+  }
+  /* line 1776, ../sass/tmb.scss */
+  header #st-search-input.st-search-input {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+    border: 0;
+    padding-left: 2.2em;
+  }
+  /* line 1784, ../sass/tmb.scss */
+  header #header-index {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0 0.5em 0;
+    list-style-type: none;
+    font-family: "futura-pt", sans-serif;
+    text-transform: uppercase;
+    color: #333333;
+    font-size: 0.7em;
+    margin-top: 0.7em;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    height: 7.7em;
+    overflow: hidden;
+  }
+  /* line 1798, ../sass/tmb.scss */
+  header #header-index a {
+    display: none;
+  }
+  /* line 1802, ../sass/tmb.scss */
+  header #header-index .col0 {
+    display: block;
+    float: left;
+    width: 20%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.8em 0.5em 0 0;
+    color: #999999;
+  }
+  /* line 1808, ../sass/tmb.scss */
+  header #header-index ul {
+    display: block;
+    float: left;
+    width: 80%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  /* line 1812, ../sass/tmb.scss */
+  header #header-index ul li {
+    display: block;
+    float: left;
+    width: 25%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0 0.6em 1em;
+  }
+  /* line 1818, ../sass/tmb.scss */
+  header #header-index ul li a,
+  header #header-index ul li a:visited,
+  header #header-index ul li a:active {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    color: #555555;
+    border-top: 0;
+    border-bottom: 1px dotted #ccc;
+    line-height: 1em;
+  }
+  /* line 1827, ../sass/tmb.scss */
+  header #header-index ul li a .tag-name,
+  header #header-index ul li a:visited .tag-name,
+  header #header-index ul li a:active .tag-name {
+    float: left;
+    position: relative;
+    top: 0.1em;
+    background-color: #fff;
+    line-height: 1em;
+    padding-bottom: 0.1em;
+  }
+  /* line 1836, ../sass/tmb.scss */
+  header #header-index ul li a .entry-count,
+  header #header-index ul li a:visited .entry-count,
+  header #header-index ul li a:active .entry-count {
+    float: right;
+    position: relative;
+    top: 0.1em;
+    background-color: #fff;
+    line-height: 1em;
+    padding-bottom: 0.1em;
+  }
+  /* line 1845, ../sass/tmb.scss */
+  header #header-index ul li a:hover,
+  header #header-index ul li a:visited:hover,
+  header #header-index ul li a:active:hover {
+    border-color: red;
+  }
+  /* line 1849, ../sass/tmb.scss */
+  header #header-index ul li a:hover .tag-name,
+  header #header-index ul li a:hover .entry-count,
+  header #header-index ul li a:visited:hover .tag-name,
+  header #header-index ul li a:visited:hover .entry-count,
+  header #header-index ul li a:active:hover .tag-name,
+  header #header-index ul li a:active:hover .entry-count {
+    color: red;
+  }
+
+  /* line 1862, ../sass/tmb.scss */
+  .content {
+    display: block;
+    float: left;
+    width: 66.667%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 0;
+  }
+  /* line 1866, ../sass/tmb.scss */
+  .content #st-results-container {
+    display: block;
+    float: left;
+    width: 75%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 25%;
+  }
+  /* line 1873, ../sass/tmb.scss */
+  .content .block h1,
+  .content h1.page-title {
+    display: block;
+    float: left;
+    width: 75%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 25%;
+    padding: 0;
+  }
+  /* line 1880, ../sass/tmb.scss */
+  .content .tax-header {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0.75em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: #eeeeee;
+    position: relative;
+  }
+  /* line 1888, ../sass/tmb.scss */
+  .content .tax-header h1.page-title {
+    color: #333333;
+  }
+  /* line 1891, ../sass/tmb.scss */
+  .content .tax-header h1.page-title em {
+    color: red;
+    font-style: normal;
+  }
+  /* line 1897, ../sass/tmb.scss */
+  .content .tax-header .icon {
+    position: absolute;
+    top: -0.6em;
+    left: 2em;
+    width: 4em !important;
+    height: 4em !important;
+    background-color: #fff;
+    border: 0.3em solid #eeeeee;
+    background-size: 2.5em auto !important;
+  }
+  /* line 1907, ../sass/tmb.scss */
+  .content .tax-header .icon.oatmeal {
+    background-size: 2em auto !important;
+  }
+  /* line 1915, ../sass/tmb.scss */
+  .content .tax-header .icon.mst3k, .content .tax-header .icon.pad.and.quill, .content .tax-header .icon.swiftype, .content .tax-header .icon.squarespace, .content .tax-header .icon.nasa {
+    background-size: 3em auto !important;
+  }
+  /* line 1921, ../sass/tmb.scss */
+  .content .post {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 1em 0 0;
+  }
+  /* line 1925, ../sass/tmb.scss */
+  .content .post .pre-bar {
+    display: block;
+    float: left;
+    width: 25%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 1928, ../sass/tmb.scss */
+  .content .post .pre-bar .date-ball {
+    font-family: "futura-pt", sans-serif;
+    text-transform: uppercase;
+    display: block;
+    color: #333333;
+    font-size: 0.5em;
+    line-height: 1em;
+    background-color: #dddddd;
+    width: 7em;
+    height: 4.3em;
+    padding-top: 2.7em;
+    border-radius: 50%;
+    margin: 0 auto 1em;
+    text-align: center;
+  }
+  /* line 1943, ../sass/tmb.scss */
+  .content .post .pre-bar .date-ball:hover {
+    text-decoration: none;
+  }
+  /* line 1949, ../sass/tmb.scss */
+  .content .post .post-body {
+    display: block;
+    float: left;
+    width: 75%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 1952, ../sass/tmb.scss */
+  .content .post .post-body h2.title {
+    padding-bottom: 0.5em;
+  }
+  /* line 1956, ../sass/tmb.scss */
+  .content .post .post-body .title-date {
+    display: none;
+  }
+  /* line 1960, ../sass/tmb.scss */
+  .content .post .post-body .has-pullquote:before {
+    content: attr(data-pullquote);
+    display: block;
+    float: left;
+    width: 66.667%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "futura-pt", sans-serif;
+    text-transform: uppercase;
+    text-align: right;
+    color: red;
+    font-size: 1.1em;
+    line-height: 1.6em;
+    margin: 0.2em 1em 0.5em -40%;
+  }
+  /* line 1991, ../sass/tmb.scss */
+  .content .pagination {
+    display: block;
+    float: left;
+    width: 75%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 25%;
+  }
+  /* line 1996, ../sass/tmb.scss */
+  .content .archive-link {
+    display: block;
+    float: left;
+    width: 75%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 25%;
+    padding-bottom: 1em;
+  }
+  /* line 2002, ../sass/tmb.scss */
+  .content .archive {
+    display: block;
+    float: left;
+    width: 75%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 25%;
+  }
+
+  /* line 2014, ../sass/tmb.scss */
+  .sidebar {
+    display: block;
+    float: left;
+    width: 33.333%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 0;
+  }
+  /* line 2018, ../sass/tmb.scss */
+  .sidebar .left-bar {
+    display: block;
+    float: left;
+    width: 50%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 0;
+    font-size: 0.9em;
+  }
+  /* line 2024, ../sass/tmb.scss */
+  .sidebar .right-bar {
+    display: block;
+    float: left;
+    width: 50%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 0;
+    font-size: 0.9em;
+  }
+  /* line 2029, ../sass/tmb.scss */
+  .sidebar .right-bar ul.tag-cloud {
+    display: block;
+  }
+  /* line 2033, ../sass/tmb.scss */
+  .sidebar .right-bar ul.tag-cloud li.menu-title {
+    margin-bottom: 0.5em;
+  }
+  /* line 2037, ../sass/tmb.scss */
+  .sidebar .right-bar ul.tag-cloud li.tag-item {
+    display: inline;
+    border: none;
+    width: auto;
+    padding-right: 0.5em;
+    margin: 0;
+    line-height: 1.5em;
+  }
+  /* line 2047, ../sass/tmb.scss */
+  .sidebar .right-bar ul.tag-cloud li.tag-item a,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:visited,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:active {
+    display: inline;
+    margin: 0;
+  }
+  /* line 2051, ../sass/tmb.scss */
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:hover,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:visited:hover,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:active:hover {
+    color: #333333 !important;
+  }
+  /* line 2055, ../sass/tmb.scss */
+  .sidebar .right-bar ul.tag-cloud li.tag-item a .count,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:visited .count,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:active .count {
+    display: none;
+  }
+  /* line 2059, ../sass/tmb.scss */
+  .sidebar .right-bar ul.tag-cloud li.tag-item a.hide,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:visited.hide,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:active.hide {
+    display: none;
+  }
+  /* line 2063, ../sass/tmb.scss */
+  .sidebar .right-bar ul.tag-cloud li.tag-item a.smaller-tag,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:visited.smaller-tag,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:active.smaller-tag {
+    font-weight: 100;
+    color: #ccc;
+  }
+  /* line 2069, ../sass/tmb.scss */
+  .sidebar .right-bar ul.tag-cloud li.tag-item a.small-tag,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:visited.small-tag,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:active.small-tag {
+    font-weight: 300;
+    color: #999;
+  }
+  /* line 2075, ../sass/tmb.scss */
+  .sidebar .right-bar ul.tag-cloud li.tag-item a.middle-tag,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:visited.middle-tag,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:active.middle-tag {
+    font-weight: 500;
+    color: #444;
+  }
+  /* line 2081, ../sass/tmb.scss */
+  .sidebar .right-bar ul.tag-cloud li.tag-item a.large-tag,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:visited.large-tag,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:active.large-tag {
+    font-weight: 700;
+    color: #222;
+  }
+  /* line 2087, ../sass/tmb.scss */
+  .sidebar .right-bar ul.tag-cloud li.tag-item a.larger-tag,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:visited.larger-tag,
+  .sidebar .right-bar ul.tag-cloud li.tag-item a:active.larger-tag {
+    font-weight: 900;
+    color: #000;
+  }
+
+  /* line 2099, ../sass/tmb.scss */
+  footer {
+    display: block;
+    float: left;
+    width: 50%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 16.667%;
+  }
+
+  /* line 2107, ../sass/tmb.scss */
+  .Index .content,
+  .Gallery .content {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  /* line 2111, ../sass/tmb.scss */
+  .Index .content ul#gallery,
+  .Gallery .content ul#gallery {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    font-size: 0.8em;
+  }
+  /* line 2116, ../sass/tmb.scss */
+  .Index .content ul#gallery li,
+  .Gallery .content ul#gallery li {
+    display: block;
+    float: left;
+    width: 25%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.5em 1em;
+    height: 20em;
+    background-color: #fff;
+    text-align: center;
+  }
+  /* line 2123, ../sass/tmb.scss */
+  .Index .content ul#gallery li p,
+  .Gallery .content ul#gallery li p {
+    font-size: 0.9em;
+  }
+  /* line 2131, ../sass/tmb.scss */
+  .Index .content ul#tag-index li,
+  .Gallery .content ul#tag-index li {
+    display: block;
+    float: left;
+    width: 25%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 0.8em;
+    clear: none;
+  }
+  /* line 2135, ../sass/tmb.scss */
+  .Index .content ul#tag-index li:nth-child(2n+1),
+  .Gallery .content ul#tag-index li:nth-child(2n+1) {
+    padding: 0;
+  }
+  /* line 2139, ../sass/tmb.scss */
+  .Index .content ul#tag-index li:nth-child(2n),
+  .Gallery .content ul#tag-index li:nth-child(2n) {
+    padding: 0;
+  }
+  /* line 2143, ../sass/tmb.scss */
+  .Index .content ul#tag-index li:nth-child(3n+1),
+  .Gallery .content ul#tag-index li:nth-child(3n+1) {
+    padding: 0;
+  }
+  /* line 2147, ../sass/tmb.scss */
+  .Index .content ul#tag-index li:nth-child(3n+3),
+  .Gallery .content ul#tag-index li:nth-child(3n+3) {
+    padding: 0;
+  }
+  /* line 2152, ../sass/tmb.scss */
+  .Index .content ul#tag-index li:nth-child(4n+2), .Index .content ul#tag-index li:nth-child(4n+3),
+  .Gallery .content ul#tag-index li:nth-child(4n+2),
+  .Gallery .content ul#tag-index li:nth-child(4n+3) {
+    padding: 0 0.75em;
+  }
+  /* line 2160, ../sass/tmb.scss */
+  .Index .content ul#tag-index li a,
+  .Index .content ul#tag-index li a:visited,
+  .Index .content ul#tag-index li a:active,
+  .Gallery .content ul#tag-index li a,
+  .Gallery .content ul#tag-index li a:visited,
+  .Gallery .content ul#tag-index li a:active {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    color: #555555;
+    border-bottom: 1px dotted #ccc;
+    padding-top: 0.7em;
+    line-height: 1em;
+  }
+  /* line 2168, ../sass/tmb.scss */
+  .Index .content ul#tag-index li a .tag-name,
+  .Index .content ul#tag-index li a:visited .tag-name,
+  .Index .content ul#tag-index li a:active .tag-name,
+  .Gallery .content ul#tag-index li a .tag-name,
+  .Gallery .content ul#tag-index li a:visited .tag-name,
+  .Gallery .content ul#tag-index li a:active .tag-name {
+    float: left;
+    position: relative;
+    top: 0.1em;
+    background-color: #fff;
+    line-height: 1em;
+    padding-bottom: 0.1em;
+  }
+  /* line 2177, ../sass/tmb.scss */
+  .Index .content ul#tag-index li a .entry-count,
+  .Index .content ul#tag-index li a:visited .entry-count,
+  .Index .content ul#tag-index li a:active .entry-count,
+  .Gallery .content ul#tag-index li a .entry-count,
+  .Gallery .content ul#tag-index li a:visited .entry-count,
+  .Gallery .content ul#tag-index li a:active .entry-count {
+    float: right;
+    position: relative;
+    top: 0.1em;
+    background-color: #fff;
+    line-height: 1em;
+    padding-bottom: 0.1em;
+  }
+  /* line 2186, ../sass/tmb.scss */
+  .Index .content ul#tag-index li a:hover,
+  .Index .content ul#tag-index li a:visited:hover,
+  .Index .content ul#tag-index li a:active:hover,
+  .Gallery .content ul#tag-index li a:hover,
+  .Gallery .content ul#tag-index li a:visited:hover,
+  .Gallery .content ul#tag-index li a:active:hover {
+    border-color: red;
+  }
+  /* line 2190, ../sass/tmb.scss */
+  .Index .content ul#tag-index li a:hover .tag-name,
+  .Index .content ul#tag-index li a:hover .entry-count,
+  .Index .content ul#tag-index li a:visited:hover .tag-name,
+  .Index .content ul#tag-index li a:visited:hover .entry-count,
+  .Index .content ul#tag-index li a:active:hover .tag-name,
+  .Index .content ul#tag-index li a:active:hover .entry-count,
+  .Gallery .content ul#tag-index li a:hover .tag-name,
+  .Gallery .content ul#tag-index li a:hover .entry-count,
+  .Gallery .content ul#tag-index li a:visited:hover .tag-name,
+  .Gallery .content ul#tag-index li a:visited:hover .entry-count,
+  .Gallery .content ul#tag-index li a:active:hover .tag-name,
+  .Gallery .content ul#tag-index li a:active:hover .entry-count {
+    color: red;
+  }
+  /* line 2198, ../sass/tmb.scss */
+  .Index .content ul#tag-post-list,
+  .Gallery .content ul#tag-post-list {
+    display: none;
+  }
+  /* line 2202, ../sass/tmb.scss */
+  .Index .content a.tag-name,
+  .Gallery .content a.tag-name {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0.75em;
+    margin-top: 1em;
+    background-color: #eeeeee;
+    position: relative;
+  }
+  /* line 2209, ../sass/tmb.scss */
+  .Index .content a.tag-name:hover,
+  .Gallery .content a.tag-name:hover {
+    text-decoration: none;
+  }
+  /* line 2213, ../sass/tmb.scss */
+  .Index .content a.tag-name .icon,
+  .Gallery .content a.tag-name .icon {
+    position: absolute;
+    top: -1em;
+    left: 1em;
+    width: 4em !important;
+    height: 4em !important;
+    background-color: #fff;
+    border: 0.3em solid #eeeeee;
+    background-size: 2.5em auto !important;
+  }
+  /* line 2223, ../sass/tmb.scss */
+  .Index .content a.tag-name .icon.oatmeal,
+  .Gallery .content a.tag-name .icon.oatmeal {
+    background-size: 2em auto !important;
+  }
+  /* line 2231, ../sass/tmb.scss */
+  .Index .content a.tag-name .icon.mst3k, .Index .content a.tag-name .icon.pad.and.quill, .Index .content a.tag-name .icon.swiftype, .Index .content a.tag-name .icon.squarespace, .Index .content a.tag-name .icon.nasa,
+  .Gallery .content a.tag-name .icon.mst3k,
+  .Gallery .content a.tag-name .icon.pad.and.quill,
+  .Gallery .content a.tag-name .icon.swiftype,
+  .Gallery .content a.tag-name .icon.squarespace,
+  .Gallery .content a.tag-name .icon.nasa {
+    background-size: 3em auto !important;
+  }
+  /* line 2236, ../sass/tmb.scss */
+  .Index .content a.tag-name h2,
+  .Gallery .content a.tag-name h2 {
+    margin: 0;
+    padding-left: 4em;
+  }
+  /* line 2242, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks,
+  .Gallery .content ul#tag-post-blocks {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  /* line 2246, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link,
+  .Gallery .content ul#tag-post-blocks li.post-link {
+    display: block;
+    float: left;
+    width: 25%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 2251, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link a,
+  .Index .content ul#tag-post-blocks li.post-link a:visited,
+  .Index .content ul#tag-post-blocks li.post-link a:active,
+  .Gallery .content ul#tag-post-blocks li.post-link a,
+  .Gallery .content ul#tag-post-blocks li.post-link a:visited,
+  .Gallery .content ul#tag-post-blocks li.post-link a:active {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 1em 0.5em;
+    text-align: center;
+    height: 10em;
+    text-decoration: none;
+    overflow: hidden;
+  }
+  /* line 2259, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link a .circle,
+  .Index .content ul#tag-post-blocks li.post-link a:visited .circle,
+  .Index .content ul#tag-post-blocks li.post-link a:active .circle,
+  .Gallery .content ul#tag-post-blocks li.post-link a .circle,
+  .Gallery .content ul#tag-post-blocks li.post-link a:visited .circle,
+  .Gallery .content ul#tag-post-blocks li.post-link a:active .circle {
+    font-family: "futura-pt", sans-serif;
+    text-transform: uppercase;
+    color: #333333;
+    font-size: 0.5em;
+    line-height: 1em;
+    background-color: #dddddd;
+    width: 7em;
+    height: 4.3em;
+    padding-top: 2.7em;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  /* line 2273, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link a h3,
+  .Index .content ul#tag-post-blocks li.post-link a:visited h3,
+  .Index .content ul#tag-post-blocks li.post-link a:active h3,
+  .Gallery .content ul#tag-post-blocks li.post-link a h3,
+  .Gallery .content ul#tag-post-blocks li.post-link a:visited h3,
+  .Gallery .content ul#tag-post-blocks li.post-link a:active h3 {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    font-size: 0.8em;
+    line-height: 1.1em;
+    margin-top: 1em;
+  }
+  /* line 2281, ../sass/tmb.scss */
+  .Index .content ul#tag-post-blocks li.post-link a:hover,
+  .Index .content ul#tag-post-blocks li.post-link a:visited:hover,
+  .Index .content ul#tag-post-blocks li.post-link a:active:hover,
+  .Gallery .content ul#tag-post-blocks li.post-link a:hover,
+  .Gallery .content ul#tag-post-blocks li.post-link a:visited:hover,
+  .Gallery .content ul#tag-post-blocks li.post-link a:active:hover {
+    background-color: #f7f7f7;
+  }
+  /* line 2290, ../sass/tmb.scss */
+  .Index .sidebar,
+  .Gallery .sidebar {
+    display: none;
+  }
+  /* line 2294, ../sass/tmb.scss */
+  .Index footer,
+  .Gallery footer {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 0%;
+    padding: 0;
+  }
+
+  /* line 2303, ../sass/tmb.scss */
+  .About .content {
+    display: block;
+    float: left;
+    width: 50%;
+    padding: 0 0.75em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 16.667%;
+  }
+}
+/* @media screen and (min-width: 1280px) */
+@media screen and (min-width: 80em) {
+  /* line 14, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  body {
+    font-size: 1.25em;
+  }
+
+  /* line 2315, ../sass/tmb.scss */
+  .container {
+    width: 1280px;
+  }
+  /* line 2318, ../sass/tmb.scss */
+  .container header .right-block #header-index {
+    height: 8.9em;
+  }
+  /* line 2323, ../sass/tmb.scss */
+  .container ol.linenums {
+    padding-left: 0.5em;
+  }
+}
+/* @media screen and (min-width: 1600px) */
+@media screen and (min-width: 100em) {
+  /* line 14, ../../../../../../.rvm/gems/ruby-1.9.3-p362/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  body {
+    font-size: 1.5em;
+  }
+
+  /* line 2333, ../sass/tmb.scss */
+  .container {
+    width: 1600px;
+  }
+  /* line 2336, ../sass/tmb.scss */
+  .container header .right-block #header-index {
+    height: 9.5em;
+  }
+  /* line 2340, ../sass/tmb.scss */
+  .container ol.linenums {
+    padding-left: 0;
+  }
+  /* line 2349, ../sass/tmb.scss */
+  .container .sidebar ul.social-menu li a img, .container .sidebar ul.project-menu li a img, .container .sidebar ul.feed-menu li a img {
+    height: 32px;
+    position: relative;
+    top: 8px;
+    padding-right: 0.5em;
+  }
+}
+/* line 2360, ../sass/tmb.scss */
+.mindfulness {
+  background-color: #f6a9a9 !important;
+}
+
+/* line 2364, ../sass/tmb.scss */
+.design {
+  background-color: #a9a9f6 !important;
+}
+
+/* line 2368, ../sass/tmb.scss */
+.technology {
+  background-color: #a9f6a9 !important;
+}
+
+/* line 2372, ../sass/tmb.scss */
+.mindfulness.design {
+  background-color: #ac76c3 !important;
+}
+
+/* line 2376, ../sass/tmb.scss */
+.design.technology {
+  background-color: #76acc3 !important;
+}
+
+/* line 2380, ../sass/tmb.scss */
+.mindfulness.technology {
+  background-color: #acc376 !important;
+}
+
+/* line 2384, ../sass/tmb.scss */
+.mindfulness.design.technology {
+  background-color: black !important;
+  color: #FFF !important;
+}
+
+/* line 2389, ../sass/tmb.scss */
+.no-color {
+  background-color: #dddddd !important;
+}
