@@ -1,5 +1,8 @@
 RewriteEngine On
 
+RewriteRule ^[0-9]+/?[0-9]+/?[0-9]+/?([^/]+)/?$ /blog/$1 [R=301,L]
+RewriteRule ^articles/?[0-9]+/?[0-9]+/?[0-9]+/?([^/]+)\.html$ /blog/$1 [R=301,L]
+
 RewriteRule ^(_app) - [F,L]
 RewriteRule ^(_config) - [F,L]
 RewriteRule ^(_content) - [F,L]
@@ -13,7 +16,12 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /index.php [QSA,L]
 
 redirect 301 /feed.xml http://themindfulbit.com/feed
-redirect 301 /2012/11/09/meet-nerdquery/ http://themindfulbit.com/blog/meet-nerdquery
-redirect 301 /2012/12/28/the-river/ http://themindfulbit.com/blog/the-river
-redirect 301 /articles/2012/5/31/more-simple-type2phone-and-keyboard-maestro-tricks.html http://themindfulbit.com/blog/more-simple-type2phone-and-keyboard-maestro-tricks
-redirect 301 /articles/2012/5/28/to-profile-or-not-to-profile.html http://themindfulbit.com/blog/to-profile-or-not-to-profile
+
+# RewriteRule ^[0-9]+/[0-9]+/[0-9]+/([^/]+)/?$ /blog/$1 [R=301,L]
+
+# RewriteRule ^/articles/[0-9]+/[0-9]+/[0-9]+/([^/]+)/?$ /blog/$1 [R=301,L]
+
+# redirect 301 /2012/11/09/meet-nerdquery/ http://themindfulbit.com/blog/meet-nerdquery
+# redirect 301 /2012/12/28/the-river/ http://themindfulbit.com/blog/the-river
+# redirect 301 /articles/2012/5/31/more-simple-type2phone-and-keyboard-maestro-tricks.html http://themindfulbit.com/blog/more-simple-type2phone-and-keyboard-maestro-tricks
+# redirect 301 /articles/2012/5/28/to-profile-or-not-to-profile.html http://themindfulbit.com/blog/to-profile-or-not-to-profile

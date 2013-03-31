@@ -1,0 +1,17 @@
+###########################################################################################
+#
+#  LIVE ENVIRONMENT VARIABLES
+#
+###########################################################################################
+
+# Just an example use case
+# enable_analytics: yes
+
+# Change if you are running Statamic in a subdirectory
+_site_root: /
+
+# Used for permalinks
+_site_url: http://themindfulbit.com/
+
+# Enter your license key
+_license_key: 41725cad-495d-4a07-9499-2369b7d4e012

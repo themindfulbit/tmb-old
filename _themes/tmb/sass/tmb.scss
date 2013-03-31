@@ -6,6 +6,7 @@
 @import "compass/reset";
 @import "compass/css3";
 @import "compass/css3/hyphenation";
+@import "compass/css3/columns";
 @import "takitapart/normalize";
 @import "takitapart/typography";
 @import "takitapart/grid";
@@ -89,7 +90,10 @@ $all-color: #000000;
 	&.generational,
 	&.appletv,
 	&.statamic,
-	&.keynote {
+	&.keynote,
+	&.osx,
+	&.humor,
+	&.resistance {
 		@include column(2,2);
 		padding: 0;
 		height: 5em;
@@ -197,7 +201,8 @@ $all-color: #000000;
 	}
 
 	&.beast,
-	&.the.oatmeal {
+	&.the.oatmeal,
+	&.humor {
 		background-image: url('../../../assets/img/icons/beast.png');
 		height: 7em;
 		// position: relative;
@@ -264,6 +269,14 @@ $all-color: #000000;
 
 	&.keynote {
 		background-image: url('../../../assets/img/icons/keynote.png');
+	}
+
+	&.osx {
+		background-image: url('../../../assets/img/icons/osx.png');
+	}
+
+	&.resistance {
+		background-image: url('../../../assets/img/icons/resistance.png');
 	}
 }
 
@@ -526,6 +539,11 @@ header {
 
 		.post-body ul {
 			font-size: 0.9em;
+		}
+
+		a.more {
+			display: block;
+
 		}
 
 	}
@@ -872,6 +890,12 @@ header {
 			}
 		}
 	}
+
+	#icon-index {
+		@include column(12,12);
+		padding: 1em 0em;
+		@include column-width(4em);
+	}	
 
 	h1.page-header {
 		@include column(12,12);

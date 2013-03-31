@@ -21,8 +21,10 @@ I have the privilege to continue serving as a pilot in the US Navy reserves, whe
 
 I created The Mindful Bit in late 2011 to look for an intersection of mindfulness, productivity, and technology. I'm trying to see the world of tech through a lens of its impermanent, emergent, and inherently unsatisfying nature. While I don’t have any good answers, I do think it’s possible to have enlightening conversations around the questions this crazy world throws at us.
 
+I'm an [INFJ](http://www.personalitypage.com/INFJ.html), so [none of this](http://typelogic.com/infj.html) should be a real surprise.
+
 Since its launch, I've posted a lot of flying stories and pictures, along with a few articles on technology and related fields. I'm still working on the mindfulness part and probably will be for the rest of my life.
 
-The site has been rebuilt four times in 14 months, using [Tumblr](http://tumblr.com), [WordPress](http://wordpress.org), [Squarespace](http://squarespace.com) and now [Ruhoh](http://ruhoh.com).
+The site has been rebuilt five times in 18 months, using [Tumblr](http://tumblr.com), [WordPress](http://wordpress.org), [Squarespace](http://squarespace.com), [Ruhoh](http://ruhoh.com) and now [Statamic](http://statamic.com).
 
 We are what we do, not what we claim to be. In that regard, this site is no exception.

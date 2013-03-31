@@ -6,3 +6,11 @@
     </li>
     {{ /taxonomy:listing }}
 </ul>
+<h2>Icon Browser</h2>
+<div id="icon-index" data-swiftype-index='false'>
+    {{ taxonomy:listing folder="blog|gallery" type="tags" sort_by="name"}}
+
+      <a class="icon {{ name }}" href="{{ _site_root }}tags/{{ name|slugify }}"></a>
+
+    {{ /taxonomy:listing }}
+</div>
