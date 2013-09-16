@@ -1,6 +1,6 @@
 ---
 title: 'Fonts, the Blues, Celestial Mechanics, Evolution and Ideas'
-categories: technology
+categories: [technology]
 tags: [science, music, instapaper, blues]
 ---
 

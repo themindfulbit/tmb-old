@@ -1,6 +1,6 @@
 ---
 title: 'To Profile or Not to Profile?'
-categories: technology
+categories: [technology]
 tags: [security]
 ---
 If you have the time to spare, consider reading this thoughtful and lengthy (13,000 word) debate between [Sam Harris][1] and [Bruce Schneier][2] about the pros and cons of racial profiling at airport security checkpoints.

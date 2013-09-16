@@ -1,6 +1,6 @@
 ---
 title: 'iTunes Match is Live'
-categories: technology
+categories: [technology]
 tags: ['itunes match', apple]
 ---
 iTunes Match has been released.

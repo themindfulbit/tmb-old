@@ -10,6 +10,13 @@
     {{ /tags }}
   </div>
   <div class="post-body">
+
+    {{ if banner }}
+    <div class="banner {{ categories }} {{ name }} {{ /categories }}">
+      {{ theme:partial src="image" file="{ banner }" }}
+    </div>
+    {{ endif }}
+    
     <h2 class="title">
       {{ if link }}
         <a href="{{ link }}">{{ title }}&nbsp;&rArr;</a>
@@ -40,7 +47,7 @@
         <p class="title">Topics</p>
         <ul class="tag-list">
           {{ tags }}
-            <li><a href="{{ _site_root }}blog/tags/{{ name }}">{{ name }}</a></li>
+            <li><a href="{{ _site_root }}blog/tags/{{ name|slugify }}">{{ name }}</a></li>
           {{ /tags }}    
         </ul>
       {{ endif }}

@@ -1,5 +1,5 @@
 <div id="screen">
-  <h1>Error</h1>
+  <h1><?php echo Localization::fetch('error')?></h1>
 
   <?php if ($flash['error']): ?>
   <div id="flash-msg-still" class="error">

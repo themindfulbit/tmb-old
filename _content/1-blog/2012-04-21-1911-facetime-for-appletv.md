@@ -1,6 +1,6 @@
 ---
 title: 'FaceTime for Apple TV'
-categories: technology
+categories: [technology]
 tags: [holidays, facetime, appletv]
 ---
 Another major holiday has passed, and once again I plead:

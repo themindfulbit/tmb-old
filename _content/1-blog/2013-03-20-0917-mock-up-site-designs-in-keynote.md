@@ -1,14 +1,13 @@
 ---
 title: 'Mock Up Site Designs in Keynote'
-categories: design
+categories: [design]
 tags: [keynote, responsive design, mockups]
+banner: key-mockups.png
 ---
 
 A discussion with another [internet friend](http://bettermess.com/) (aren't they great?) reminded me of a tool I've found highly useful in mocking up website designs: [Keynote](https://itunes.apple.com/us/app/keynote/id409183694?mt=12). 
 
 Yes, Keynote the presentation tool.
-
-{{ theme:partial src="image" title="Keynote for Mockups" file="key-mockups.png" }}
 
 Here are a few of the reasons why I like it:
 

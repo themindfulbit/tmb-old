@@ -1,11 +1,10 @@
 ---
 title: 'A New Monitor for a Headless Mac'
 categories: [technology]
-tags: [hardware, high90, resistance]
+tags: [hardware, high90, resistance, takitapart]
+banner: 100-ohm.png
 link: http://takitapart.com/posts/a-new-monitor-for-a-headless-mac
 ---
-
-{{ theme:partial src="image" title="100&Omega; Monitor" file="100-ohm.png" }}
 
 > All it required was a miniDP-to-VGA adapter and a 100&Omega; (or thereabouts) resistor. What self-respecting nerd doesn't have those on hand?
 

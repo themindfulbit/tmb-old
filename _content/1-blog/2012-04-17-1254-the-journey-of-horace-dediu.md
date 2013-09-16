@@ -1,6 +1,6 @@
 ---
 title: 'The Journey of Horace Dediu'
-categories: technology
+categories: [technology]
 tags: [education]
 ---
 Horace Dediu of [Asymco][1] describes [his educational journey][2] from child refugee through Harvard Business School and Nokia to full-time blogger and analyst.

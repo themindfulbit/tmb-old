@@ -1,7 +1,9 @@
 ---
 title: 'Curiosity Snapped under Parachute'
-categories: technology
+categories: [technology]
 tags: [science, nasa, mars]
+banner: curiosity-descent.jpg
+caption: [NASA](http://hirise.lpl.arizona.edu/releases/msl-descent.php)
 ---
 [Mars orbiter catches pic of Curiosity on its way down!][1]
 

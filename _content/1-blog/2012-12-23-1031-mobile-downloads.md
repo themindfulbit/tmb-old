@@ -1,6 +1,6 @@
 ---
 title: 'Mobile Downloads with IFTTT'
-categories: technology
+categories: [technology]
 tags: [dropbox, bitly, ifttt]
 ---
 

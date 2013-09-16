@@ -1,6 +1,6 @@
 ---
 title: 'Creation and Commodity'
-categories: design
+categories: [design]
 tags: [creativity]
 ---
 These two articles by Gabe at [Macdrifter][1] are worth a close read:

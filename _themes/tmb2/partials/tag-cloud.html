@@ -1,0 +1,18 @@
+<ul class="tag-cloud">
+  <li class="menu-title">Topics</li>
+	{{ taxonomy:listing folder="blog|gallery" type="tags" min_count="2" sort_by="name"}}
+    	<li class="tag-item">
+    	{{ if results < 3 }}	
+	  		<a href="{{ url }}" class="tag smaller-tag">{{ name }}</a>
+		{{ elseif results >= 3 && results < 6 }}
+	  		<a href="{{ url }}" class="tag small-tag">{{ name }}</a>
+		{{ elseif results >= 6 && results < 8 }}
+	  		<a href="{{ url }}" class="tag middle-tag">{{ name }}</a>
+		{{ elseif results >= 8 && results < 12 }}
+	  		<a href="{{ url }}" class="tag large-tag">{{ name }}</a>
+		{{ else }}
+	  		<a href="{{ url }}" class="tag larger-tag">{{ name }}</a>
+		{{ endif }}
+		</li>
+    {{ /taxonomy:listing }}
+</ul>

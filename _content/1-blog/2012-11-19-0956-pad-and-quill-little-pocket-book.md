@@ -1,6 +1,6 @@
 ---
 title: 'Pad & Quill Little Pocket Book for iPhone 4S'
-categories: technology
+categories: [technology]
 tags: [twelve south, pad and quill, iphone, review]
 ---
 

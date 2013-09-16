@@ -1,0 +1,54 @@
+
+<div class="title-banner {{ categories_spaced_list }}">
+	<a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
+  		<img src="{{ _site_url }}assets/img/{{ banner }}" />
+	</a>
+</div>
+{{ if caption }}
+<div class="caption">{{ caption|markdown }}</div>
+{{ endif }}
+
+
+<div class="content">
+  <div class="post about">
+
+    <div class="pre-bar">
+      <h3>Planes</h3>
+        <div class="icon tomcat"></div>
+        <div class="icon rhino"></div>
+        <div class="icon tiger"></div>
+      <h3>Units</h3>
+        <div class="icon vf-11"></div>
+        <div class="icon vf-101"></div>
+        <div class="icon lso school"></div>
+        <div class="icon jsf"></div>
+        <div class="icon cvw-1"></div>
+        <div class="icon cnal"></div>
+        <div class="icon vfc-13"></div>
+      <h3>Cruised</h3>
+        <div class="icon cv-67"></div>
+        <div class="icon cvn-65"></div>
+      <h3>Waved</h3>
+        <div class="icon cvn-69"></div>
+        <div class="icon cvn-70"></div>
+        <div class="icon cvn-71"></div>
+        <div class="icon cvn-72"></div>
+        <div class="icon cvn-73"></div>
+        <div class="icon cvn-75"></div>
+        <div class="icon cvn-76"></div>
+        <div class="icon cvn-77"></div>
+    </div>
+    <div class="post-body">
+
+        {{ content|widont }}
+
+        {{ if image }}
+        <div class="image">
+          {{ theme:partial src="image" file="{ image }" }}
+          <p>{{ caption|markdown }} </p>
+        </div>
+        {{ endif }}
+
+    </div>
+  </div> 
+</div>

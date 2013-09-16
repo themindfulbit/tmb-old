@@ -1,6 +1,6 @@
 ---
 title: 'The iPhone Mute Switch: Feature, not Bug'
-categories: technology
+categories: [technology]
 tags: [iphone]
 ---
 Much virtual ink has been spilled over whether or not the iPhone's mute switch should silence _all_ phone notification noises, including any alarms, or whether the existing functionality (which provides exceptions for user initiated alarms and timers) is appropriate.

@@ -1,0 +1,73 @@
+{{ entries:pagination folder="blog|gallery" limit="{home_blog_items}"}}
+
+<div class="pagination">
+
+    <h3>More Posts</h3>
+
+    {{ if first_page }}
+
+      <a href="{{ first_page }}" class="first">
+
+    {{ else }}
+
+      <a href="{{ first_page }}" class="first inactive">
+
+    {{ endif }}
+
+        <div class="arrow">
+          &laquo;&nbsp;<span class="title">Latest</span>
+        </div>
+      </a>    
+
+    {{ if previous_page }}
+
+      <a href="{{ previous_page }}" class="prev">
+
+    {{ else }}
+
+      <a href="{{ previous_page }}" class="prev inactive">
+
+    {{ endif }} 
+    
+        <div class="arrow">
+          &lsaquo;&nbsp;<span class="title">Later</span>
+        </div>
+      </a>
+
+    <a href="{{ current_page }}" class="current">
+      Current
+    </a>    
+
+    {{ if next_page }}
+
+      <a href="{{ next_page }}" class="next">
+
+    {{ else }}
+    
+      <a href="{{ next_page }}" class="next inactive">
+
+    {{ endif }}  
+
+        <div class="arrow">
+          <span class="title">Older</span>&nbsp;&rsaquo;
+        </div>
+      </a>  
+
+    {{ if last_page }}
+
+      <a href="{{ last_page }}" class="last">
+
+    {{ else }}
+    
+      <a href="{{ last_page }}" class="last inactive">
+
+    {{ endif }} 
+
+        <div class="arrow">
+          <span class="title">Earliest</span>&nbsp;&raquo;
+        </div>
+      </a>
+
+</div>
+ 
+{{ /entries:pagination }}

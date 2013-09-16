@@ -7,14 +7,64 @@
       <div class="time">{{ datestamp format="g:i A" }}</div>
     </a>
     {{ tags }}
-      <a class="icon {{ name }}" href="{{ _site_root }}blog/tags/{{ name }}"></a>
+      <a class="icon {{ name }}" href="{{ _site_root }}blog/tags/{{ name|slugify }}"></a>
     {{ /tags }}
   </div>
   <div class="post-body">
-    <h2 class="title"><a href="{{ url }}">{{ title }}</a></h2> 
-    <div class="title-date">Posted <span class="nice-date">{{ datestamp format="M d, 'y" }}</span> at <span class="time">{{ datestamp format="g:i A" }}</span></div>
 
-    {{ content|widont }}
+    {{ if banner }}
+      {{ if link }}
+
+        <div class="banner {{ categories }} {{ name }} {{ /categories }}">
+          <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ link }}" >
+            <img src="{{ _site_url }}assets/img/{{ banner }}" />
+          </a>
+        </div>
+
+      {{ else }}
+
+        <div class="banner {{ categories }} {{ name }} {{ /categories }}">
+          <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
+            <img src="{{ _site_url }}assets/img/{{ banner }}" />
+          </a>
+        </div>
+
+      {{ endif }}
+    {{ endif }}
+
+    <h2 class="title">
+      {{ if link }}
+        <a href="{{ link }}">{{ title }}&nbsp;&rArr;</a>
+      {{ else }}
+        <a href="{{ url }}">{{ title }}</a>
+      {{ endif }}
+    </h2> 
+    <div class="title-date">Posted <span class="nice-date">{{ datestamp format="M d, 'y" }}</span> at <span class="time">{{ datestamp format="g:i A" }}</span></div> 
+
+    {{ if summary }}
+
+      {{ summary|markdown }}
+
+      <p>
+        <a href="{{ url }}">Read more...</a>
+      </p>
+
+    {{ else }}
+
+      {{ content|widont }}
+
+      {{ if image }}
+      <div class="image">
+        {{ theme:partial src="image" file="{ image }" }}
+        <p>{{ caption|markdown }} </p>
+      </div>
+      {{ endif }}
+
+      {{ if link }}
+          <div class="permalink"><a href="{{ url }}">&#8251;</a></div>
+      {{ endif }}
+
+    {{ endif }}
 
     <div class="post-footer">
       <p class="title">Themes</p>
@@ -23,12 +73,14 @@
           <li><a href="{{ _site_root }}blog/categories/{{ name }}">{{ name }}</a></li>
         {{ /categories }}     
       </ul>
-      <p class="title">Topics</p>
-      <ul class="tag-list">
-        {{ tags }}
-          <li><a href="{{ _site_root }}blog/tags/{{ name }}">{{ name }}</a></li>
-        {{ /tags }}    
-      </ul>
+      {{ if tags }}
+        <p class="title">Topics</p>
+        <ul class="tag-list">
+          {{ tags }}
+            <li><a href="{{ _site_root }}blog/tags/{{ name|slugify }}">{{ name }}</a></li>
+          {{ /tags }}    
+        </ul>
+      {{ endif }}
     </div>
   </div>
 </div> 

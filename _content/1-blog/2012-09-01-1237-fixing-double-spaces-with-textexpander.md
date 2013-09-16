@@ -1,6 +1,6 @@
 ---
 title: 'Fixing double-spaces with TextExpander'
-categories: technology
+categories: [technology]
 tags: [textexpander, typography, fanaticism]
 ---
 Hi, I’m Erik and I have a problem.

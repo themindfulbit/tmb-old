@@ -29,7 +29,7 @@
          </guid>
          <category>article</category>
          <pubDate>{{ datestamp format="r" }}</pubDate>
-         <description><![CDATA[{{ content }}{{ if link }}<div class="permalink"><a href="{{ url }}">&#8251;</a></div>{{ endif }}]]></description>
+         <description><![CDATA[{{ if banner }}<div><img src="{{ _site_url }}assets/img/{{ banner }}" /></div>{{ endif }}{{ content }}{{ if link }}<div class="permalink"><a href="{{ url }}">&#8251;</a></div>{{ endif }}]]></description>
          </item>
       {{ /entries:listing }}
    </channel>

@@ -3,18 +3,18 @@
   <?php if ($flash['success']): ?>
   <div id="flash-msg" class="success">
     <span class="icon">8</span>
-    <span class="msg"><?php print $flash['success']; ?></p>
+    <span class="msg"><?php print $flash['success']; ?></span>
   </div>
   <?php endif ?>
 
   <?php if ($flash['error']): ?>
   <div id="flash-msg" class="error">
     <span class="icon">c</span>
-    <span class="msg"><?php print $flash['error']; ?></p>
+    <span class="msg"><?php print $flash['error']; ?></span>
   </div>
   <?php endif ?>
 
-  <span class="icon">n</span> Entries <em>in</em> <?php print $path; ?>
+  <span class="icon">n</span> <?php echo Localization::fetch('entries')?> <em><?php echo Localization::fetch('in')?></em> <?php print $path; ?>
 </div>
 
 <div id="screen">
@@ -23,16 +23,16 @@
   <table class="table-list sortable">
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Slug</th>
-        <th>Status</th>
+        <th><?php echo Localization::fetch('title')?></th>
+        <th><?php echo Localization::fetch('slug')?></th>
+        <th><?php echo Localization::fetch('status')?></th>
         <?php if ($type == 'date'): ?>
-          <th>Date</th>
+          <th><?php echo Localization::fetch('date')?></th>
         <?php elseif ($type == 'number'): ?>
-          <th>Number</th>
+          <th><?php echo Localization::fetch('number')?></th>
         <?php endif; ?>
-        <th style="width:26px;">View</th>
-        <th style="width:26px;">Delete</th>
+        <th style="width:26px;"><?php echo Localization::fetch('view')?></th>
+        <th style="width:26px;"><?php echo Localization::fetch('delete')?></th>
       </tr>
     </thead>
     <tbody>
@@ -40,16 +40,16 @@
     <?php foreach ($entries as $slug => $entry): ?>
     <?php $status = isset($entry['status']) ? $entry['status'] : 'live'; ?>
       <tr>
-        <td class="title"><a href="<?php print $app->urlFor('publish')?>?path=<?php echo Statamic_helper::reduce_double_slashes($path.'/')?><?php echo $slug ?>"><?php print (isset($entry['title']) && $entry['title'] <> '') ? $entry['title'] : Statamic_Helper::prettify($entry['slug']) ?></a></td>
+        <td class="title"><a href="<?php print $app->urlFor('publish')?>?path=<?php echo Path::tidy($path.'/')?><?php echo $slug ?>"><?php print (isset($entry['title']) && $entry['title'] <> '') ? $entry['title'] : Slug::prettify($entry['slug']) ?></a></td>
         <td class="slug"><?php print $entry['slug'] ?></td>
         <td class="status status-<?php print $status ?>"><span class="icon">}</span><?php print ucwords($status) ?></td>
-        <?php if ($type == 'date') { ?>
+        <?php if ($type == 'date'): ?>
           <td><span class="hidden"><?php print date("Y-m-d", @$entry['datestamp']) ?></span><?php print @$entry['date']?></td>
-        <?php } else if ($type == 'number') { ?>
+        <?php elseif ($type == 'number'): ?>
           <td><?php print $entry['numeric'] ?></td>
-        <?php } ?>
-        <td class="action"><div class="page-view"><a href="<?php print $entry['url'] ?>" class="tip" title="View Entry"><span class="icon">M</span></a></div></td>
-        <td class="action"><a class="confirm" href="<?php print $app->urlFor('deleteentry')."?path={$path}/{$slug}"; ?>" class="tip" title="Delete Entry"><span class="icon">u</span></a></td>
+        <?php endif ?>
+        <td class="action"><div class="page-view"><a href="<?php print $entry['url'] ?>" class="tip" title="<?php echo Localization::fetch('view_entry')?>"><span class="icon">M</span></a></div></td>
+        <td class="action"><a class="confirm tip" href="<?php print $app->urlFor('delete_entry')."?path={$path}/{$slug}"; ?>" title="<?php echo Localization::fetch('delete_entry')?>"><span class="icon">u</span></a></td>
       </tr>
     <?php endforeach ?>
     </tbody>

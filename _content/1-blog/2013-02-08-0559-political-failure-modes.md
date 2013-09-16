@@ -1,6 +1,6 @@
 ---
 title: 'Political Failure Modes'
-categories: mindfulness
+categories: [mindfulness]
 tags: [politics, media]
 ---
 

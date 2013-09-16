@@ -1,8 +1,8 @@
 {{ if taxonomy_slug }}
 
 <div class="tax-header">
-  <a class="icon {{ taxonomy_slug }}" href="{{ _site_root }}blog/tags/{{ taxonomy_slug }}"></a>
-  <h1 class="page-title">Posts in: <em>{{ taxonomy_slug }}</em></h1>
+  <a class="icon {{ taxonomy_slug|deslugify }}" href="{{ _site_root }}blog/tags/{{ taxonomy_slug }}"></a>
+  <h1 class="page-title">Posts in: <em>{{ taxonomy_slug|deslugify }}</em></h1>
 </div>
 
 {{ entries:listing folder="blog|gallery" limit="{home_blog_items}" taxonomy="yes" }}
@@ -18,6 +18,27 @@
     {{ /tags }}
   </div>
   <div class="post-body">
+
+    {{ if banner }}tete
+      {{ if link }}
+
+        <div class="banner {{ categories }} {{ name }} {{ /categories }}">
+          <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ link }}" >
+            <img src="{{ _site_url }}assets/img/{{ banner }}" />
+          </a>
+        </div>
+
+      {{ else }}
+
+        <div class="banner {{ categories }} {{ name }} {{ /categories }}">
+          <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
+            <img src="{{ _site_url }}assets/img/{{ banner }}" />
+          </a>
+        </div>
+
+      {{ endif }}
+    {{ endif }}
+
     <h2 class="title">
       {{ if link }}
         <a href="{{ link }}">{{ title }}&nbsp;&rArr;</a>

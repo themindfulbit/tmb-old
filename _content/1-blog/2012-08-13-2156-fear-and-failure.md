@@ -1,10 +1,10 @@
 ---
 title: 'Fear and Failure'
 categories: [mindfulness, flying]
-tags: [fear, failure]
+tags: [fear, failure, the boat]
 favorite: yes
+banner: ramp.png
 ---
-{{ theme:partial src="image" title="Night Carrier Landing" file="ramp.png" }}
 
 [Yuvi Zalkow’s][2] [new book][3] comes out this week. You should check it out.
 

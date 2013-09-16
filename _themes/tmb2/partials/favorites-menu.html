@@ -1,0 +1,8 @@
+<ul class="favorites-menu">
+	<li class="menu-title">Posts You Might Like</li>
+	{{ entries:listing folder="blog" conditions="favorites:yes" }}
+		<li>
+			<a href="{{ url }}">{{ title }}</a>
+		</li>
+	{{ /entries:listing }}
+</ul>

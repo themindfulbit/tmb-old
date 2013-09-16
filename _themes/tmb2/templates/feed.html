@@ -1,0 +1,36 @@
+<rss version="2.0">
+   <channel>
+      <title><![CDATA[The Mindful Bit]]></title>
+      <link>{{ _site_url }}</link>
+      <description>Mindfulness, Productivity, Technology and Flying.</description>
+      <lastBuildDate>{{ entries:listing folder="blog" limit="1" }}{{ datestamp format="r" }}{{ /entries:listing }}</lastBuildDate>
+      <language>en-us</language>
+      <webMaster>erik@themindfulbit.com (Erik Hess)</webMaster>
+      <copyright>Copyright {{ current_date format='Y' }}</copyright>
+      <ttl>1800</ttl>
+
+      {{ entries:listing folder="blog" limit="10" }}
+         <item>
+         <title><![CDATA[{{ if link }}{{ title }} &rArr;{{ else }}{{ title }}{{ endif }}]]></title>
+         <author>{{ author }}</author>
+         <link>
+            {{ if link }}
+               {{ link }}
+            {{ else }}
+               {{ permalink }}
+            {{ endif }}
+         </link>
+         <guid>
+            {{ if link }}
+               {{ link }}
+            {{ else }}
+               {{ permalink }}
+            {{ endif }}
+         </guid>
+         <category>article</category>
+         <pubDate>{{ datestamp format="r" }}</pubDate>
+         <description><![CDATA[{{ content }}{{ if link }}<div class="permalink"><a href="{{ url }}">&#8251;</a></div>{{ endif }}]]></description>
+         </item>
+      {{ /entries:listing }}
+   </channel>
+</rss>

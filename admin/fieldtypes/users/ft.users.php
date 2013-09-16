@@ -1,7 +1,8 @@
 <?php
-class Fieldtype_users extends Fieldtype {
-
-  function render() {
+class Fieldtype_users extends Fieldtype
+{
+  public function render()
+  {
     $html = "<div class='input-select-wrap'><select name='{$this->fieldname}' tabindex='{$this->tabindex}'>";
     $html .= "<option value=''>- None Selected-</option>";
 

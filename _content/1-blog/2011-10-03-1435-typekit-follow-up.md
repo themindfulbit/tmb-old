@@ -1,6 +1,6 @@
 ---
 title: 'Typekit follow-up'
-categories: technology
+categories: [technology]
 ---
 [Scrubbar][1] commented on tumblr:
 

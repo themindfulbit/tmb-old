@@ -1,7 +1,8 @@
 ---
 title: 'Timing Control Points'
-categories: flying
-tags: productivity
+categories: [flying]
+tags: [productivity]
+banner: tcp-1.png
 ---
 
 [Aaron Mahnke](http://www.twitter.com/amahnke) is a talented [freelance designer](http://www.wetfrogstudios.com/) and [podcaster](http://www.70decibels.com/homework/). He also keeps busy writing about freelancing and productivity in his book [Frictionless Freelancing](http://getfrictionless.com/books/) and related [blog](http://getfrictionless.com). 

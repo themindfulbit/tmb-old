@@ -27,7 +27,7 @@ class Lex_Autoloader
 	 * @param   string   $class  class name
 	 * @return  bool
 	 */
-	static public function load($class)
+	public static function load($class)
 	{
 		if (strpos($class, 'Lex') !== 0)
 		{

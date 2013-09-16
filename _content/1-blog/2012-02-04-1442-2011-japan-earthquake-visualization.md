@@ -1,6 +1,6 @@
 ---
 title: 2011 Japan Earthquake Visualization
-categories: technology
+categories: [technology]
 tags: [visualization, earthquakes]
 ---
 <iframe width="1280" height="720" src="http://www.youtube.com/embed/eKp5cA2sM28" frameborder="0" allowfullscreen></iframe>

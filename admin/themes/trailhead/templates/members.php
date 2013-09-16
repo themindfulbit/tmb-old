@@ -14,18 +14,18 @@
   </div>
   <?php endif ?>
 
-  <span class="icon">,</span> Members
+  <span class="icon">,</span> <?php echo Localization::fetch('members')?>
 </div>
 
 <div id="screen">
-  
-  <a href="<?php print $app->urlFor('member')."?new=1"; ?>" class="btn">New Member</a>
+
+  <a href="<?php print $app->urlFor('member')."?new=1"; ?>" class="btn"><?php echo Localization::fetch('new_member')?></a>
   <table class="sortable table-list">
     <thead>
       <tr>
-        <th>Username</th>
-        <th class="web">First Name</th>
-        <th class="web">Last Name</th>
+        <th><?php echo Localization::fetch('username')?></th>
+        <th class="web"><?php echo Localization::fetch('first_name')?></th>
+        <th class="web"><?php echo Localization::fetch('last_name')?></th>
         <?php /* ?><th>Role</th><?php */ ?>
         <th style="width:26px;"></th>
       </tr>
@@ -37,7 +37,7 @@
         <td class="web"><?php print $member->get_first_name(); ?></td>
         <td class="web"><?php print $member->get_last_name(); ?></td>
         <?php /* ?><td><?php print $member->get_roles_list(); ?></td><?php */ ?>
-        <td class="action"><a onclick="return confirm('Are you sure? This cannot be undone.');" href="<?php print $app->urlFor('deletemember')."?name={$name}"; ?>"><span class="icon">u</span></a></td>
+        <td class="action"><a onclick="return confirm('<?php echo Localization::fetch('are_you_sure')?>');" href="<?php print $app->urlFor('deletemember')."?name={$name}"; ?>"><span class="icon">u</span></a></td>
       </tr>
       <?php endforeach ?>
 

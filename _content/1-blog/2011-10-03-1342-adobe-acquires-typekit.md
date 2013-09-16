@@ -1,6 +1,6 @@
 ---
 title: 'Adobe Acquires Typekit'
-categories: technology
+categories: [technology]
 ---
 Adobe has purchased the online typography and font service [Typekit][1]. The [press release][2] has just appeared on their website.
 

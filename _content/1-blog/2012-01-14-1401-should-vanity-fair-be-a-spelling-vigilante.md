@@ -1,6 +1,6 @@
 ---
 title: 'Should Vanity Fair Be A Spelling Vigilante?'
-categories: technology
+categories: [technology]
 tags: [journalism, media]
 ---
 > Just as New York Times public editor Arthur S. Brisbane [is concerned whether his newspaper is printing lies or the truth][1], we here at V.F. are looking for reader input on whether and when Vanity Fair should spell "words" correctly in the stories we publish.

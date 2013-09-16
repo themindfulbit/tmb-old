@@ -93,7 +93,20 @@ $all-color: #000000;
 	&.keynote,
 	&.osx,
 	&.humor,
-	&.resistance {
+	&.resistance,
+	&.takitapart,
+	&.frailty,
+	&.daleks,
+	&.korea,
+	&.the.bomb,
+	&.appfog,
+	&.pebble,
+	&.mail,
+	&.panic,
+	&.nest,
+	&.cosmology,
+	&.security,
+	&.media {
 		@include column(2,2);
 		padding: 0;
 		height: 5em;
@@ -257,6 +270,7 @@ $all-color: #000000;
 
 	&.generational {
 		background-image: url('../../../assets/img/icons/generational.png');
+		background-size: 3.5em auto;
 	}
 
 	&.appletv {
@@ -277,6 +291,65 @@ $all-color: #000000;
 
 	&.resistance {
 		background-image: url('../../../assets/img/icons/resistance.png');
+	}
+
+	&.takitapart {
+		background-image: url('../../../assets/img/icons/takitapart.png');
+		background-size: 3em auto;
+	}
+
+	&.frailty {
+		background-image: url('../../../assets/img/icons/frailty.png');
+		background-size: 2.5em auto;
+	}
+
+	&.daleks {
+		background-image: url('../../../assets/img/icons/daleks.png');
+		background-size: 2em auto;
+	}
+
+	&.korea {
+		background-image: url('../../../assets/img/icons/korea.png');
+		background-size: 4.5em auto;
+	}
+
+	&.the.bomb {
+		background-image: url('../../../assets/img/icons/the-bomb.png');
+		background-size: 2.8em auto;
+	}
+
+	&.appfog {
+		background-image: url('../../../assets/img/icons/appfog.png');
+		background-size: 3em auto;
+	}
+
+	&.pebble {
+		background-image: url('../../../assets/img/icons/pebble.png');
+	}
+
+	&.mail {
+		background-image: url('../../../assets/img/icons/mail.png');
+		background-size: 4em auto;
+	}
+
+	&.panic {
+		background-image: url('../../../assets/img/icons/panic.png');
+	}
+
+	&.nest {
+		background-image: url('../../../assets/img/icons/nest.png');
+	}
+
+	&.cosmology {
+		background-image: url('../../../assets/img/icons/cosmology.png');
+	}
+
+	&.security {
+		background-image: url('../../../assets/img/icons/security.png');
+	}
+
+	&.media {
+		background-image: url('../../../assets/img/icons/media.png');
 	}
 }
 
@@ -543,6 +616,18 @@ header {
 
 		a.more {
 			display: block;
+
+		}
+
+		.banner {
+
+			padding-top: 0.5em;
+			margin-bottom: 1em;
+
+			a img {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
 
 		}
 
@@ -1073,7 +1158,8 @@ header {
 			}
 		}
 
-		&.mini-gallery {
+		&.mini-gallery,
+		&.generational {
 
 			li.menu-title {
 				border: none;
@@ -1146,17 +1232,56 @@ header {
 			// }
 		}
 
-		&.category-menu li.-link {
-			display: none;
+		&.category-menu,
+		&.archive-menu {
+			
+			.ball {
+				display: inline-block;
+				position: relative;
+				top: 0.3em;
+				width: 1.5em;
+				height: 1.5em;
+				border-radius: 50%;
+				background-color: $no-color;
+				margin-right: 0.5em;
+			}
+
+			.mindfulness-link .ball {
+				background-color: $m-color;
+			}
+
+			.technology-link .ball {
+				background-color: $t-color;
+			}
+
+			.design-link .ball {
+				background-color: $d-color;
+			}
+		}
+
+		&.archive-menu {
+
+			li:nth-of-type(2) .ball {
+				background-color: $m-color;
+			}
+
+			li:nth-of-type(3) .ball {
+				background-color: $t-color;
+			}
+
+			li:nth-of-type(4) .ball {
+				background-color: $d-color;
+			}
+
 		}
 
 		&.social-menu,
 		&.project-menu,
 		&.feed-menu {
-			li a img {
-				height: 16px;
+			li a img {				
 				position: relative;
-				top: 3px;
+				top: 0.3em;
+				height: 16px;
 				padding-right: 0.5em;
 			}
 		}

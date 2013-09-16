@@ -1,8 +1,10 @@
 ---
 title: 'Global Night Light Patterns Reveal Economic Shift to the East'
-categories: technology
+categories: [technology]
 tags: [space, defense]
 link: http://www.technologyreview.com/view/512531/global-night-light-patterns-reveal-economic-shift-to-the-east/
+banner: nile-at-night.jpg
+caption: The Nile at night. [Dynamics and Spatial Distribution of Global Nighttime Lights](http://arxiv.org/abs/1303.2901)
 ---
 
 A [fascinating new post](http://www.technologyreview.com/view/512531/global-night-light-patterns-reveal-economic-shift-to-the-east/) at MIT Technology Review's [Physics arXiv Blog](http://www.technologyreview.com/contributor/the-physics-arxiv-blog/) reminds me why it's one of my favorite RSS subscriptions:

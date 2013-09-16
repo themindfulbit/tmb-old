@@ -1,6 +1,6 @@
 ---
 title: 'iPhone 4s Preorder Issues'
-categories: technology
+categories: [technology]
 tags: [iphone, verizon, apple]
 ---
 I tried to preorder two new Verizon iPhone 4S phones through the online Apple Store this morning. I got all the way to the end before discovering you can't start a new Family Share plan via the Apple website but instead have to go into the store on October 14th.

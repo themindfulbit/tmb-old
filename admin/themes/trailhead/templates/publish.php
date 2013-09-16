@@ -3,23 +3,23 @@
   <?php if ($flash['success']): ?>
   <div id="flash-msg" class="success">
     <span class="icon">8</span>
-    <span class="msg"><?php print $flash['success']; ?></p>
+    <span class="msg"><?php print $flash['success']; ?></span>
   </div>
   <?php endif ?>
 
   <?php if ($flash['error']): ?>
   <div id="flash-msg" class="error">
     <span class="icon">c</span>
-    <span class="msg"><?php print $flash['error']; ?></p>
+    <span class="msg"><?php print $flash['error']; ?></span>
   </div>
   <?php endif ?>
 
   <span class="icon">n</span>
-  <?php if (isset($new)): ?>New <?php else: ?>Editing<?php endif ?>
-  <?php if ($type == 'none' && $original_slug != 'page'):?>Page: <?php print $full_slug; ?>
-  <?php elseif ($type == 'none'): ?> Page: <?php print $full_slug; ?>
-  <?php else: ?>Entry <em>in</em> <span class="slug"><?php print $full_slug; ?></span><?php endif ?>
-  
+  <?php if (isset($new)): ?><?php echo Localization::fetch('new')?> <?php else: ?><?php echo Localization::fetch('editing')?><?php endif ?>
+  <?php if ($type == 'none' && $original_slug != 'page'):?><?php echo Localization::fetch('page')?>: <?php print $full_slug; ?>
+  <?php elseif ($type == 'none'): ?> <?php echo Localization::fetch('page')?>: <?php print $full_slug; ?>
+  <?php else: ?><?php echo Localization::fetch('entry')?> <em><?php echo Localization::fetch('in')?></em> <span class="slug"><?php print $full_slug; ?></span><?php endif ?>
+
   </span>
 </div>
 
@@ -27,7 +27,7 @@
 
   <form enctype="multipart/form-data" method="post" action="publish?path=<?php print $path ?>">
 
-    <?php print CP_helper::run_hook('add_to_publish_form') ?>
+    <?php print Hook::run('control_panel', 'add_to_publish_form', 'cumulative') ?>
 
     <input type="hidden" name="page[full_slug]" value="<?php print $full_slug; ?>">
     <input type="hidden" name="page[type]" value="<?php print $type ?>" />
@@ -64,29 +64,43 @@
 
       <?php
       // grab default value and instructions for title
-      $title_details = array("default" => null, "instructions" => null);
+      $title_details = array(
+        "instructions" => array(
+          "above" => null,
+          "below" => null
+          )
+      );
 
       if (isset($fields) && is_array($fields) && isset($fields['title'])) {
-        if (isset($fields['title']['default'])) {
-          $title_details["default"] = $fields['title']['default'];
-        }
+//        if (isset($fields['title']['default'])) {
+//          $title_details["default"] = $fields['title']['default'];
+//        }
         if (isset($fields['title']['instructions'])) {
-          $title_details["instructions"] = $fields['title']['instructions'];
-        }
-
-        // set default for title field
-        if (!$title) {
-          $title = ($title_details["default"]) ? $title_details["default"] : "";
+          if (!is_array($fields['title']['instructions'])) {
+            $title_details["instructions"]["above"] = $fields['title']['instructions'];
+          } else {
+            if (isset($fields['title']['instructions']['above'])) {
+              $title_details["instructions"]["above"] = $fields['title']['instructions']['above'];
+            }
+            if (isset($fields['title']['instructions']['below'])) {
+              $title_details["instructions"]["below"] = $fields['title']['instructions']['below'];
+            }
+          }
         }
       }
       ?>
 
       <div class="input-block input-text required">
         <label for="publish-title">Title</label>
+        <?php
+        if ($title_details['instructions']['above']) {
+          echo "<small>{$title_details['instructions']['above']}</small>";
+        }
+        ?>
         <input name="page[yaml][title]" class="text text-large" tabindex="<?php print tabindex(); ?>" placeholder="Enter a title..." id="publish-title" value="<?php print htmlspecialchars($title); ?>" />
         <?php
-        if (isset($fields['title']['instructions']) && $fields['title']['instructions']) {
-          echo "<small>{$fields['title']['instructions']}</small>";
+        if ($title_details['instructions']['below']) {
+          echo "<small>{$title_details['instructions']['below']}</small>";
         }
         ?>
       </div>
@@ -100,15 +114,14 @@
         <input type="hidden" id="publish-slug" tabindex="<?php print tabindex(); ?>" name="page[meta][slug]" value="<?php print $slug ?>" />
       <?php endif ?>
 
-
       <?php if ($type == 'date'): ?>
       <div class="input-block input-date date required" data-date="<?php print date("Y-m-d", $datestamp) ?>" data-date-format="yyyy-mm-dd">
         <label>Publish Date</label>
         <span class="icon">P</span>
-        <input name="page[meta][publish-date]" tabindex="<?php print tabindex(); ?>" type="text" id="publish-date"  value="<?php print date("Y-m-d", $datestamp) ?>" />
+        <input name="page[meta][publish-date]" tabindex="<?php print tabindex(); ?>" type="text" id="publish-date"  value="<?php print date("Y-m-d", $datestamp) ?>" class="datepicker" />
       </div>
 
-      <?php if (Statamic::get_entry_timestamps()) { ?>
+      <?php if (Config::getEntryTimestamps()) { ?>
       <div class="input-block input-time time required" data-date="<?php print date("h:i a", $timestamp) ?>" data-date-format="h:i a">
         <label>Publish Time</label>
         <span class="icon">N</span>
@@ -119,14 +132,14 @@
       <?php elseif ($type == 'number'): ?>
       <div class="input-block input-text input-number" id="publish-order-number">
         <label for="publish-order-number">Order Number</label>
-        <input name="page[meta][publish-numeric]" type="text" class="text date input-4char"  tabindex="<?php print tabindex(); ?>"maxlength="4" id="publish-order-number" value="<?php print $numeric; ?>" />
+        <input name="page[meta][publish-numeric]" type="text" class="text date input-4char"  tabindex="<?php print tabindex(); ?>" maxlength="4" id="publish-order-number" value="<?php print $numeric; ?>" />
       </div>
       <?php endif ?>
 
-      <?php 
+      <?php
       if (isset($fields) && count($fields) > 0):
         foreach ($fields as $key => $value):
-          
+
           if ($key === 'content' || $key === 'title')
             continue;
 
@@ -135,7 +148,7 @@
           $val = "";
           if (isset($$key)) {
             $val = $$key;
-          } else if (isset($value['default'])) {
+          } elseif (isset($value['default'])) {
             $val = $value['default'];
           }
 
@@ -145,7 +158,7 @@
           }
 
           if ( ! isset($value['display'])) {
-            $value['display'] = Statamic_helper::prettify($key);
+            $value['display'] = Slug::prettify($key);
           }
 
         ?>
@@ -154,7 +167,7 @@
             <?php ## FIELDTYPE API ## ?>
             <?php print Fieldtype::render_fieldtype($fieldtype, $key, $value, $val, tabindex());?>
           </div>
-      
+
         <?php endforeach ?>
       <?php endif ?>
 
@@ -190,10 +203,12 @@
   </form>
 </div>
 
-<?php 
+<?php
 
-function tabindex() {
+function tabindex()
+{
   static $count = 1;
+
   return $count++;
 }
 

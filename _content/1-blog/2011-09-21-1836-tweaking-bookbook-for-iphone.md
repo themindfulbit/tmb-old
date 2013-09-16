@@ -1,6 +1,6 @@
 ---
 title: 'Tweaking BookBook for iPhone'
-categories: technology
+categories: [technology]
 tags: [twelve south]
 ---
 I'm a big fan of [Twelve South][1]'s line of "BookBook" covers for Mac, iPad and iPhone.

@@ -1,36 +1,56 @@
 <?php
-class Fieldtype_grid extends Fieldtype {
-
-  function render() {
+/**
+ * Fieldtype_grid
+ * Grid fieldtype
+ */
+class Fieldtype_grid extends Fieldtype
+{
+    /**
+     * Renders the grid field
+     *
+     * @return void
+     */
+    public function render()
+  {
+    // determine boundaries
     $max_rows = (isset($this->field_config['max_rows']) && is_numeric($this->field_config['max_rows'])) ? ' data-max-rows="' . $this->field_config['max_rows'] . '"' : '';
     $min_rows = (isset($this->field_config['min_rows']) && is_numeric($this->field_config['min_rows'])) ? ' data-min-rows="' . $this->field_config['min_rows'] . '"' : '';
+    $starting_rows = array_get($this->field_config, 'starting_rows', 1);
 
     // not here, we'll do this last so we can inject another data setting
     // $html = "<table class='grid table-list' tabindex='{$this->tabindex}'" . $max_rows . $min_rows . ">";
 
+
+    // create header row
+    // -------------------------------------------------------------------------
     $html  = "<thead>\n<tr>\n";
     $html .= "<th class='row-count'></th>";
-    foreach ($this->field_config['fields'] as $cell_field_name => $cell_field_config) {
 
+    // loop through internal field configuration
+    foreach ($this->field_config['fields'] as $key => $cell_field_config) {
+      // set width
       $width = isset($cell_field_config['width']) ? $cell_field_config['width'] : 'auto';
-      
-      $html .= "<th style='width:{$width}'>{$cell_field_config['display']}</th>\n";
+
+      // append to HTML output
+      $html .= "<th style='width:{$width}'>". array_get($cell_field_config, 'display', Slug::prettify($key)). "</th>\n";
     }
     $html .= "<th class='action-col'></th>\n";
     $html .= "</tr>\n</thead>\n";
 
+
+    // create grid rows
+    // -------------------------------------------------------------------------
     $html .= "<tbody>\n";
 
     # rows to render, in order will prefer: starting_rows, min_rows, 1
-    if (isset($this->field_config['starting_rows']) && is_numeric($this->field_config['starting_rows'])) {
-      $rows_to_render = $this->field_config['starting_rows'];
-    } elseif (isset($this->field_config['min_rows']) && is_numeric($this->field_config['min_rows'])) {
+
+    if (isset($this->field_config['min_rows']) && is_numeric($this->field_config['min_rows'])) {
       $rows_to_render = $this->field_config['min_rows'];
     } else {
-      $rows_to_render = 1;
+      $rows_to_render = $starting_rows;
     }
-    
-    #render the rows
+
+    # render the rows
     $i = 1;
     if (isset($this->field_data) && is_array($this->field_data) && count($this->field_data) > 0) {
       foreach ($this->field_data as $key => $row) {
@@ -59,7 +79,7 @@ class Fieldtype_grid extends Fieldtype {
         }
         $html_row .= '<td class="action"><a href="#" class="grid-delete-row confirm"><span class="icon">u</span></a></td>';
         $html_row .= "</tr>\n";
-        
+
         $html .= $html_row;
 
         $i++;
@@ -70,7 +90,11 @@ class Fieldtype_grid extends Fieldtype {
       }
     }
     $html .= "</tbody>\n</table>\n";
-    $html .= "<a href='#' class='grid-add-row btn btn-small btn-icon'><span class='icon'>Z</span>add row</a>";
+
+    // If max_rows is 1, we shouldn't have an "add row" at all.
+    if (array_get($this->field_config, 'max_rows', 9999) > $starting_rows) {
+      $html .= "<a href='#' class='grid-add-row btn btn-small btn-icon'><span class='icon'>Z</span>add row</a>";
+    }
 
     $empty_row = ' data-empty-row="' . htmlspecialchars($this->render_empty_row(0)) . '"';
     $html = "<table class='grid table-list' tabindex='{$this->tabindex}'" . $max_rows . $min_rows . $empty_row . ">" . $html;
@@ -78,7 +102,8 @@ class Fieldtype_grid extends Fieldtype {
     return $html;
   }
 
-  function render_empty_row($index) {
+  public function render_empty_row($index)
+  {
     $row = "<tr>";
     $row .= "<th class='row-count drag-indicator'>{$index}</th>";
 
@@ -87,7 +112,7 @@ class Fieldtype_grid extends Fieldtype {
       $celltype = $cell_field_config['type'];
 
       $default = isset($cell_field_config['default']) ? $cell_field_config['default'] : '';
-      
+
       if ($cell_field_config['type'] == 'file') {
         //$name = $cell_field_name.'[0]';
         $name = $this->field.'][0]['.$cell_field_name;
@@ -103,39 +128,37 @@ class Fieldtype_grid extends Fieldtype {
     return $row;
   }
 
-  function process() {  
-    if (isset($_FILES['page'])) {
-      foreach ($_FILES['page']['name']['yaml'] as $grid => $grid_fields) {
-        if (is_array($grid_fields)) {
-          foreach ($grid_fields as $index => $fields) {
-            foreach ($fields as $field => $value) {
-              if (isset($this->settings['fields'][$field]['type'])) {
-                if ($this->settings['fields'][$field]['type'] == 'file') {
+  public function process()
+  {
+    if (isset($_FILES['page']['name']['yaml'][$this->fieldname])) {
 
-                  if ($value <> '') {
-                    $file_values = array();
-                    $file_values['name'] = $_FILES['page']['name']['yaml'][$grid][$index][$field];
-                    $file_values['type'] = $_FILES['page']['type']['yaml'][$grid][$index][$field];
-                    $file_values['tmp_name'] = $_FILES['page']['tmp_name']['yaml'][$grid][$index][$field];
-                    $file_values['error'] = $_FILES['page']['error']['yaml'][$grid][$index][$field];
-                    $file_values['size'] = $_FILES['page']['size']['yaml'][$grid][$index][$field];
+      $grid_field = $_FILES['page']['name']['yaml'][$this->fieldname];
 
-                    $val = Fieldtype::process_field_data('file', $file_values, $this->settings['fields'][$field]);
-                    $this->field_data[$index][$field] = $val;
-                  } else {
-                    if (isset($this->field_data[$index]["{$field}_remove"])) {
-                      $this->field_data[$index][$field] = '';
-                    } else {
-                      $this->field_data[$index][$field] = isset($this->field_data[$index][$field]) ? $this->field_data[$index][$field] : '';
-                    }
-                  }
+      foreach ($grid_field as $index => $fields) {
+        foreach ($fields as $field => $value) {
+          if (array_get($this->settings['fields'][$field], 'type') === 'file') {
+            if ($value != '') {
+              $file_values = array(
+                'name' => $_FILES['page']['name']['yaml'][$this->fieldname][$index][$field],
+                'type' => $_FILES['page']['type']['yaml'][$this->fieldname][$index][$field],
+                'tmp_name' => $_FILES['page']['tmp_name']['yaml'][$this->fieldname][$index][$field],
+                'error' => $_FILES['page']['error']['yaml'][$this->fieldname][$index][$field],
+                'size' => $_FILES['page']['size']['yaml'][$this->fieldname][$index][$field]
+              );
 
-                  // unset the remove column
-                  if (isset($this->field_data[$index]["{$field}_remove"])) {
-                    unset($this->field_data[$index]["{$field}_remove"]);
-                  }
-                }
+              $this->field_data[$index][$field] = Fieldtype::process_field_data('file', $file_values, $this->settings['fields'][$field]);
+
+            } else {
+              if (isset($this->field_data[$index]["{$field}_remove"])) {
+                $this->field_data[$index][$field] = '';
+              } else {
+                $this->field_data[$index][$field] = isset($this->field_data[$index][$field]) ? $this->field_data[$index][$field] : '';
               }
+            }
+
+            // unset the remove column
+            if (isset($this->field_data[$index]["{$field}_remove"])) {
+              unset($this->field_data[$index]["{$field}_remove"]);
             }
           }
         }
@@ -143,7 +166,7 @@ class Fieldtype_grid extends Fieldtype {
     }
 
     foreach ($this->field_data as $row => $column) {
-      foreach($column as $field => $data) {
+      foreach ($column as $field => $data) {
         if (isset($this->settings['fields'][$field]) && $this->settings['fields'][$field]['type'] != 'file' ) {
           $this->field_data[$row][$field] = Fieldtype::process_field_data($this->settings['fields'][$field]['type'], $data);
         }

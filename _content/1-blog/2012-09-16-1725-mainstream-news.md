@@ -1,6 +1,6 @@
 ---
 title: 'Mainstream News'
-categories: mindfulness
+categories: [mindfulness]
 tags: [journalism, media]
 ---
 A recent article by [Joel Gascoigne][1] caught my eye. 

@@ -1,6 +1,6 @@
 ---
 title: 'Should the Times be a Truth Vigilante?'
-categories: mindfulness
+categories: [mindfulness]
 tags: [journalism, media]
 ---
 > I'm looking for reader input on whether and when New York Times news reporters should challenge "facts" that are asserted by newsmakers they write about.

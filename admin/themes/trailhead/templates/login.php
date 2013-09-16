@@ -7,16 +7,16 @@
       </div>
     <?php endif ?>
   <div id="login-form">
-    <img src="<?php print Statamic_helper::reduce_double_slashes(Statamic::get_site_root().'/'.$app->config['theme_path']) ?>img/statamic-logo-large.png" />
+    <img src="<?php print Path::tidy(Config::getSiteRoot().'/'.$app->config['theme_path']) ?>img/statamic-logo-large.png" />
     <form method="post" action="<?php print $app->urlFor('login'); ?>">
       <div class="login-row">
-        <input type="text" class="text username" id="login-username" placeholder="username" name="login[username]" />
+        <input type="text" class="text username" id="login-username" placeholder="<?php echo Localization::fetch('username')?>" name="login[username]" />
       </div>
       <div class="login-row">
-        <input type="password" class="text password" id="login-password" placeholder="password" name="login[password]" />
+        <input type="password" class="text password" id="login-password" placeholder="<?php echo Localization::fetch('password')?>" name="login[password]" />
       </div>
       <div class="submit-row">
-        <input type="submit" class="btn btn-submit" id="login-submit" value="Login" />
+        <input type="submit" class="btn btn-submit" id="login-submit" value="<?php echo Localization::fetch('login')?>" />
       </div>
     </form>
   </div>

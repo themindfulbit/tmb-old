@@ -1,7 +1,7 @@
 ---
 title: 'AnandTech - Apple TV 2013 Review'
-categories: technology
-tags: appletv
+categories: [technology]
+tags: [appletv]
 link: http://www.anandtech.com/show/6834/apple-tv-2013-a1469-short-review-analysis-of-a-new-a5
 ---
 

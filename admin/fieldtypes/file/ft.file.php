@@ -1,40 +1,43 @@
 <?php
-class Fieldtype_file extends Fieldtype {
+class Fieldtype_File extends Fieldtype
+{
+  public function render()
+  {
+    $html = "<div class='file-field-container'>";
 
-  function render() {
-    $html = '';
     if ($this->field_data) {
-
-      $html .= "<p>Current file: ".basename($this->field_data)."</p>";
-      $html .= "<p>Remove current file? <input type='checkbox' name='{$this->fieldnameremove}' value='1' /></p>";
-      // $html .= "<div class='file-field-container'>";
-      //   $html .= "<a class='file-field-remove icon'>[</a>";
-      //   $html .= "<img src='{$this->field_data}'>";
-      // $html .= "</div>";
-      // $html .= "<input type='hidden' name='{$this->fieldnameremove}' value='0' />";
+      $html .= "<div class='file-exists'>";
+        if (File::isImage($this->field_data)) {
+          $html .= "<img src='{$this->field_data}' height='58'>";
+        }
+        $html .= "<p>$this->field_data</p>";
+        $html .= "<a class='btn btn-small btn-remove-file' href='#'>Remove</a>";
+        $html .= "<input type='hidden' name='{$this->fieldname}' value='{$this->field_data}' />";
+      $html .= "</div>";
+    } else {
+      $html .= "<div class='upload-file'>";
+      $html .= "<p><input type='file' name='{$this->fieldname}' tabindex='{$this->tabindex}' value='' /></p>";
+      $html .= "</div>";
     }
+    $html .= "</div>";
 
-    $html .= "<input type='file' name='{$this->fieldname}' tabindex='{$this->tabindex}' value='' />";
-    $html .= "<input type='hidden' name='{$this->fieldname}' value='{$this->field_data}' />";
     return $html;
   }
 
-  function process() {
-    $processed_data = '';
-    if ($this->field_data['tmp_name'] <> '') {
-      if ( ! file_exists($this->settings['destination'])) {  
-        mkdir($this->settings['destination'], 0777, true);
-      }
+  public function process()
+  {
+    if ($this->field_data['tmp_name'] !== '') {
 
-      if (move_uploaded_file($this->field_data['tmp_name'], $this->settings['destination']."/".$this->field_data['name'])) {
-        $processed_data = Statamic_helper::reduce_double_slashes("/".$this->settings['destination']."/".$this->field_data['name']);
-        // path to the uploaded file
+      $destination = BASE_PATH . '/' . $this->settings['destination'];
+      $filename = File::cleanFilename($this->field_data['name']);
+
+      if (File::upload($this->field_data['tmp_name'], $destination, $filename)) {
+        return Path::tidy('/' . $this->settings['destination'] . '/' . $filename);
       } else {
-        die ("File upload failed");
+        Log::fatal($this->field_data['tmp_name'] . ' could up not be uploaded to ' . $destination, 'core');
+        return '';
       }
     }
-
-    return $processed_data;
   }
 
 }

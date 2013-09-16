@@ -1,6 +1,6 @@
 ---
 title: 'Mountain Lion Pricing'
-categories: technology
+categories: [technology]
 tags: ['mountain lion', apple]
 ---
 If OS X is moving to an iOS-like yearly release cycle, what if Apple makes Mountain Lion and follow-on releases free updates?

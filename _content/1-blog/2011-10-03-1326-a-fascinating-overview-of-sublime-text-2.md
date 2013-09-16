@@ -1,6 +1,6 @@
 ---
 title: 'A fascinating overview of Sublime Text 2'
-categories: technology
+categories: [technology]
 tags: ['sublime text']
 ---
 I'm seriously considering making the switch.

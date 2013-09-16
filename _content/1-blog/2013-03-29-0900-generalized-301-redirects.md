@@ -2,6 +2,8 @@
 title: 'Generalized 301 Redirects'
 categories: [technology]
 tags: [htaccess, regex, blogging, ruhoh, squarespace]
+banner: htaccess.jpg
+summary: "I move my blog around to new engines a lot. Unfortunately, nearly every blogging engine has a different way to map post URLs. As a result, a lot of old links can get broken. Here's how I make them work again."
 ---
 
 I move my blog around to new engines a lot. I think I've been averaging once every three months. Unfortunately, nearly every blogging engine has a different way to map post URLs. As a result, a lot of old links can get broken.

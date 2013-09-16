@@ -1,7 +1,8 @@
 ---
 title: 'Fun With Xplanet'
-categories: technology
+categories: [technology]
 tags: [xplanet, wallpaper, osx, nasa]
+banner: 2013083121633.jpg
 ---
 
 <iframe src="http://player.vimeo.com/video/62631694" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
