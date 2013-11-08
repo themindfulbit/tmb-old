@@ -304,7 +304,7 @@ class File
      *      $jpg = File::is('jpg', 'path/to/file.jpg');
      *
      *      // Determine if a file is one of a given list of types
-     *      $image = File::is(array('jpg', 'png', 'gif'), 'path/to/file');
+     *      $image = File::is(array('jpg', 'png', 'gif'), 'path/to/file.jpg');
      * </code>
      *
      * @param  array|string  $extensions
@@ -323,8 +323,13 @@ class File
                 $mime = mime_content_type($path);
             } else {
                 Log::warn("Your PHP config is missing both `finfo_file()` and `mime_content_type()` functions. We recommend enabling one of them.", "system", "File");
-                $mime = pathinfo($path, PATHINFO_EXTENSION);
-                if (isset($mimes[$mime])) return true;
+
+                $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+                $mime = array_get($mimes, $ext);
+
+                if (is_array($mime)) {
+                    $mime = $mime[0];
+                }
             }
 
             // The MIME configuration file contains an array of file extensions and
@@ -332,7 +337,7 @@ class File
             // developer wants to check and look for the MIME type.
             foreach ((array) $extensions as $extension)
             {
-                if (isset($mimes[$extension]) and in_array($mime, (array) $mimes[$extension]))
+                if (isset($mimes[$extension]) && in_array($mime, (array) $mimes[$extension]))
                 {
                     return true;
                 }
@@ -350,7 +355,7 @@ class File
      **/
     public static function isImage($file)
     {
-        return self::is(array('jpg', 'jpeg', 'png', 'gif'), BASE_PATH . $file);
+        return self::is(array('jpg', 'jpeg', 'png', 'gif'), $file);
     }
 
 }

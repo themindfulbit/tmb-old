@@ -28,6 +28,11 @@ $app->get('/assets/(:segments+)', function($segments = array()) use ($app) {
         readfile($file);
 
         exit();
+
+    } else {
+
+        // Moving on. Not a valid asset.
+        $app->pass();
     }
 
 });
@@ -41,7 +46,7 @@ $app->map('/(:segments+)', function ($segments = array()) use ($app) {
 
     $requesting_xml = false;
     $content_found  = false;
-    
+
     // segments
     foreach ($segments as $key => $seg) {
         $count                            = $key + 1;
@@ -59,13 +64,13 @@ $app->map('/(:segments+)', function ($segments = array()) use ($app) {
 
     // determine paths
     $path                  = '/' . implode($segments, '/');
-    
+
     // let XML files through
     if (substr($path, -4) == '.xml') {
         $path = substr($path, 0, -4);
         $requesting_xml = true;
     }
-    
+
     $current_url           = $path;
     $complete_current_url  = Path::tidy(Config::getSiteRoot() . "/" . $current_url);
 
@@ -123,7 +128,7 @@ $app->map('/(:segments+)', function ($segments = array()) use ($app) {
         $data                = Content::get($complete_current_url);
         $data['current_url'] = $current_url;
         $data['slug']        = basename($current_url);
-        
+
         if ($path !== "404") {
             $content_found = true;
         }
@@ -145,10 +150,23 @@ $app->map('/(:segments+)', function ($segments = array()) use ($app) {
         $template_list[] = $type;
         $content_found = true;
 
-        // this is a directory,so we look for page.md
+    // this is a directory,so we look for page.md
     } elseif (is_dir("{$content_root}/{$path}")) {
         $data = Content::get($complete_current_url);
         $content_found = true;
+        
+    // URL found in the cache
+    } elseif ($data = Content::get($complete_current_url)) {
+        $add_prev_next   = true;
+        $page            = basename($path);
+
+        $data                = Content::get($complete_current_url);
+        $data['current_url'] = $current_url;
+        $data['slug']        = basename($current_url);
+
+        if ($path !== "404") {
+            $content_found = true;
+        }
     }
 
     // Nothing found. 404 O'Clock.
@@ -214,13 +232,13 @@ $app->map('/(:segments+)', function ($segments = array()) use ($app) {
     }
 
     // status
-    if (preg_match("/\/_[^_]/", $path) && !$app->config['logged_in']) {
+    if (isset($data['_is_draft']) && $data['_is_draft'] && !$app->config['logged_in']) {
         $data          = Content::get(Path::tidy(Config::getSiteRoot() . "/404"));
         $template_list = array('404');
         $visible       = false;
         $response_code = 404;
 
-        // legacy status
+    // legacy status
     } elseif (isset($data['status']) && $data['status'] != 'live' && $data['status'] != 'hidden' && !$app->config['logged_in']) {
         $data          = Content::get(Path::tidy(Config::getSiteRoot() . "/404"));
         $template_list = array('404');

@@ -13,28 +13,24 @@ class Fieldtype_grid extends Fieldtype
     public function render()
   {
     // determine boundaries
-    $max_rows = (isset($this->field_config['max_rows']) && is_numeric($this->field_config['max_rows'])) ? ' data-max-rows="' . $this->field_config['max_rows'] . '"' : '';
-    $min_rows = (isset($this->field_config['min_rows']) && is_numeric($this->field_config['min_rows'])) ? ' data-min-rows="' . $this->field_config['min_rows'] . '"' : '';
+    $max_rows = array_get($this->field_config, 'max_rows', false);
+    $min_rows = array_get($this->field_config, 'min_rows', false);
+
+    $max_rows_attr = ($max_rows) ? " data-max-rows='$max_rows'" : '';
+    $min_rows_attr = ($min_rows) ? " data-min-rows='$min_rows'" : '';
     $starting_rows = array_get($this->field_config, 'starting_rows', 1);
-
-    // not here, we'll do this last so we can inject another data setting
-    // $html = "<table class='grid table-list' tabindex='{$this->tabindex}'" . $max_rows . $min_rows . ">";
-
 
     // create header row
     // -------------------------------------------------------------------------
     $html  = "<thead>\n<tr>\n";
     $html .= "<th class='row-count'></th>";
 
-    // loop through internal field configuration
+    // Set Width
     foreach ($this->field_config['fields'] as $key => $cell_field_config) {
-      // set width
-      $width = isset($cell_field_config['width']) ? $cell_field_config['width'] : 'auto';
-
-      // append to HTML output
+      $width = array_get($cell_field_config, 'width', 'auto');
       $html .= "<th style='width:{$width}'>". array_get($cell_field_config, 'display', Slug::prettify($key)). "</th>\n";
     }
-    $html .= "<th class='action-col'></th>\n";
+
     $html .= "</tr>\n</thead>\n";
 
 
@@ -55,9 +51,10 @@ class Fieldtype_grid extends Fieldtype
     if (isset($this->field_data) && is_array($this->field_data) && count($this->field_data) > 0) {
       foreach ($this->field_data as $key => $row) {
         $html_row  = "<tr>";
-        $html_row .= "<th class='row-count drag-indicator'>{$i}</th>";
+        $html_row .= "<th class='row-count drag-indicator'><div class='count'>{$i}</div>";
+        $html_row .= "<a href='#' class='grid-delete-row confirm'><span class='ss-icon'>delete</span></a>";
+        $html_row .= "</td></th>";
 
-        // foreach ($row as $column => $column_data) {
         foreach ($this->field_config['fields'] as $cell_field_name => $cell_field_config) {
           $column = key($row);
           $column_data = isset($row[$cell_field_name]) ? $row[$cell_field_name] : '';
@@ -67,17 +64,11 @@ class Fieldtype_grid extends Fieldtype
 
           $html_row .= "<td class='cell-{$celltype}' data-default='{$default}'>";
 
-          if ($cell_field_config['type'] == 'file') {
-            //$name = $column.'['.$key.']';
-            $name = $this->field.']['.$key.']['.$cell_field_name;
-          } else {
-            $name = $this->field.']['.$key.']['.$cell_field_name;
-          }
+          $name = $this->field.']['.$key.']['.$cell_field_name;
 
           $html_row .= Fieldtype::render_fieldtype($celltype, $name, $cell_field_config, $column_data);
           $html_row .= "</td>";
         }
-        $html_row .= '<td class="action"><a href="#" class="grid-delete-row confirm"><span class="icon">u</span></a></td>';
         $html_row .= "</tr>\n";
 
         $html .= $html_row;
@@ -86,43 +77,36 @@ class Fieldtype_grid extends Fieldtype
       }
     } else { # no rows, set a blank one
       for ($i; $i <= $rows_to_render; $i++) {
-        $html .= $this->render_empty_row($i);
+        $html .= $this->render_empty_row($i - 1);
       }
     }
     $html .= "</tbody>\n</table>\n";
 
     // If max_rows is 1, we shouldn't have an "add row" at all.
     if (array_get($this->field_config, 'max_rows', 9999) > $starting_rows) {
-      $html .= "<a href='#' class='grid-add-row btn btn-small btn-icon'><span class='icon'>Z</span>add row</a>";
+      $html .= "<a href='#' class='grid-add-row btn btn-small btn-icon'><span class='ss-icon'>add</span></a>";
     }
 
     $empty_row = ' data-empty-row="' . htmlspecialchars($this->render_empty_row(0)) . '"';
-    $html = "<table class='grid table-list' tabindex='{$this->tabindex}'" . $max_rows . $min_rows . $empty_row . ">" . $html;
+    $html = "<table class='grid table-list' tabindex='{$this->tabindex}'" . $max_rows_attr . $min_rows_attr . $empty_row . ">" . $html;
 
     return $html;
   }
 
   public function render_empty_row($index)
   {
+    $row_num = $index + 1;
     $row = "<tr>";
-    $row .= "<th class='row-count drag-indicator'>{$index}</th>";
+    $row .= "<th class='row-count drag-indicator'><div class='count'>{$row_num}</div><a href='#' class='grid-delete-row confirm'><span class='ss-icon'>delete</span></a></td></th>";
 
     foreach ($this->field_config['fields'] as $cell_field_name => $cell_field_config) {
 
       $celltype = $cell_field_config['type'];
-
       $default = isset($cell_field_config['default']) ? $cell_field_config['default'] : '';
-
-      if ($cell_field_config['type'] == 'file') {
-        //$name = $cell_field_name.'[0]';
-        $name = $this->field.'][0]['.$cell_field_name;
-      } else {
-        $name = $this->field.'][0]['.$cell_field_name;
-      }
+      $name = $this->field.']['.$index.']['.$cell_field_name;
 
       $row .= "<td class='cell-{$celltype}' data-default='{$default}'>".Fieldtype::render_fieldtype($celltype, $name, $cell_field_config, $default)."</td>";
     }
-    $row .= '<td class="action"><a href="#" class="grid-delete-row confirm"><span class="icon">u</span></a></td>';
     $row .= "</tr>\n";
 
     return $row;

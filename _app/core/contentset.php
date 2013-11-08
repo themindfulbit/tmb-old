@@ -85,6 +85,7 @@ class ContentSet
         $since_date     = null;
         $until_date     = null;
         $remove_hidden  = null;
+        $remove_drafts  = null;
         $keep_type      = "all";
         $folders        = null;
         $conditions     = null;
@@ -95,7 +96,8 @@ class ContentSet
         // -------------------
         $given_filters = $filters;
         $filters = array(
-            'show_all'    => (isset($given_filters['show_all']))       ? $given_filters['show_all']         : null,
+            'show_hidden' => (isset($given_filters['show_hidden']))    ? $given_filters['show_hidden']      : null,
+            'show_drafts' => (isset($given_filters['show_drafts']))    ? $given_filters['show_drafts']      : null,
             'since'       => (isset($given_filters['since']))          ? $given_filters['since']            : null,
             'until'       => (isset($given_filters['until']))          ? $given_filters['until']            : null,
             'show_past'   => (isset($given_filters['show_past']))      ? $given_filters['show_past']        : null,
@@ -109,8 +111,12 @@ class ContentSet
 
         // determine filters
         // -----------------
-        if ($filters['show_all'] === false) {
-            $remove_hidden = true;
+        if (!is_null($filters['show_hidden'])) {
+            $remove_hidden = !((bool) $filters['show_hidden']);
+        }
+
+        if (!is_null($filters['show_drafts'])) {
+            $remove_drafts = !((bool) $filters['show_drafts']);
         }
 
         if ($filters['since']) {
@@ -158,8 +164,13 @@ class ContentSet
                 continue;
             }
 
-            // check if this is hidden content
-            if ($remove_hidden && strpos($data['_local_path'], "/_") !== false) {
+            // check for non-public content
+            if ($remove_drafts && $data['_is_draft']) {
+                unset($this->content[$key]);
+                continue;
+            }
+            
+            if ($remove_hidden && $data['_is_hidden']) {
                 unset($this->content[$key]);
                 continue;
             }
@@ -491,8 +502,9 @@ class ContentSet
             if ($parse_content && isset($item['_file'])) {
                 $raw_file = substr(File::get($item['_file']), 3);
                 $divide = strpos($raw_file, "\n---");
-                $this->content[$key]['content_raw'] = trim(substr($raw_file, $divide + 4));
-                $this->content[$key]['content'] = Content::parse($this->content[$key]['content_raw'], $item);
+                
+                $this->content[$key]['content_raw']  = trim(substr($raw_file, $divide + 4));
+                $this->content[$key]['content']      = Content::parse($this->content[$key]['content_raw'], $item);
             }
 
             $i++;
@@ -537,7 +549,7 @@ class ContentSet
         // we can figure this out once and then set it with each one
         if ($context['context_urls']) {
             $raw_url   = Request::getResourceURI();
-            $page_url  = preg_replace(Pattern::ORDER_KEY, '', Request::getResourceURI());
+            $page_url  = Path::tidy($raw_url);
         }
         
         // iteration memory

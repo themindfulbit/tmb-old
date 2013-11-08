@@ -7,10 +7,10 @@ class Fieldtype_File extends Fieldtype
 
     if ($this->field_data) {
       $html .= "<div class='file-exists'>";
-        if (File::isImage($this->field_data)) {
+        if (File::isImage(Path::fromAsset($this->field_data))) {
           $html .= "<img src='{$this->field_data}' height='58'>";
         }
-        $html .= "<p>$this->field_data</p>";
+        $html .= "<p>".basename($this->field_data)."</p>";
         $html .= "<a class='btn btn-small btn-remove-file' href='#'>Remove</a>";
         $html .= "<input type='hidden' name='{$this->fieldname}' value='{$this->field_data}' />";
       $html .= "</div>";
@@ -32,7 +32,7 @@ class Fieldtype_File extends Fieldtype
       $filename = File::cleanFilename($this->field_data['name']);
 
       if (File::upload($this->field_data['tmp_name'], $destination, $filename)) {
-        return Path::tidy('/' . $this->settings['destination'] . '/' . $filename);
+        return Path::toAsset($this->settings['destination'] . '/' . $filename);
       } else {
         Log::fatal($this->field_data['tmp_name'] . ' could up not be uploaded to ' . $destination, 'core');
         return '';

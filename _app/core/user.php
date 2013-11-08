@@ -24,13 +24,43 @@ class statamic_user
     $this->data['first_name'] = $name;
   }
 
+  public function set_email($email)
+  {
+    $this->data['email'] = $email;
+  }
+
   public function get_first_name()
   {
-    if (isset($this->data['first_name'])) {
-      return $this->data['first_name'];
+    return array_get($this->data, 'first_name', '');
+  }
+
+  public function get_full_name() {
+    $names = array(
+      'first_name' => $this->get_first_name(),
+      'last_name' => $this->get_last_name()
+    );
+
+    $full_name = trim(implode($names, ' '));
+
+    // No name. Fall back to username.
+    if ($full_name === "") {
+      $full_name = $this->get_name();
     }
 
-    return '';
+    return $full_name;
+  }
+
+  public function get_email()
+  {
+    return array_get($this->data, 'email', '');
+  }
+
+  public function get_gravatar($size = "26") {
+    $gravatar = new \emberlabs\GravatarLib\Gravatar();
+    $gravatar->setAvatarSize($size);
+    $gravatar->setDefaultImage('http://f.cl.ly/items/3M1e2a0x423F2w312J1M/buck.jpg');
+
+    return $gravatar->buildGravatarURL($this->get_email());
   }
 
   public function set_password($password, $encrypted=FALSE)
@@ -173,27 +203,15 @@ class statamic_user
 
   public function save()
   {
-    $file_content = "";
-    $file_content .= "---\n";
-    $file_content .= "first_name: {$this->data['first_name']}\n";
-    $file_content .= "last_name: {$this->data['last_name']}\n";
-    $file_content .= "roles: [".implode(",",$this->data['roles'])."]\n";
+    $user_account = (array) $this->data;
+    $content = $user_account['biography_raw'];
 
-    if (isset($this->data['password']))
-      $file_content .= "password: {$this->data['password']}\n";
+    unset($user_account['biography']);
+    unset($user_account['biography_raw']);
 
-    if (isset($this->data['encrypted_password']))
-      $file_content .= "encrypted_password: {$this->data['encrypted_password']}\n";
+    $file_path = "_config/users/{$this->name}.yaml";
 
-    if (isset($this->data['salt']))
-      $file_content .= "salt: {$this->data['salt']}\n";
-
-    $file_content .= "---\n";
-    $file_content .= $this->data['biography_raw'];
-    $file_content .= "\n";
-
-    $file = "_config/users/{$this->name}.yaml";
-    file_put_contents($file, $file_content);
+    File::put($file_path, File::buildContent($user_account, $content));
   }
 
   public function delete()

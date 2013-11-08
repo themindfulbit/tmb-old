@@ -1,6 +1,6 @@
 <?php
 
-const STATAMIC_VERSION = '1.5.4';
+const STATAMIC_VERSION = '1.6.4';
 const APP_PATH = __DIR__;
 
 /*
@@ -37,6 +37,9 @@ foreach ($packages as $package) {
   $loader = new SplClassLoader($package, __DIR__ . '/vendor/');
   $loader->register();
 }
+
+$loader = new SplClassLoader('emberlabs', __dir__.'/vendor/');
+$loader->register();
 
 require_once __DIR__ . '/vendor/PHPMailer/class.phpmailer.php';
 

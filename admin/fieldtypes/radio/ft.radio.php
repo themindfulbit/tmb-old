@@ -15,8 +15,8 @@ class Fieldtype_radio extends Fieldtype
       $selected = $this->field_data == $value ? " checked='checked'" : '';
 
       $html .= "<div class='radio-block'>";
-      $html .= "<input type='radio' name='{$this->fieldname}' tabindex='{$this->tabindex}' class='radio' id='{$this->fieldname}-radio-{$i}' value='{$value}'{$selected} />";
-      $html .= "<label class='radio-label' for='{$this->fieldname}-radio-{$i}'>{$opt}</label>";
+      $html .= "<input type='radio' name='{$this->fieldname}' tabindex='{$this->tabindex}' class='radio' id='{$this->field_id}-radio-{$i}' value='{$value}'{$selected} />";
+      $html .= "<label class='radio-label' for='{$this->field_id}-radio-{$i}'>{$opt}</label>";
       $html .= "</div>";
       $i++;
     }

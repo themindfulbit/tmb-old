@@ -3,9 +3,14 @@ class Fieldtype_text extends Fieldtype
 {
   public function render()
   {
-    $html = "<input type='text' name='{$this->fieldname}' tabindex='{$this->tabindex}' value='".htmlspecialchars($this->field_data, ENT_QUOTES)."' id='{$this->field_id}' />";
+    $attributes = array(
+      'name' => $this->fieldname,
+      'id' => $this->field_id,
+      'tabindex' => $this->tabindex,
+      'value' => HTML::convertSpecialCharacters($this->field_data)
+    );
 
-    return $html;
+    return HTML::makeInput('text', $attributes, $this->is_required);
   }
 
 }

@@ -15,12 +15,15 @@ class Fieldtype_suggest extends Fieldtype
         |
         */
 
+        $max_items = array_get($this->field_config, 'max_items', 'null');
         $multiple = array_get($this->field_config, 'multiple', true);
-        $multiple_setting = $multiple ? "multiple" : "";
-        $multiple_array_holder = $multiple ? "[]" : "";
 
-        $default_placeholder = $multiple ? "Choose some options" : "Choose an option";
-        $placeholder = isset($this->field_config['placeholder']) ? $this->field_config['placeholder'] : $default_placeholder;
+        if ($max_items === 1) {
+            $multiple = false;
+        }
+
+        $multiple_array_holder = $multiple ? '[]' : '';
+        $multiple_string = $multiple ? "multiple='multiple'" : '';
 
         $suggestions = array();
 
@@ -61,18 +64,17 @@ class Fieldtype_suggest extends Fieldtype
             $content_set = ContentService::getContentByFolders(array($folder));
 
             $content_set->filter(array(
-                    'show_all'    => array_get($config, 'show_all', false),
+                    'show_hidden' => array_get($config, 'show_all', false),
+                    'show_drafts' => array_get($config, 'show_drafts', false),
                     'since'       => array_get($config, 'since'),
                     'until'       => array_get($config, 'until'),
                     'show_past'   => array_get($config, 'show_past', true),
                     'show_future' => array_get($config, 'show_future', true),
-                    'type'        => 'entries',
+                    'type'        => array_get($config, 'type', 'entries'),
                     'conditions'  => trim(array_get($config, 'conditions'))
                 )
             );
             $entries = $content_set->get();
-
-            // rd($entries);
 
             foreach ($entries as $key => $entry) {
                 if (isset($entry[$label]) && isset($entry[$value])) {
@@ -123,24 +125,98 @@ class Fieldtype_suggest extends Fieldtype
         |
         */
 
-        $html  = "<div class='input-suggest-wrap'>";
-        $html .= "<select name='{$this->fieldname}{$multiple_array_holder}' tabindex='{$this->tabindex}' {$multiple_setting} class='chosen-select' data-placeholder='{$placeholder}'>\n";
+        $html = "<div id='$this->field_id'><select name='{$this->fieldname}{$multiple_array_holder}' tabindex='{$this->tabindex}' $multiple_string class='suggest'>\n";
 
-        if ( ! $multiple) {
-            $html .= "<option value=''></option>\n";
-        }
+        $is_indexed = (array_values($suggestions) === $suggestions);
+
+        // rd($suggestions);
 
         foreach ($suggestions as $value => $label) {
-            if ($multiple && is_array($this->field_data)) {
+
+            $value = $is_indexed ? $label : $value; #allows setting custom values and labels
+
+            if ($multiple && is_array($this->field_data) ) {
                 $selected = in_array($value, $this->field_data) ? " selected " : '';
             } else {
                 $selected = $this->field_data == $value ? " selected " : '';
             }
+
             $html .= "<option value='{$value}'{$selected}>{$label}</option>\n";
         }
 
-        $html .= "</select></div>";
+        $html .= "</select>";
+        $html .= "<div class='count-placeholder'></div></div>";
+
+        /*
+        |--------------------------------------------------------------------------
+        | The JavaScript
+        |--------------------------------------------------------------------------
+        |
+        | Set the config options, instantiate Selectize, and so forth.
+        |
+        */
+
+        if ($max_items === null && $multiple === false) {
+            $max_items = 1;
+        }
+
+        $options = json_encode(array(
+            'sortField'      => 'text',
+            'maxItems'      => $max_items,
+            'delimiter'      => ',',
+            'create'         => array_get($this->field_config, 'create', false),
+            'persist'        => array_get($this->field_config, 'persist', true),
+            'hideSelected'   => array_get($this->field_config, 'hide_selected', true),
+            'sortDirection'  => array_get($this->field_config, 'sort_dir', 'asc'),
+            'plugins'        => array('drag_drop'),
+            'dropdownParent' => 'body'
+        ));
+
+        $html .= "
+        <script>
+        $(function() {
+
+            var selectize = $('#$this->field_id select'),
+                options = $options;
+
+            // @TODO: Rewrite in KO to avoid scoping issues in Grid fields
+            // if (max_items != null) {
+            //    var count = (value === null) ? 0 : value.length,
+            //        value = selectize.val(),
+            //        max_items = $max_items;
+            //        remaining = max_items - count,
+            //        placeholder = $('#$this->field_id .count-placeholder');
+            //     $.extend(options, {
+            //             'onChange': function(value) {
+            //                 count = (value === null) ? 0 : value.length;
+            //                 remaining = max_items - count;
+            //                 placeholder.text(remaining + ' remaining');
+            //             }
+            //         }
+            //     );
+            //     placeholder.text(remaining + ' remaining');
+            // }
+
+            $(selectize).selectize($options);
+        });
+
+        </script>
+        ";
 
         return $html;
     }
+
+
+    // public function process()
+    // {
+    //     // If there's only one option
+    //     // save it as a string instead of an array
+    //     rd($this->field_data);
+
+    //     if (count($this->field_data) === 1) {
+    //         return $this->field_data[0];
+    //     }
+
+    //     return $this->field_data;
+    // }
 }

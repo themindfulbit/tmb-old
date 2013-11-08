@@ -16,7 +16,8 @@ class Plugin_get_content extends Plugin
 
         // filter
         $content_set->filter(array(
-            'show_all'    => $this->fetchParam('show_hidden', false, null, true, false),
+            'show_hidden' => $this->fetchParam('show_hidden', false, null, true, false),
+            'show_drafts' => $this->fetchParam('show_drafts', false, null, true, false),
             'show_past'   => $this->fetchParam('show_past', true, null, true),
             'show_future' => $this->fetchParam('show_future', false, null, true),
             'type'        => 'all',

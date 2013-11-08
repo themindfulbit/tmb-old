@@ -29,7 +29,7 @@ class Helper
                 return $arg;
             }
         }
-        
+
         return null;
     }
 
@@ -88,6 +88,25 @@ class Helper
         }
 
         return $value;
+    }
+
+    /**
+     * Convert an object to an array
+     *
+     * @param object $object
+     * @return array
+     **/
+    public static function objectToArray($object)
+    {
+        if ( ! is_object($object) && ! is_array($object)) {
+            return $object;
+        }
+
+        if (is_object($object)) {
+            $object = (array) $object;
+        }
+
+        return array_map( 'self::objectToArray', $object);
     }
 
 
@@ -250,18 +269,18 @@ class Helper
     {
         return (is_array($array) && isset($array[$key])) ? $array[$key] : $default;
     }
-    
-    
+
+
     /**
      * Parses a mixed folder representation into a standardized array
-     * 
+     *
      * @param mixed  $folders  Folders
      * @return array
      */
     public static function parseForFolders($folders)
     {
         $output = array();
-        
+
         // make an array of all options
         if (is_array($folders)) {
             foreach ($folders as $folder) {
@@ -287,7 +306,7 @@ class Helper
                 return Path::removeStartingSlash($item);
             }, $output);
         }
-        
+
         return array_unique($output);
     }
 }

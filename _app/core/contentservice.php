@@ -96,13 +96,14 @@ class ContentService
 
         foreach ($values as $key => $parts) {
             $set = array();
-            $prepared_key = ($slugify) ? Slug::make($key) : urlencode($key);
+
+            $prepared_key = ($slugify) ? Slug::make($key) : rawurlencode($key);
 
             foreach ($parts['files'] as $url) {
                 if (!isset(self::$cache['urls'][$url])) {
                     continue;
                 }
-                
+
                 $set[$url] = self::$cache['content'][self::$cache['urls'][$url]];
             }
 

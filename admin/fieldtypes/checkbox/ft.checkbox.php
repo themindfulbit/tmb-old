@@ -15,8 +15,18 @@ class Fieldtype_checkbox extends Fieldtype
 
     public function render()
     {
-        $checked = ($this->field_data) ? ' checked="checked"' : '';
+        $attributes = array(
+          'name' => $this->fieldname,
+          'id' => $this->field_id,
+          'class' => 'checkbox',
+          'tabindex' => $this->tabindex,
+          'value' => '1'
+        );
 
-        return "<input type='checkbox' name='{$this->fieldname}' tabindex='{$this->tabindex}' class='checkbox' id='{$this->field_id}' value='1'{$checked} />";
+        if ($this->field_data) {
+          $attributes['checked'] = 'checked';
+        }
+
+        return HTML::makeInput('checkbox', $attributes, $this->is_required);
     }
 }

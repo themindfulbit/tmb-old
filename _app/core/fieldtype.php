@@ -186,6 +186,7 @@ abstract class Fieldtype extends Addon
                 $field->fieldnameremove = "page{$input_key}[{$fieldname}_remove]";
                 $field->field_data      = $field_data;
                 $field->tabindex        = $tabindex;
+                $field->is_required     = array_get($field_config, 'required', false);
 
                 if (method_exists($field, 'init')) {
                     $field->init();

@@ -23,7 +23,7 @@ _site_name: The Mindful Bit
 _content_root: _content
 
 # Used for permalinks
-_site_url: http://themindfulbit.dev:8888/
+_site_url: http://themindfulbit.com
 
 # Test value
 
@@ -75,7 +75,7 @@ _parse_order:
 _environments:
   dev:
     - 'http://localhost*'
-    - '*.dev'
+    - '*.dev:8888'
     - '*.localip'
   live:
     - '*.com'

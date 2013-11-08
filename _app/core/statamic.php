@@ -18,7 +18,7 @@ class Statamic
   protected static $_yaml_cache = array();
   public static $folder_list = array();
 
-  public static $publication_states = array('live' => 'Live', 'draft' => 'Draft', 'hidden' => 'Hidden');
+  public static $publication_states = array('live' => 'Live', 'hidden' => 'Hidden', 'draft' => 'Draft');
 
   public static function loadYamlCached($content)
   {
@@ -146,7 +146,6 @@ class Statamic
     $themes_path = array_get($config, '_themes_path', '_themes');
     $theme_name = array_get($config, '_theme', 'denali');
 
-
     if (Folder::exists($theme_files_location = URL::assemble(BASE_PATH, $themes_path, $theme_name))) {
 
       $finder = new Finder(); // clear previous Finder interator results
@@ -184,6 +183,12 @@ class Statamic
     $config['_translations'] = array();
     $config['_translations']['en'] = YAML::parse(Config::getAppConfigPath() . '/default.en.yaml');
 
+    if ($lang = array_get($config, '_language', false)) {
+      if (File::exists(Config::getTranslation($lang))) {
+        $config['_translations'][$lang] = YAML::parse(Config::getTranslation($lang));
+      }
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Set Slim Config
@@ -198,7 +203,13 @@ class Statamic
     $config['cookies.lifetime'] = $config['_cookies.lifetime'];
 
     if ($admin) {
-      $theme_path = Path::tidy('/'.$config['_admin_path'].'/'.'themes/'.$config['_admin_theme'].'/');
+      $admin_theme = array_get($config, '_admin_theme', 'ascent');
+
+      if ( ! Folder::exists(Path::tidy('/'.$config['_admin_path'].'/'.'themes/'.$admin_theme))) {
+        $admin_theme = 'ascent';
+      }
+
+      $theme_path = Path::tidy('/' . $config['_admin_path'] . '/' . 'themes/' . $admin_theme . '/');
 
       $config['_admin_path']    = $config['_admin_path'];
       $config['theme_path']     = $theme_path;
@@ -286,7 +297,7 @@ class Statamic
           if (!substr($redirect_url, 0, 4) == "http") {
               $redirect_url = Path::tidy(Config::getSiteRoot() . "/" . $redirect_url);
           }
-          
+
           // ensure a valid redirect type
           if (!in_array($redirect_type, array(301, 302))) {
               $redirect_type = 302;
@@ -335,9 +346,6 @@ class Statamic
       array('bio' => $current_user->get_biography())
     ) : FALSE;
 
-    $app->config['homepage'] = Config::getSiteRoot();
-
-
     /*
     |--------------------------------------------------------------------------
     | Load Environment Configs and Variables
@@ -350,6 +358,8 @@ class Statamic
     */
 
     Environment::establish();
+
+    $app->config['homepage'] = Config::getSiteRoot();
   }
 
   /**
@@ -606,7 +616,7 @@ class Statamic
 
       $meta['permalink'] = Path::tidy(Config::getSiteURL().'/'.$meta['page_url']);
       $taxonomy_slugify  = (isset($app->config['_taxonomy_slugify']) && $app->config['_taxonomy_slugify']);
-        
+
       # Jam it all together, brother.
       # @todo: functionize/abstract this method for more flexibility and readability
       foreach ($meta as $key => $value) {
@@ -1053,8 +1063,8 @@ class Statamic
 
   public static function get_content_tree($directory='/',$depth=1,$max_depth=5,$folders_only=FALSE,$include_entries=FALSE,$hide_hidden=TRUE,$include_content=FALSE,$site_root=FALSE)
   {
-    // $folders_only=true only page.md
-    // folders_only=false includes any numbered or non-numbered page (excluding anything with a fields.yaml file)
+    // $folders_only = true only page.md
+    // folders_only = false includes any numbered or non-numbered page (excluding anything with a fields.yaml file)
     // if include_entries is true then any numbered files are included
 
     $content_root = Config::getContentRoot();
@@ -1087,7 +1097,11 @@ class Statamic
       foreach ($files as $path) {
         $current_name = basename($path);
 
-        if (!Pattern::startsWith($current_name, '_') && !Pattern::endsWith($current_name, '.yaml')) {
+        if (!Pattern::endsWith($current_name, '.yaml')) {
+
+          // Hidden page that should be removed
+          if ($hide_hidden && Pattern::startsWith($current_name, '_')) continue;
+
           $node = array();
           $file = substr($path, strlen($base)+1, strlen($path)-strlen($base)-strlen($content_type)-2);
 
@@ -1212,6 +1226,37 @@ class Statamic
     return $data;
   }
 
+
+  public static function get_listings()
+  {
+    $listings = array();
+    $finder = new Finder();
+    $files  = $finder->files()->in(Config::getContentRoot())->name('fields.yaml');
+
+    foreach ($files as $file) {
+      $slug = str_replace(Config::getContentRoot().'/', '', $file->getPath());
+
+      $meta = array(
+        'slug' => $slug,
+        'title' => ucwords(Slug::humanize(Path::clean($slug)))
+      );
+
+      $item = self::yamlize_content(BASE_PATH . '/' . $file->getPath().'/page.' . Config::getContentType());
+
+      // if (is_array($item)) {
+        $listings[] = array_merge($meta, $item);
+      // }
+    }
+
+    // Sort by Title
+    uasort($listings, function($a, $b) {
+      return strcmp($a['title'], $b['title']);
+    });
+
+    return $listings;
+  }
+
+
   public static function get_file_list($directory=NULL)
   {
     $content_root = Config::getContentRoot();
@@ -1239,50 +1284,15 @@ class Statamic
     return $posts;
   }
 
-  public static function find_prev($current,$folder=NULL,$future=FALSE,$past=TRUE)
-  {
-    $content_set = ContentService::getContentByFolders($folder);
-    $content_set->filter(array(
-       'show_future' => $future,
-       'show_past' => $past
-    ));
-
-    $content_set->sort();
-    $content = $content_set->get(false);
-
-    $prev = false;
-    foreach ($content as $data) {
-        if ($current != $data['url']) {
-            $prev = $data['url'];
-            continue;
-        }
-
-        break;
-    }
-
-    return $prev;
-
-//
-//    $list = self::get_folder_list($folder, $future, $past);
-//    $keys = array_keys($list);
-//    $current_key = array_search($current, $keys);
-//    if ($current_key !== FALSE) {
-//      while (key($keys) !== $current_key) next($keys);
-//
-//        return next($keys);
-//    }
-//
-//    return FALSE;
-  }
-
-
-  public static function find_relative($current, $folder=null, $future=false, $past=true)
+  public static function find_relative($current, $folder=null, $future=false, $past=true, $show_hidden=false)
   {
       $content_set = ContentService::getContentByFolders($folder);
       $content_set->filter(array(
-          'show_future' => $future,
-          'show_past' => $past,
-          'type' => 'entries'
+          'show_hidden'  => $show_hidden,
+          'show_drafts'  => false,
+          'show_future'  => $future,
+          'show_past'    => $past,
+          'type'         => 'entries'
       ));
 
       $content_set->sort();
@@ -1321,44 +1331,6 @@ class Statamic
       return $relative;
   }
 
-  public static function find_next($current,$folder=NULL,$future=FALSE,$past=TRUE)
-  {
-      $content_set = ContentService::getContentByFolders($folder);
-      $content_set->filter(array(
-          'show_future' => $future,
-          'show_past' => $past
-      ));
-
-      $content_set->sort();
-      $content = $content_set->get(false);
-
-      $next = false;
-      foreach ($content as $data) {
-          if ($next) {
-              return $data['url'];
-          } elseif ($current == $data['url']) {
-              $next = true;
-          }
-      }
-
-      return $next;
-
-
-//    if ($folder == '') {
-//      $folder = '/';
-//    }
-//    $list = self::get_folder_list($folder, $future, $past);
-//    $keys = array_keys($list);
-//    $current_key = array_search($current, $keys);
-//    if ($current_key !== FALSE) {
-//      while (key($keys) !== $current_key) next($keys);
-//
-//        return prev($keys);
-//    }
-//
-//    return FALSE;
-  }
-
   public static function get_asset_path($asset)
   {
     $content_root = Config::getContentRoot();
@@ -1374,10 +1346,15 @@ class Statamic
 
   public static function yamlize_content($meta_raw, $content_key = 'content')
   {
+    if (File::exists($meta_raw)) {
+      $meta_raw = File::get($meta_raw);
+    }
+
     if (Pattern::endsWith($meta_raw, "---")) {
       $meta_raw .= "\n"; # prevent parse failure
     }
-    # Parse YAML Front Matter
+
+    // Parse YAML Front Matter
     if (strpos($meta_raw, "---") === FALSE) {
       $meta = YAML::parse($meta_raw);
       $meta['content'] = "";

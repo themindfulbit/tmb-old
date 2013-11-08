@@ -38,6 +38,23 @@ class Request
 
 
     /**
+     * Returns a $_POST variable value if set, falling back to $_GET, or $default if not available
+     *
+     * @param string  $key  Key to retrieve
+     * @param mixed  $default  Default value if no POST or GET variable is set
+     * @return mixed
+     */
+    public static function fetch($key, $default=NULL)
+    {
+        return Helper::pick(
+            self::post($key, $default),
+            self::get($key, $default),
+            $default
+        );
+    }
+
+
+    /**
      * Returns a $_PUT variable value, or $default if not available
      *
      * @param string  $key  Key to retrieve

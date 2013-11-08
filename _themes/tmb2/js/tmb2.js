@@ -10,7 +10,7 @@ $(document).ready(function(){
 	// Video rescaling fix : http://www.netmagazine.com/tutorials/create-fluid-width-videos
 
 		// Find all YouTube videos
-		var $allVideos = $("iframe[src^='http://player.vimeo.com'], iframe[src^='http://www.youtube.com'], iframe[src^='http://embed.spotify.com']"),
+		var $allVideos = $("iframe[src^='http://player.vimeo.com'], iframe[src^='http://www.youtube.com'], iframe[src^='http://new.livestream.com'], iframe[src^='http://embed.spotify.com']"),
 		 
 		    // The element that is fluid width
 		    $fluidEl = $(".post-body");

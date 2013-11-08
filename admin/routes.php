@@ -74,14 +74,13 @@ $admin_app->get('/',  function() use ($admin_app) {
   doStatamicVersionCheck($admin_app);
 
   if ( ! CP_Helper::show_page('dashboard')) {
-    $redirect_to = Config::get('_admin_start_page', 'pages');
-    $admin_app->redirect($_SERVER['SCRIPT_NAME'].'/'.$redirect_to);
+    $admin_app->redirect($admin_app->urlFor('pages'));
   }
 
   $template_list = array("dashboard");
   Statamic_View::set_templates(array_reverse($template_list));
-  $admin_app->render(null, array('route' => 'root', 'app' => $admin_app));
-})->name('home');
+  $admin_app->render(null, array('route' => 'dashboard', 'app' => $admin_app));
+})->name('dashboard');
 
 
 
@@ -125,13 +124,14 @@ $admin_app->post('/login', function() use ($admin_app) {
     if ( ! $user->is_password_encrypted()) {
       $user->set_password($user->get_password(), true);
       $user->save();
-      $errors = array('login' => 'Password has been encrypted. Please login again.');
+      $errors = array('encrypted' => 'Password has been encrypted. Please login again.');
     } else {
-       $app->redirect($app->urlFor('home'));
+      $redirect_to = Config::get('_admin_start_page', 'pages');
+      $app->redirect($app->urlFor($redirect_to));
     }
 
   } else {
-    $errors = array('login' => 'Incorrect username or password. Try again.');
+    $errors = array('error' => 'Incorrect username or password. Try again.');
   }
 
   $template_list = array("login");
@@ -146,7 +146,7 @@ $admin_app->post('/login', function() use ($admin_app) {
 
 $admin_app->get('/logout', function() use ($admin_app) {
   Statamic_Auth::logout();
-  $admin_app->redirect($admin_app->urlFor('home'));
+  $admin_app->redirect($admin_app->urlFor('dashboard'));
 })->name('logout');
 
 
@@ -170,70 +170,95 @@ $admin_app->get('/pages', function() use ($admin_app) {
   doStatamicVersionCheck($admin_app);
   $template_list = array("pages");
 
-  if ( ! Statamic::is_content_writable()) {
-    $admin_app->flash('error', 'Content folder not writable');
-    $url = $admin_app->urlFor('error')."?code=write_permission";
-    $admin_app->redirect($url);
+  /*
+  |--------------------------------------------------------------------------
+  | Check if file is writable
+  |--------------------------------------------------------------------------
+  |
+  | We now have a file name. Let's check if we can write to this thing.
+  |
+  */
 
-    return;
+  if ( ! Statamic::is_content_writable()) {
+    $url = $admin_app->urlFor('error')."?code=content_not_writable";
+    $admin_app->redirect($url);
   }
 
   $path = "";
   $path = $admin_app->request()->get('path');
   $errors = array();
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | Pages and Home page
+  |--------------------------------------------------------------------------
+  |
+  | We can get all the pages from get_content_tree(), but the home page
+  | is a bit of an exception. We need to set a few things manually.
+  |
+  */
+
   $pages = Statamic::get_content_tree('/', 1, 1000, false, false, false, false, '/');
 
-  #######################################################################
-  # Fieldsets
-  #######################################################################
+  // Home page isn't included by default
+  $meta = Statamic::get_content_meta("page", '');
+
+  $home_page = array(
+    'type'        => 'home',
+    'url'         => "/page",
+    'slug'        => "/",
+    'title'       => array_get($meta, 'title', Localization::fetch('home')),
+    'has_entries' => (File::exists(Path::tidy(Config::getContentRoot()."/fields.yaml"))) ? true : false,
+    'depth'       => 1
+  );
+
+  // Merge into pages
+  array_unshift($pages, $home_page);
+
+  /*
+  |--------------------------------------------------------------------------
+  | Fieldsets
+  |--------------------------------------------------------------------------
+  |
+  | Get all the available fieldsets, removing any hidden ones as necessary
+  |
+  */
 
   $fieldsets = Statamic_Fieldset::get_list();
 
   foreach ($fieldsets as $key => $fieldset) {
 
-    # Remove hidden fieldsets
+    // Remove hidden fieldsets
     if (isset($fieldset['hide']) && $fieldset['hide'] === true) {
       unset($fieldsets[$key]);
+
+    // set a fallback name
     } elseif ( ! isset($fieldset['title'])) {
-      # set a optional name
       $fieldsets[$key]['title'] = Slug::prettify($key);
     }
 
   }
 
-  # Sort by title
+  // Sort fieldsets by title
   uasort($fieldsets, function($a, $b) {
     return strcmp($a['title'], $b['title']);
   });
 
   #######################################################################
 
-  $node['type'] = 'home';
-  $node['url'] = "/page";
-  $node['slug'] = "/";
-
-  $meta = Statamic::get_content_meta("page", "");
-
-  //$node['meta'] = $meta;
-
-  if (isset($meta['title'])) {
-    $node['title'] = $meta['title'];
-  }
-  if (File::exists(Path::tidy(Config::getContentRoot()."/fields.yaml"))) {
-    $node['has_entries'] = TRUE;
-  }
-  $node['depth'] = 1;
-
-  array_unshift($pages, $node);
-
   Statamic_View::set_templates(array_reverse($template_list));
-  $admin_app->render(null, array('route' => 'pages', 'app' => $admin_app
-    , 'errors' => $errors
-    , 'path' => $path
-    , 'pages' => $pages
-    , 'fieldsets' => $fieldsets
-    , 'are_fieldsets' => count($fieldsets) > 0 ? true : false
-    ));
+  $admin_app->render(null, array(
+    'route' => 'pages',
+    'app' => $admin_app,
+    'errors' => $errors,
+    'path' => $path,
+    'pages' => $pages,
+    'fieldsets' => $fieldsets,
+    'are_fieldsets' => count($fieldsets) > 0 ? true : false,
+    'listings' => Statamic::get_listings()
+    )
+  );
 })->name('pages');
 
 
@@ -255,18 +280,23 @@ $admin_app->get('/entries', function() use ($admin_app) {
 
     $order = $entry_type == 'date' ? 'desc' : 'asc';
 
-    $entries = Statamic::get_content_list($path,null,0,true,true,$entry_type, $order, null, null, true);
+    $entries = Statamic::get_content_list($path, null, 0, true, true, $entry_type, $order, null, null, true);
     Statamic_View::set_templates(array_reverse($template_list));
 
     $admin_app->render(null, array(
-       'route'   => 'entries',
-       'app'     => $admin_app,
-       'errors'  => $errors,
-       'path'    => $path,
-       'entries' => $entries,
-       'type'    => $entry_type
-      ));
+      'route'    => 'entries',
+      'app'      => $admin_app,
+      'errors'   => $errors,
+      'path'     => $path,
+      'folder'   => preg_replace(Pattern::NUMERIC, '', $path),
+      'entries'  => $entries,
+      'type'     => $entry_type,
+      'listings' => Statamic::get_listings()
+      )
+    );
   }
+
+
 })->name('entries');
 
 // LOGIC
@@ -276,6 +306,7 @@ $admin_app->get('/entries', function() use ($admin_app) {
 
 // POST: PUBLISH
 $admin_app->post('/publish', function() use ($admin_app) {
+
   authenticateForRole('admin');
   doStatamicVersionCheck($admin_app);
 
@@ -314,7 +345,8 @@ $admin_app->post('/publish', function() use ($admin_app) {
         $errors['title'] = 'is required';
       }
 
-      $slug = Slug::make($form_data['meta']['slug']);
+      $slug = ($form_data['meta']['slug'] === '/') ? '/' : Slug::make($form_data['meta']['slug']);
+      // rd($form_data);
 
       if ($index_file) {
         // some different validation rules
@@ -469,6 +501,28 @@ $admin_app->post('/publish', function() use ($admin_app) {
           }
         }
 
+        /*
+        |--------------------------------------------------------------------------
+        | Status bar message
+        |--------------------------------------------------------------------------
+        |
+        | Gawd this is awful. Can't wait to refactor this spaghetti.
+        |
+        */
+
+        $data['status_message']  = (isset($data['new'])) ? Localization::fetch('new') : Localization::fetch('editing');
+        $data['status_message'] .= ' ';
+
+        if ($data['type'] === 'none' || ($data['type'] === 'none' && $original_slug !== 'page')) {
+          $data['status_message'] .= Localization::fetch('page', null, true);
+          $data['identifier'] = ($data['page'] === 'page') ? Path::pretty($data['folder']) : Path::pretty($data['full_slug']);
+        } else {
+          $data['status_message'] .= Localization::fetch('entry', null, true);
+          $data['identifier'] = (isset($data['new'])) ? Path::pretty($folder . '/') : Path::pretty($data['full_slug']);
+        }
+
+        if (isset($data['new'])) $data['status_message'] .=  ' ' . Localization::fetch('in', null, true);
+
         $template_list = array("publish");
         Statamic_View::set_templates(array_reverse($template_list));
         $admin_app->render(null, array('route' => 'publish', 'app' => $admin_app)+$data);
@@ -476,9 +530,11 @@ $admin_app->post('/publish', function() use ($admin_app) {
         return;
       }
     } else {
+      // @TODO: Replace this garbage
       print "no form data";
     }
   } else {
+    // @TODO: Replace this garbage too
     print "no form data";
   }
 
@@ -513,30 +569,7 @@ $admin_app->post('/publish', function() use ($admin_app) {
     $folder = $path;
 
   } else {
-
     $file = ltrim(URL::assemble(Config::getContentRoot(), $path), '/') . '.' . $content_type;
-
-    // $folder = dirname($path);
-    // if ($form_data['type'] == 'date') {
-    //   if (Config::getEntryTimestamps()) {
-    //     if ($form_data['original_timestamp'] == '') {
-    //       $file = $content_root."/".dirname($path)."/".$form_data['original_datestamp']."-".$form_data['original_slug'].".".$content_type;
-    //     } else {
-    //       $file = $content_root."/".dirname($path)."/".$form_data['original_datestamp']."-".$form_data['original_timestamp']."-".$form_data['original_slug'].".".$content_type;
-    //     }
-    //   } else {
-    //     $file = $content_root."/".dirname($path)."/".$form_data['original_datestamp']."-".$form_data['original_slug'].".".$content_type;
-    //   }
-    // } elseif ($form_data['type'] == 'number') {
-    //   // $file = $content_root."/".dirname($path)."/".$form_data['original_numeric'].".".$form_data['original_slug'].".".$content_type;
-    //   $file = $content_root."/".$path.".".$content_type;
-    // } else {
-    //   if ($index_file) {
-    //     $file = $content_root."/".dirname($path)."/page.".$content_type;
-    //   } else {
-    //     $file = $content_root."/".dirname($path)."/".$form_data['original_slug'].".".$content_type;
-    //   }
-    // }
   }
 
   // load the original yaml
@@ -572,6 +605,31 @@ $admin_app->post('/publish', function() use ($admin_app) {
     $data['fields'] = array();
   }
 
+  /*
+  |--------------------------------------------------------------------------
+  | Check if file is writable
+  |--------------------------------------------------------------------------
+  |
+  | We now have a file name. Let's check if we can write to this thing.
+  | If not, throw an error page
+  |
+  */
+
+  if ( ! Statamic::is_content_writable() || (File::exists($file) && ! File::isWritable($file))) {
+    $url = $admin_app->urlFor('error')."?code=content_not_writable";
+    $admin_app->redirect($url);
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | Fieldset defaults
+  |--------------------------------------------------------------------------
+  |
+  | We need to bring in the fieldset so we know what we're working with
+  |
+  */
+
+
   $fieldset = null;
   $field_settings = array();
   if (count($data['fields']) < 1 && file_exists("{$content_root}/{$folder}/fields.yaml")) {
@@ -603,15 +661,32 @@ $admin_app->post('/publish', function() use ($admin_app) {
     }
   }
 
-  // check for empty checkbox fields
-  // unchecked checkbox fields will not be included in the POST array due to
-  // being unsuccessful, thus, we need to loop through all expected fields
-  // looking for a checkbox type, and if it isn't in POST, set it to 0 manually
+  /*
+  |--------------------------------------------------------------------------
+  | Check for empty checkbox fields
+  |--------------------------------------------------------------------------
+  |
+  | Unchecked checkbox fields will not be included in the POST array due to
+  | being unsuccessful, thus, we need to loop through all expected fields
+  | looking for a checkbox type, and if it isn't in POST, set it to 0 manually
+  |
+  */
+
   foreach ($field_settings as $field => $settings) {
     if (isset($settings['type']) && $settings['type'] == 'checkbox' && !isset($form_data['yaml'][$field])) {
       $form_data['yaml'][$field] = 0;
     }
   }
+
+  /*
+  |--------------------------------------------------------------------------
+  | File uploads
+  |--------------------------------------------------------------------------
+  |
+  | This isn't great. We need to rewrite this. AJAX would probably be
+  | best course of action.
+  |
+  */
 
   if (isset($_FILES['page'])) {
     foreach ($_FILES['page']['name']['yaml'] as $field => $value) {
@@ -644,6 +719,16 @@ $admin_app->post('/publish', function() use ($admin_app) {
     }
   }
 
+  /*
+  |--------------------------------------------------------------------------
+  | Fieldtype Process Method
+  |--------------------------------------------------------------------------
+  |
+  | Fieldtypes get the opportunity to process their own data.
+  | That happens right here.
+  |
+  */
+
   foreach ($form_data['yaml'] as $field => $value) {
     if (isset($field_settings[$field]['type']) && $field_settings[$field]['type'] != 'file') {
       $file_data[$field] = Fieldtype::process_field_data($field_settings[$field]['type'], $value, $field_settings[$field], $field);
@@ -660,30 +745,62 @@ $admin_app->post('/publish', function() use ($admin_app) {
     unset($file_data['status']);
   }
 
+  /*
+  |--------------------------------------------------------------------------
+  | Build and write content
+  |--------------------------------------------------------------------------
+  |
+  | Let's create or update this file.
+  |
+  */
+
   $file_content = File::buildContent($file_data, $form_data['content']);
   File::put($file, $file_content);
 
-  // Do we need to rename the file?
+  /*
+  |--------------------------------------------------------------------------
+  | Rename/move file
+  |--------------------------------------------------------------------------
+  |
+  | If the slug changed we'll need to rename the file accordingly.
+  |
+  */
+
+
+
   if ( ! isset($form_data['new'])) {
 
-    $new_slug = Slug::make($form_data['meta']['slug']);
+    $new_slug = ($form_data['meta']['slug'] === '/') ? '/' : Slug::make($form_data['meta']['slug']);
 
+    // Date Entry
     if ($form_data['type'] == 'date') {
+
+      // With Timestamps
       if (Config::getEntryTimestamps()) {
         $new_timestamp = $form_data['meta']['publish-time'];
         $new_datestamp = $form_data['meta']['publish-date'];
         $new_file = $content_root . "/" . dirname($path) . "/" . $status_prefix .  $new_datestamp . "-" . $new_timestamp . "-" . $new_slug.".".$content_type;
+
+      // Without Timestamps
       } else {
         $new_datestamp = $form_data['meta']['publish-date'];
         $new_file = $content_root . "/" . dirname($path) . "/" . $status_prefix . $new_datestamp . "-" . $new_slug.".".$content_type;
       }
+
+    // Numerical Entry
     } elseif ($form_data['type'] == 'number') {
       $new_numeric = $form_data['meta']['publish-numeric'];
       $new_file = $content_root . "/" . dirname($path) . "/" . $status_prefix . $new_numeric . "." . $new_slug . "." . $content_type;
+
+    // Pages
     } else {
+
+      // Folder/page.md
       if ($index_file) {
-        $new_file = str_replace($form_data['original_slug'], $new_slug, $file);
+        $new_file = str_replace($form_data['original_slug'], $status_prefix . $new_slug, $file);
       } else {
+
+        // Regular page
         $new_file = $content_root . "/" . dirname($path) . "/" . $status_prefix . $new_slug . "." . $content_type;
       }
     }
@@ -697,7 +814,15 @@ $admin_app->post('/publish', function() use ($admin_app) {
     }
   }
 
-  // rediect back to entries
+  /*
+  |--------------------------------------------------------------------------
+  | Done. Let's redirect!
+  |--------------------------------------------------------------------------
+  |
+  | Pages go back to the tree, entries to their respective Entry Listing
+  |
+  */
+
   if ($form_data['type'] == 'none') {
     $app->flash('success', 'Page saved successfully!');
     $url = $app->urlFor('pages')."?path=".$folder;
@@ -711,23 +836,30 @@ $admin_app->post('/publish', function() use ($admin_app) {
 });
 
 // GET: DELETE ENTRY
-$admin_app->get('/delete/entry', function() use ($admin_app) {
+$admin_app->map('/delete/entry', function() use ($admin_app) {
   authenticateForRole('admin');
   doStatamicVersionCheck($admin_app);
   $content_root = Config::getContentRoot();
   $content_type = Config::getContentType();
 
-  $path = $admin_app->request()->get('path');
-  $folder = dirname($path);
-  $file = $content_root."/".$path.".".$content_type;
-  if (File::exists($file)) {
-    // rediect back to entries
-    unlink($file);
-    $admin_app->flash('success', 'Entry successfully deleted!');
-    $url = $admin_app->urlFor('entries')."?path=".$folder;
-    $admin_app->redirect($url);
+  $entries = (array) Request::fetch('entries');
+  $count = count($entries);
+
+  foreach ($entries as $path) {
+    $file = $content_root . "/" . $path . "." . $content_type;
+    File::delete($file);
   }
-})->name('delete_entry');
+
+  if ($count > 1) {
+    $admin_app->flash('success', 'Entries successfully deleted!');
+  } else {
+    $admin_app->flash('success', 'Entry successfully deleted!');
+  }
+
+  $url = $admin_app->urlFor('entries')."?path=".dirname($path);
+  $admin_app->redirect($url);
+
+})->name('delete_entry')->via('GET', 'POST');;
 
 
 
@@ -782,8 +914,9 @@ $admin_app->get('/publish', function() use ($admin_app) {
 
     if ($new) {
       $data['new'] = 'true';
-      $page     = 'new-slug';
-      $folder   = $path;
+      $page = 'new-slug';
+      $folder = $path;
+
       $data['full_slug'] = dirname($path);
       $data['slug'] = '';
       $data['path'] = $path;
@@ -808,7 +941,6 @@ $admin_app->get('/publish', function() use ($admin_app) {
 
     } else {
       $page   = basename($path);
-
       $folder = substr($path, 0, (-1*strlen($page))-1);
 
       if ( ! Content::exists($page, $folder)) {
@@ -820,8 +952,6 @@ $admin_app->get('/publish', function() use ($admin_app) {
       }
 
       $data = Statamic::get_content_meta($page, $folder, true);
-
-      $data['status'] = array_get($data, 'status', Slug::getStatus($page));
 
       $data['title'] = isset($data['title']) ? $data['title'] : '';
       $data['slug'] = basename($path);
@@ -842,6 +972,13 @@ $admin_app->get('/publish', function() use ($admin_app) {
         $folder = dirname($folder);
         $data['full_slug'] = $page;
       }
+    }
+
+    // Get/Set Status
+    if ($data['slug'] === 'page') {
+      $data['status'] = array_get($data, 'status', Slug::getStatus($data['folder']));
+    } else {
+      $data['status'] = array_get($data, 'status', Slug::getStatus($page));
     }
 
     $content_root = $content_root;
@@ -917,6 +1054,7 @@ $admin_app->get('/publish', function() use ($admin_app) {
       }
     } else {
 
+
       if ($new) {
         if ($fieldset) {
           $fs = Statamic_Fieldset::load($fieldset);
@@ -924,6 +1062,7 @@ $admin_app->get('/publish', function() use ($admin_app) {
           $data['fields'] = isset($fields_data['fields']) ? $fields_data['fields'] : array();
           $data['type'] = 'none';
           $data['fieldset'] = $fieldset;
+
         }
       } else {
         if (isset($data['_fieldset'])) {
@@ -935,7 +1074,14 @@ $admin_app->get('/publish', function() use ($admin_app) {
         $data['type'] = 'none';
       }
 
-      $data['slug'] = $page;
+      if (Slug::isDraft($page)) {
+        $data['slug'] = substr($page, 2);
+      } elseif (Slug::isHidden($page)) {
+        $data['slug'] = substr($page, 1);
+      } else {
+        $data['slug'] = $page;
+      }
+
       $data['original_slug'] = $page;
     }
 
@@ -943,7 +1089,49 @@ $admin_app->get('/publish', function() use ($admin_app) {
     print "NO PATH";
   }
 
+  // We want to respect the Status field, but not run it through Fieldset::render()
+  $data['status'] = ($new) ? array_get($data, 'fields:status:default', 'live') : $data['status'];
+  unset($data['fields']['status']);
+
+  // Content
+  $content_defaults = array('content' => array(
+    'display'      => array_get($data, 'fields:content:display', 'Content'),
+    'type'         => array_get($data, 'fields:content:type', 'markitup'),
+    'field_config' => array_get($data, 'fields:content', array()),
+    'required'     => (array_get($data, 'fields:content:required', false) === true) ? 'required' : '',
+    'instructions' => array_get($data, 'fields:content:instructions', ''),
+    'required'     => array_get($data, 'fields:content:required', false),
+    'input_key'    => ''
+  ));
+
+
+
+  $data['fields'] = array_merge(array_get($data, 'fields', array()), $content_defaults);
+
   $data['full_slug'] = Path::tidy($data['full_slug']);
+
+  /*
+  |--------------------------------------------------------------------------
+  | Status bar message
+  |--------------------------------------------------------------------------
+  |
+  | Gawd this is awful. Can't wait to refactor this spaghetti.
+  |
+  */
+
+  $data['status_message']  = (isset($new)) ? Localization::fetch('new') : Localization::fetch('editing');
+  $data['status_message'] .= ' ';
+
+  if ($data['type'] === 'none' || ($data['type'] === 'none' && $original_slug !== 'page')) {
+    $data['status_message'] .= Localization::fetch('page', null, true);
+    $data['identifier'] = ($data['page'] === 'page') ? Path::pretty($data['folder']) : Path::pretty($data['full_slug']);
+  } else {
+    $data['status_message'] .= Localization::fetch('entry', null, true);
+    $data['identifier'] = ($new) ? Path::pretty($folder . '/') : Path::pretty($data['full_slug']);
+  }
+
+  if ($new) $data['status_message'] .=  ' ' . Localization::fetch('in', null, true);
+
   $data['templates'] = Theme::getTemplates();
   $data['layouts'] = Theme::getLayouts();
 
@@ -982,6 +1170,7 @@ $admin_app->post('/member', function() use ($admin_app) {
   $name = $admin_app->request()->get('name');
 
   $form_data = $admin_app->request()->post('member');
+
   if ($form_data) {
     $errors = array();
     // VALIDATE
@@ -1030,9 +1219,12 @@ $admin_app->post('/member', function() use ($admin_app) {
       $data['name'] = $form_data['name'];
       $data['first_name'] = $form_data['yaml']['first_name'];
       $data['last_name'] = $form_data['yaml']['last_name'];
+      $data['full_name']   = $form_data['yaml']['first_name'] . ' ' .$form_data['yaml']['last_name'];
+      $data['email'] = $form_data['yaml']['email'];
       $data['roles'] = $form_data['yaml']['roles'];
       $data['biography'] =  $form_data['biography'];
       $data['original_name'] = $form_data['original_name'];
+      $data['status_message'] = 'Creating new member';
 
       $template_list = array("member");
       Statamic_View::set_templates(array_reverse($template_list));
@@ -1051,6 +1243,8 @@ $admin_app->post('/member', function() use ($admin_app) {
 
     $user->set_first_name($form_data['yaml']['first_name']);
     $user->set_last_name($form_data['yaml']['last_name']);
+    $user->set_email($form_data['yaml']['email']);
+
     if ( ! isset($form_data['yaml']['roles'])) {
       $form_data['yaml']['roles'] = '';
     }
@@ -1090,11 +1284,8 @@ $admin_app->get('/member', function() use ($admin_app) {
   $data = array();
 
   if ( ! Statamic::are_users_writable()) {
-    $admin_app->flash('error', 'The Users directory is not writable.');
-    $url = $admin_app->urlFor('error')."?code=write_permission";
+    $url = $admin_app->urlFor('error')."?code=users_not_writable";
     $admin_app->redirect($url);
-
-    return;
   }
 
   $name = $admin_app->request()->get('name');
@@ -1107,22 +1298,26 @@ $admin_app->get('/member', function() use ($admin_app) {
     $data['original_name']  = '';
     $data['first_name']     = '';
     $data['last_name']      = '';
+    $data['full_name']      = '';
+    $data['email']          = '';
     $data['roles']          = '';
     $data['biography']      = '';
-    $data['is_password_encrypted'] = false;
+    $data['status_message'] = "Creating new member";
 
   } else {
     $user = Statamic_Auth::get_user($name);
 
-    if (!$user) {
+    if ( ! $user) {
       die("Error");
     }
 
     $data['name'] = $name;
+    $data['full_name'] = $user->get_full_name();
     $data['first_name'] = $user->get_first_name();
     $data['last_name'] = $user->get_last_name();
+    $data['email'] = $user->get_email();
     $data['roles'] = $user->get_roles_list();
-    $data['is_password_encrypted'] = $user->is_password_encrypted();
+    $data['status_message'] = "Editing member: ";
 
     $data['biography'] =  $user->get_biography_raw();
 
@@ -1171,14 +1366,23 @@ $admin_app->get('/account', function() use ($admin_app) {
 
 
 
-
 // System
 // --------------------------------------------------------
 $admin_app->get('/system', function() use ($admin_app) {
+
+  $redirect_to = Config::get('_admin_start_page', 'pages');
+  $admin_app->redirect($admin_app->urlFor('security'));
+
+})->name('system');
+
+
+// Security
+// --------------------------------------------------------
+$admin_app->get('/system/security', function() use ($admin_app) {
   authenticateForRole('admin');
   doStatamicVersionCheck($admin_app);
 
-  $template_list = array("system");
+  $template_list = array("security");
   Statamic_View::set_templates(array_reverse($template_list));
 
   $data = array();
@@ -1189,13 +1393,13 @@ $admin_app->get('/system', function() use ($admin_app) {
     $username = $user->get_name();
 
     $tests = array(
-      '_app'                                            => "Your application folder is accessible to the web. While not critical, it's best practice to protect this folder.",
-      '_config'                                         => "Your config folder is accessible to the web. It is critical that you protect this folder.",
-      '_config/settings.yaml'                           => "Your settings files are accessible to the web. It is critical that you protect this folder.",
-      '_config/users/'.$username.'.yaml'                => "Your member files are accessible to the web. It is critical that you protect this folder.",
-      Config::getContentRoot()                          => "Your content folder is accessible to the web. While not critical, it is best practice to protect this folder.",
-      Config::getTemplatesPath().'layouts/default.html' => "Your theme template files are accessible to the web. While not critical, it is best practice to protect this folder.",
-      '_logs'                                           => "Your logs folder is accessible to the web. It is critical that you protect this folder."
+      '_app'                                            => Localization::fetch('security_app_folder'),
+      '_config'                                         => Localization::fetch('security_config_folder'),
+      '_config/settings.yaml'                           => Localization::fetch('security_settings_files'),
+      '_config/users/'.$username.'.yaml'                => Localization::fetch('security_user_files'),
+      Config::getContentRoot()                          => Localization::fetch('security_content_folder'),
+      Config::getTemplatesPath().'layouts/default.html' => Localization::fetch('security_template_files'),
+      '_logs'                                           => Localization::fetch('security_logs_folder')
     );
 
     $site_url = 'http://'.$_SERVER['HTTP_HOST'].'/';
@@ -1218,8 +1422,8 @@ $admin_app->get('/system', function() use ($admin_app) {
 
   $data['users'] = Statamic_Auth::get_user_list();
 
-  $admin_app->render(null, array('route' => 'system', 'app' => $admin_app)+$data);
-})->name('system');
+  $admin_app->render(null, array('route' => 'security', 'app' => $admin_app)+$data);
+})->name('security');
 
 
 
@@ -1227,7 +1431,7 @@ $admin_app->get('/system', function() use ($admin_app) {
 
 // Logs
 // --------------------------------------------------------
-$admin_app->get('/logs', function() use ($admin_app) {
+$admin_app->get('/system/logs', function() use ($admin_app) {
   authenticateForRole('admin');
   doStatamicVersionCheck($admin_app);
 
@@ -1297,36 +1501,43 @@ $admin_app->get('/logs', function() use ($admin_app) {
 
   // filter
   $match = array('DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL');
-  if (isset($_GET['filter']) && trim($_GET['filter']) && in_array(strtoupper($_GET['filter']), $match)) {
-    $data['filter'] = strtolower($_GET['filter']);
+  $filter = filter_input(INPUT_GET, 'filter');
+  if ($filter) {
 
     switch(strtolower($_GET['filter'])) {
       case 'debug':
         $match = array('DEBUG');
+        $data['filter'] = 'debug';
         break;
 
       case 'info':
         $match = array('INFO');
+        $data['filter'] = 'info';
         break;
 
       case 'info+';
         $match = array('INFO', 'WARN', 'ERROR', 'FATAL');
+        $data['filter'] = 'info+';
         break;
 
       case 'warn':
         $match = array('WARN');
+        $data['filter'] = 'warn';
         break;
 
       case 'warn+';
         $match = array('WARN', 'ERROR', 'FATAL');
+        $data['filter'] = 'warn+';
         break;
 
       case 'error':
         $match = array('ERROR');
+        $data['filter'] = 'error';
         break;
 
       case 'error+';
         $match = array('ERROR', 'FATAL');
+        $data['filter'] = 'error+';
         break;
 
       case 'fatal':
@@ -1400,10 +1611,31 @@ $admin_app->get('/images',  function() use ($admin_app) {
     }
   }
 
-
   echo json_encode($images);
 
 })->name('images');
+
+
+
+
+
+// POST: File Upload
+// --------------------------------------------------------
+$admin_app->post('/file/upload',  function() use ($admin_app) {
+  authenticateForRole('admin');
+  doStatamicVersionCheck($admin_app);
+
+  $file = $_FILES['file']['tmp_name'];
+  $filename = $_FILES['file']['name'];
+  $destination = $admin_app->request()->get('destination');
+
+  File::upload($file, $destination, $filename);
+
+  echo $destination . $filename;
+
+})->name('file_upload');
+
+
 
 
 
@@ -1416,7 +1648,7 @@ $admin_app->notFound(function() use ($admin_app) {
   doStatamicVersionCheck($admin_app);
 
   $admin_app->flash('error', "That page did not exist, so we sent you here instead.");
-  $redirect_to = Config::get('_admin_start_page', 'pages');
+  $redirect_to = Config::get('_admin_404_page', $admin_app->urlFor('pages'));
   $admin_app->redirect($redirect_to);
 
 });

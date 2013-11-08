@@ -3,7 +3,18 @@ class Fieldtype_time extends Fieldtype
 {
   public function render()
   {
-    $html = "<span class='icon'>N</span><input type='text' class='timepicker' name='{$this->fieldname}' tabindex='{$this->tabindex}' value='{$this->field_data}' />";
+    $attributes = array(
+      'name' => $this->fieldname,
+      'id' => $this->field_id,
+      'class' => 'timepicker',
+      'tabindex' => $this->tabindex,
+      'value' => HTML::convertSpecialCharacters($this->field_data)
+    );
+
+    $html  =  "<span class='ss-icon'>clock</span>";
+    $html .= "<div class='bootstrap-timepicker'>";
+    $html .= HTML::makeInput('text', $attributes, $this->is_required);
+    $html .= "</div>";
 
     return $html;
   }

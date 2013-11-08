@@ -18,11 +18,13 @@ class Localization
      * @param $language string  Optionally override the desired language
      * @return mixed
      */
-    public static function fetch($key, $language = null)
+    public static function fetch($key, $language = null, $lower = false)
     {
         $app = \Slim\Slim::getInstance();
 
         $language = $language ? $language : Config::getCurrentLanguage();
+
+        $value = $key;
 
         /*
         |--------------------------------------------------------------------------
@@ -35,7 +37,9 @@ class Localization
         */
 
         if ( ! isset($app->config['_translations'][$language])) {
-            $app->config['_translations'][$language] = YAML::parse(Config::getTranslation($language));
+            if (File::exists(Config::getTranslation($language))) {
+                $app->config['_translations'][$language] = YAML::parse(Config::getTranslation($language));
+            }
         }
 
         /*
@@ -48,10 +52,12 @@ class Localization
         |
         */
 
-        if (array_get($app->config['_translations'][$language]['translations'], $key, false)) {
-            return array_get($app->config['_translations'][$language]['translations'], $key);
+        if (array_get($app->config['_translations'], $language.':translations:'.$value, false)) {
+            $value = array_get($app->config['_translations'][$language]['translations'], $value);
+        } else {
+            $value = array_get($app->config['_translations']['en']['translations'], $value, $value);
         }
 
-        return array_get($app->config['_translations']['en']['translations'], $key, $key);
+        return ($lower) ? strtolower($value) : $value;
     }
 }

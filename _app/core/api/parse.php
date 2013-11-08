@@ -31,7 +31,7 @@ class Parse
      * @param string  $callback  Callback to call when done
      * @return string
      */
-    public static function template($html, $variables, $callback = null)
+    public static function template($html, $variables, $callback = array('statamic_view', 'callback'))
     {
         $parser = new \Lex\Parser();
         $parser->cumulativeNoparse(TRUE);
@@ -113,7 +113,7 @@ class Parse
                 "key" => trim($parts[0]),
                 "value" => Parse::conditionValue(trim($parts[1]))
             );
-            
+
         // doesn't have a colon, looking for existence (or lack thereof)
         } else {
             $condition = trim($condition);
@@ -121,7 +121,7 @@ class Parse
                 "key" => $condition,
                 "value" => array()
             );
-            
+
             if (substr($condition, 0, 1) === "!") {
                 $condition_array['key'] = substr($condition, 1);
                 $condition_array['value'] = array(

@@ -3,8 +3,17 @@ class Fieldtype_date extends Fieldtype
 {
   public function render()
   {
-    $html =  "<span class='icon'>P</span>";
-    $html .= "<input type='text' name='{$this->fieldname}' tabindex='{$this->tabindex}' value='{$this->field_data}' class='datepicker' />";
+    $attributes = array(
+      'name' => $this->fieldname,
+      'id' => $this->field_id,
+      'class' => 'datepicker',
+      'tabindex' => $this->tabindex,
+      'value' => HTML::convertSpecialCharacters($this->field_data),
+      'data-value' => HTML::convertSpecialCharacters($this->field_data)
+    );
+
+    $html  =  "<span class='ss-icon'>date</span>";
+    $html .= HTML::makeInput('text', $attributes, $this->is_required);
 
     return $html;
   }

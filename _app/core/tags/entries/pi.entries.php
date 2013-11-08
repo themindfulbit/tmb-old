@@ -35,7 +35,8 @@ class Plugin_entries extends Plugin
 
         // filter
         $content_set->filter(array(
-            'show_all'    => $this->fetchParam('show_hidden', false, null, true, false),
+            'show_hidden' => $this->fetchParam('show_hidden', false, null, true, false),
+            'show_drafts' => $this->fetchParam('show_drafts', false, null, true, false),
             'since'       => $this->fetchParam('since'),
             'until'       => $this->fetchParam('until'),
             'show_past'   => $this->fetchParam('show_past', true, null, true),
@@ -108,7 +109,8 @@ class Plugin_entries extends Plugin
 
         // filter
         $content_set->filter(array(
-            'show_all'    => $this->fetchParam('show_hidden', false, null, true, false),
+            'show_hidden' => $this->fetchParam('show_hidden', false, null, true, false),
+            'show_drafts' => $this->fetchParam('show_drafts', false, null, true, false),
             'since'       => $this->fetchParam('since'),
             'until'       => $this->fetchParam('until'),
             'show_past'   => $this->fetchParam('show_past', TRUE, NULL, TRUE),
@@ -185,7 +187,8 @@ class Plugin_entries extends Plugin
 
         // filter
         $content_set->filter(array(
-            'show_all'    => $this->fetchParam('show_hidden', false, null, true, false),
+            'show_hidden' => $this->fetchParam('show_hidden', false, null, true, false),
+            'show_drafts' => $this->fetchParam('show_drafts', false, null, true, false),
             'since'       => $this->fetchParam('since'),
             'until'       => $this->fetchParam('until'),
             'show_past'   => $this->fetchParam('show_past', true, null, true),

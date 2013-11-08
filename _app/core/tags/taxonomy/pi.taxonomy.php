@@ -14,6 +14,7 @@ class Plugin_taxonomy extends Plugin
         // now filter that down to just what we want
         $taxonomy_set->filter(array(
             "folders"   => $folders,
+            "show_hidden" => false,
             "min_count" => $this->fetchParam('min_count', 1, 'is_numeric')
         ));
 
