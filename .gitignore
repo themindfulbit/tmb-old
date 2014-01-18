@@ -1,2 +1,4 @@
 .elasticbeanstalk/
 _config/environments/*
+_config/users/*
+.sass-cache/*
