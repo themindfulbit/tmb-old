@@ -1,0 +1,8 @@
+<ul class="mini-gallery">
+    <li class="menu-title">Gallery</li>
+	  {{ entries:listing folder="gallery" limit="1" sort_by="random" }}  
+	    <a class="fancybox" alt="{{ title }}" title="{{ title }}" rel="page" href="{{ _site_url }}gallery" >
+			<img src="{{ _site_url }}assets/img/{{ image }}" />
+		</a>
+	  {{ /entries:listing }}
+</ul>

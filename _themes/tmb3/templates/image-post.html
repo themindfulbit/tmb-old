@@ -1,0 +1,83 @@
+
+
+<div class="title-banner {{ categories_spaced_list }}">
+  <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
+    <img src="{{ _site_url }}assets/img/{{ image }}" />
+  </a>
+</div>
+
+<div class="content">
+  <div class="post">
+
+    <div class="pre-bar">
+      <a href="{{ url }}" class="date-ball {{ categories_spaced_list }}">
+        <div class="nice-date">{{ datestamp format="M d, 'y" }}</div>
+        <div class="time">{{ datestamp format="g:i A" }}</div>
+      </a>
+      {{ tags }}
+        <a class="icon {{ name }}" href="{{ _site_root }}blog/tags/{{ name|slugify }}"></a>
+      {{ /tags }}
+    </div>
+    <div class="post-body">
+
+      <h2 class="title">
+        {{ if link }}
+          <a href="{{ link }}">{{ title }}&nbsp;&rArr;</a>
+        {{ else }}
+          <a href="{{ url }}">{{ title }}</a>
+        {{ endif }}
+      </h2> 
+      <div class="title-date">Posted <span class="nice-date">{{ datestamp format="M d, 'y" }}</span> at <span class="time">{{ datestamp format="g:i A" }}</span></div> 
+
+        {{ caption|markdown }}
+
+      <div class="post-footer">
+        <p class="title">Themes</p>
+        <ul class="category-list">
+          {{ categories }}
+            <li><a href="{{ _site_root }}blog/categories/{{ name }}">{{ name }}</a></li>
+          {{ /categories }}     
+        </ul>
+        {{ if tags }}
+          <p class="title">Topics</p>
+          <ul class="tag-list">
+            {{ tags }}
+              <li><a href="{{ _site_root }}blog/tags/{{ name|slugify }}">{{ name }}</a></li>
+            {{ /tags }}    
+          </ul>
+        {{ endif }}
+      </div>
+    </div>
+  </div> 
+
+  <h2 class="more-header">Related Posts</h2>
+
+  <ul class="more-posts">
+
+    {{ entries:listing folder="blog" conditions="tags:{ tags_option_list },url:not {url}" }}
+    
+    <li class="post">
+      <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
+
+        {{ if banner }}
+        <div class="banner {{ categories_spaced_list }}">
+            <img src="{{ _site_url }}assets/img/{{ banner }}" />
+        </div>
+        {{ endif }}
+        
+        <h2 class="title">
+
+            {{ title }}
+
+        </h2> 
+
+        <div class="title-date">Posted <span class="nice-date">{{ datestamp format="M d, 'y" }}</span> at <span class="time">{{ datestamp format="g:i A" }}</span></div>
+
+      </a>
+    </li> 
+
+    {{ /entries:listing }}
+
+  </ul>
+
+</div>

@@ -1,0 +1,26 @@
+<div class="content archive">
+  <img class="logo" src="{{ theme:img src="logo.svg"}}" alt="Logo" />
+  <h1>The Mindful Bit</h1>
+
+  <div id="archive-list">
+
+    <input class="search" placeholder="search titles and metadata">
+
+    <div class="list">
+      {{ entries:listing folder="blog" }}
+
+        <div class="post {{ categories_spaced_list }}">
+          <a href="{{ url }}">
+          <h2 class="title">{{ title }}</h2> 
+          <div class="date">Posted <span class="nice-date">{{ datestamp format="M d, Y" }}</span> at <span class="time">{{ datestamp format="g:i A" }}</span></div> 
+          <p class="categories">{{ categories_spaced_list }}</p> 
+          <p class="tags">{{ tags_spaced_list }}</p>
+          </a>
+        </div>
+
+      {{ /entries:listing }}
+    </div>
+
+  </div>
+
+</div>

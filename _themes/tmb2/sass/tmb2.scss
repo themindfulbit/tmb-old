@@ -151,7 +151,8 @@ body
 	&.spacex,
 	&.orbital,
 	&.technical.difficulties,
-	&.flickr {
+	&.flickr,
+	&.sonos {
 		@include column(2,2);
 		padding: 0;
 		height: 5em;
@@ -606,6 +607,10 @@ body
 
 	&.flickr {
 		background-image: url('../../../assets/icons/flickr.png');
+	}
+
+	&.sonos {
+		background-image: url('../../../assets/icons/sonos.png');
 	}
 }
 
@@ -2139,7 +2144,7 @@ body {
 				position: relative;
 				top: 0.3em;
 				height: 16px;
-				padding-right: 0.5em;
+				padding-right: 0.4em;
 			}
 		}
 	}
@@ -2368,6 +2373,7 @@ footer {
 	body .container .core .sidebar {
 		@include column(4,12);
 		padding-top: 1em;
+		font-size: 0.9em;
 
 		a.logo-link,
 		a.logo-link:hover,

@@ -1,0 +1,10 @@
+<ul class="header-menu">
+  {{ nav from="/" max_depth="1" }}
+    <li class="header-title {{ title }}">
+      <a href="{{ url }}"{{ if is_current }} class="current"{{ endif }}>
+      		<div class="header-title">{{ title }}</div>
+            <div class="link-ball {{ title }}"></div>
+      </a>
+    </li>
+  {{ /nav }}
+</ul>

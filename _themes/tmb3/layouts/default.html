@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ _site_name }}</title>
+  <meta name = "viewport" content = "initial-scale = 1.0">
+  <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <link rel="stylesheet" href="{{ theme:css }}" />
+  <!-- IE specific CSS -->
+    <!--[if lt IE 9]>
+      <link rel="stylesheet" href="{{ theme:css src="ie" }}" />
+    <![endif]-->
+  <link href="{{ theme:css src="prettify"}}" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="//use.typekit.net/edb5lij.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript" src="{{ theme:js src="list.min.js"}}"></script>
+  <script type="text/javascript" src="{{ theme:js src="tmb"}}"></script>
+  <script type="text/javascript" src="{{ theme:js src="prettify"}}"></script>
+  <link rel="stylesheet" href="{{ theme:css src="jquery.fancybox.css"}}" type="text/css" media="screen" />
+  <link rel="stylesheet" href="{{ theme:css src="jquery.fancybox-thumbs.css"}}" type="text/css" media="screen" />
+  <script type="text/javascript" src="{{ theme:js src="jquery.fancybox.pack.js"}}"></script>
+  <script type="text/javascript" src="{{ theme:js src="jquery.fancybox-thumbs.js"}}"></script>
+  <!-- Fav and touch icons -->
+  <link rel="shortcut icon" href="{{ theme:img src="favicon.png"}}">
+  <link rel="alternate" type="application/rss+xml" href="{{ _site_url }}feed" title="The Mindful Bit" />
+  <link rel="apple-touch-icon" href="{{ theme:img src="apple-touch-icon.png"}}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ theme:img src="apple-touch-icon-72.png"}}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ theme:img src="apple-touch-icon-114.png"}}">
+  <link rel="apple-touch-icon" sizes="512x512" href="{{ theme:img src="apple-touch-icon-512.png"}}">
+</head>
+<body id="top" onload="prettyPrint()">
+  <div class="background"></div>
+  <div class="container {{ title }}">
+
+    <div class="header">
+      <a href="#sidebar">
+        <img src="{{ theme:img src="logo.svg"}}" alt="Logo" />
+        <img src="{{ theme:img src="down-arrow.svg"}}" alt="Down Arrow" />
+      </a>
+    </div>
+    <div class="core">
+      
+      {{ layout_content }}
+
+      <div id="sidebar" class="sidebar">
+        <a class="top-link" href="#top">
+          <img src="{{ theme:img src="up-arrow.svg"}}" alt="Up Arrow" />
+          Back to Top
+          <img src="{{ theme:img src="up-arrow.svg"}}" alt="Up Arrow" />
+        </a>
+        <a class="logo-link" href="/">
+          <div class="logo">
+            <img src="{{ theme:img src="logo.svg"}}" alt="Logo" />
+          </div>
+          <h1>The Mindful Bit</h1>
+        </a>
+        <div class="left-bar">
+            {{ theme:partial src="archive-menu" }}
+            {{ theme:partial src="category-list" }}
+            <!-- {{ theme:partial src="favorites-menu" }} -->
+            {{ theme:partial src="project-menu" }}
+            {{ theme:partial src="social-menu" }}
+            {{ theme:partial src="feed-menu" }}
+        </div>
+        <div class="right-bar">
+            {{ theme:partial src="mini-gallery" }}
+            {{ theme:partial src="tag-cloud" }}
+        </div>
+      </div>
+   
+    </div>
+
+    <footer>
+     
+      <p class="cc-text">
+        <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">The Mindful Bit</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://themindfulbit.com" property="cc:attributionName" rel="cc:attributionURL">Erik Hess</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+      </p>
+      <p>Built with <a href="http://statamic.com" target="_blank" title="The Definitive Technical Blogging Framework">Statamic</a> and the <a href="http://https://github.com/takitapart/takitapart-framework">Takitapart CSS Framework</a>.
+      </p>
+    </footer>
+
+  </div> <!-- .container -->
+  <!-- Google Analytics -->
+  <script type="text/javascript"> 
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30121224-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</body>
+</html>

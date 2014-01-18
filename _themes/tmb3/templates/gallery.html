@@ -1,0 +1,23 @@
+<div class="content gallery">
+  <img class="logo" src="{{ theme:img src="logo.svg"}}" alt="Logo" />
+  <h1>Gallery</h1>
+
+  <div id="archive-list">
+
+    <input class="search" placeholder="search titles and metadata">
+
+    <div class="list">
+      {{ entries:listing folder="gallery" }}
+
+	    <div class="photo-post">
+		     <h3><a href="{{ url }}"> {{ title }}</a></h3>
+		    {{ theme:partial src="gallery-thumb" file="{{ image }}" }}
+		     <p>{{ caption|markdown|widont }} </p>
+	    </div>
+
+      {{ /entries:listing }}
+    </div>
+
+  </div>
+
+</div>

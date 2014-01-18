@@ -1,0 +1,59 @@
+
+
+<div class="content">
+  <div class="post">
+
+    <div class="pre-bar">
+      <a href="{{ url }}" class="date-ball {{ categories_spaced_list }}">
+        <div class="nice-date">BEBE-03-34</div>
+        <div class="time">37:72 EF</div>
+      </a>
+    <a class="icon beast" href="http://theoatmeal.com/comics/state_web_summer"></a>
+    <a class="icon manos" href="http://www.amazon.com/Mystery-Science-Theater-3000-Manos/dp/B0055CP9UY/ref=sr_1_1?ie=UTF8&qid=1353456140&sr=8-1&keywords=manos+the+hands+of+fate"></a>
+    </div>
+  
+	  <div class="post-body">  
+    {{ if banner }}
+    {{ if link }}
+
+      <div class="title-banner {{ categories_spaced_list }}">
+        <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ link }}" >
+          <img src="{{ _site_url }}assets/img/{{ banner }}" />
+        </a>
+      </div>
+
+    {{ else }}
+
+      <div class="title-banner {{ categories_spaced_list }}">
+        <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
+          <img src="{{ _site_url }}assets/img/{{ banner }}" />
+        </a>
+      </div>
+
+    {{ endif }}
+  {{ endif }}
+      <h2 class="title">
+          <a href="{{ url }}">{{ title }}</a>
+      </h2> 
+
+	    <p>Hmm... Well, I guess what you're looking for isn't there. That or we're having some issues with the servers.</p>
+
+       {{ theme:partial src="image" file="tb_sign1.png" }}
+
+	    <p><em>Dead? No, madam. The Tumblbeasts are not dead the way you know it. They are with us always. Not dead the way you know it. They are with us always.</em></p>
+
+	    <p><em>You cannot stay - the Tumblbeasts would not approve. </em></p>
+
+	    <p>While we fix this mess you should consider checking out <a href="http://theoatmeal.com">The Oatmeal</a>. His <a href="http://theoatmeal.com/comics/state_web_summer">Tumblbeasts</a> are awesome.</p> 
+
+      <div class="archive-link">
+        <a href="/blog">Find more to read in the Archives</a></p>
+      </div>
+
+	  </div>
+
+
+
+  </div>
+
+</div>

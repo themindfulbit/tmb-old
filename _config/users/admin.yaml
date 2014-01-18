@@ -1,10 +1,14 @@
 ---
 first_name: Admin
 last_name: McAwesome
-roles: [admin]
-password: 
-encrypted_password: 9e3c2b670a39192a8a18ae9f1dd0bbfa262817a0
-salt: 8Mj6qqtn7qY3bsJNPz2pG6mP5gg8wwMQ
+roles:
+  - admin
+password: ""
+salt: ""
+encrypted_password: ""
+username: admin
+password_hash: >
+  $2a$08$V9UX0O3iofzDtrHK6DWNe.QDpVVRHscYUD.tA5HXQf.tXW3117S7m
 ---
 The username is the name of the yaml file. In this case it is "admin".
 

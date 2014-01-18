@@ -1,0 +1,72 @@
+
+
+<div class="content">
+  <div class="post index">
+
+    <div class="pre-bar">
+      <a href="{{ url }}" class="date-ball {{ categories_spaced_list }}">
+        <div class="nice-date">{{ datestamp format="M d, 'y" }}</div>
+        <div class="time">{{ datestamp format="g:i A" }}</div>
+      </a>
+      {{ tags }}
+        <a class="icon {{ name }}" href="{{ _site_root }}blog/tags/{{ name|slugify }}"></a>
+      {{ /tags }}
+    </div>
+    <div class="post-body">
+
+      {{ if banner }}
+        {{ if link }}
+
+          <div class="title-banner {{ categories_spaced_list }}">
+            <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ link }}" >
+              <img src="{{ _site_url }}assets/img/{{ banner }}" />
+            </a>
+          </div>
+
+        {{ else }}
+
+          <div class="title-banner {{ categories_spaced_list }}">
+            <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
+              <img src="{{ _site_url }}assets/img/{{ banner }}" />
+            </a>
+          </div>
+
+        {{ endif }}
+      {{ endif }}
+
+      <h2 class="title">
+        {{ if link }}
+          <a href="{{ link }}">{{ title }}&nbsp;&rArr;</a>
+        {{ else }}
+          <a href="{{ url }}">{{ title }}</a>
+        {{ endif }}
+      </h2> 
+      <div class="title-date">Posted <span class="nice-date">{{ datestamp format="M d, 'y" }}</span> at <span class="time">{{ datestamp format="g:i A" }}</span></div> 
+
+      {{ if summary and !first }}
+
+        {{ summary|markdown }}
+
+        <p>
+          <a href="{{ url }}">Read more...</a>
+        </p>
+
+      {{ else }}
+
+        {{ content|widont }}
+
+        {{ if image }}
+        <div class="image">
+          {{ theme:partial src="image" file="{ image }" }}
+          <p>{{ caption|markdown }} </p>
+        </div>
+        {{ endif }}
+
+        {{ if link }}
+            <div class="permalink"><a href="{{ url }}">&#8251;</a></div>
+        {{ endif }}
+
+      {{ endif }}
+
+    </div>
+  </div> 

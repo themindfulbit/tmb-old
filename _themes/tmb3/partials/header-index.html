@@ -1,0 +1,12 @@
+<div id="header-index">
+  <div class="col0">
+    <p>Key Topics</p>
+  </div>
+  <ul>
+    {{ taxonomy:listing folder="blog|gallery" type="tags" limit="12" sort_by="count" sort_dir="desc" }}
+    <li>
+      <a href="{{ url }}"><span class="tag-name">{{ name }}</span> <span class="entry-count">{{ results }}</span></a>
+    </li>
+    {{ /taxonomy:listing }}
+  </ul>
+</div>

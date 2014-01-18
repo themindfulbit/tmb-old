@@ -4,10 +4,10 @@ require "takitapart"
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "_themes/tmb2/css"
-sass_dir = "_themes/tmb2/sass"
-images_dir = "_themes/tmb2/img"
-javascripts_dir = "_themes/tmb2/js"
+css_dir = "_themes/tmb3/css"
+sass_dir = "_themes/tmb3/sass"
+images_dir = "_themes/tmb3/img"
+javascripts_dir = "_themes/tmb3/js"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
