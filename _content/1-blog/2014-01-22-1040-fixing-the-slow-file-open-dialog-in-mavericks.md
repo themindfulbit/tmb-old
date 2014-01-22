@@ -18,7 +18,21 @@ In the terminal type:
 sudo vim /etc/auto_master
 ~~~
 
-Follow that up with your password. For those who haven't used the command-line text editor [vim](http://www.vim.org/) before, you'll need to type `i` to start editing. Use your cursors to move to the line with:
+Follow that up with your password. You should now be editing a file that looks something like this:
+
+~~~
+#
+# Automounter master map
+#
++auto_master            # Use directory service
+/net                   -hosts          -nobrowse,hidefromfinder,nosuid
+/home                   auto_home       -nobrowse,hidefromfinder
+/Network/Servers        -fstab
+/-                      -static
+~~~
+
+
+For those who haven't used the command-line text editor [vim](http://www.vim.org/) before, you'll need to type `i` to start editing. Use your cursors to move to the line with:
 
 ~~~
 /net
@@ -30,7 +44,7 @@ Comment that line out by putting `#` in front of it, so it reads:
 #/net
 ~~~
 
-Save your file by typing `Shift-Z Shift-Z` (that's capital Z twice in a row) then enter the following command:
+Save your file by typing `Esc, Shift-Z, Shift-Z` (that's the escape key, followed by capital Z twice in a row). Next enter the following command:
 
 ~~~
 sudo automount -vc
