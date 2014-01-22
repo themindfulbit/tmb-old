@@ -2,3 +2,4 @@
 _config/environments/*
 _config/users/*
 .sass-cache/*
+_cache/*
