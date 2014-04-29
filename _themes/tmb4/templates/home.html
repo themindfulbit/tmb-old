@@ -1,0 +1,46 @@
+<div class="core home">
+
+  {{ entries:listing folder="blog" limit="{home_blog_items}" }}
+
+    <div class="post">
+      {{ if banner }}
+
+        {{ if link }}
+          <a class="post-banner" href="{{ link }}"><img src="{{ _site_url }}assets/img/{{ banner }}" /></a>
+        {{ else }}
+          <a class="post-banner" href="{{ url }}"><img src="{{ _site_url }}assets/img/{{ banner }}" /></a>
+        {{ endif }}
+
+        {{ if caption }}
+          <div class="post-caption">{{ caption|markdown }}</div>
+        {{ endif }}
+
+      {{ endif }}
+
+      {{ if link }}
+        <h2 class="post-title"><a href="{{ link }}">{{ title }}&nbsp;&rArr;</a></h2>
+      {{ else }}
+        <h2 class="post-title"><a href="{{ url }}">{{ title }}</a></h2>
+      {{ endif }}
+
+      <p class="post-date">{{ datestamp format="F jS, Y" }}</p>
+
+      <div class="post-content">
+        {{ content|widont }}
+      </div>
+
+      <div class="post-meta">
+        {{ if categories }}
+          {{ categories_unordered_url_list }}
+        {{ endif }}
+
+        {{ if tags }}
+          {{ tags_unordered_url_list }}
+        {{ endif }}
+      </div>
+
+    </div>
+
+  {{ /entries:listing }}
+
+</div>

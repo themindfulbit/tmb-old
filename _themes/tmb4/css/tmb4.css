@@ -1,0 +1,1074 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 17, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/*
+*  Normalization, bugfixes, workarounds, and defaults.
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/*  mostly adopted from http://necolas.github.com/normalize.css/ */
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================== */
+/*
+ * Corrects block display not defined in IE6/7/8/9 & FF3
+ */
+/* line 30, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/*
+ * Corrects inline-block display not defined in IE6/7/8/9 & FF3
+ */
+/* line 40, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+/*
+ * Prevents modern browsers from displaying 'audio' without controls
+ */
+/* line 50, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+audio:not([controls]) {
+  display: none;
+}
+
+/*
+ * Addresses styling for 'hidden' attribute not present in IE7/8/9, FF3, S4
+ * Known issue: no IE6 support
+ */
+/* line 59, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+[hidden] {
+  display: none;
+}
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+/* line 69, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * 1. Corrects text resizing oddly in IE6/7 when body font-size is set using em units
+ *    http://clagnut.com/blog/348/#c790
+ * 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
+ *    www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
+ */
+/* line 82, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+html {
+  font-size: 100%;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/*
+ * Addresses font-family inconsistency between 'textarea' and other form elements.
+ */
+/* line 96, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+html,
+button,
+input,
+select,
+textarea {
+  font-family: sans-serif;
+}
+
+/*
+ * Addresses margins handled incorrectly in IE6/7
+ */
+/* line 104, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+body {
+  margin: 0;
+}
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+/*
+ * Addresses outline displayed oddly in Chrome
+ */
+/* line 119, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+a:focus {
+  outline: thin dotted;
+}
+
+/*
+ * Improves readability when focused and also mouse hovered in all browsers
+ * people.opera.com/patrickl/experiments/keyboard/test
+ */
+/* line 129, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+a:hover,
+a:active {
+  outline: 0;
+}
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+/*
+ * Addresses styling not present in IE7/8/9, S5, Chrome
+ */
+/* line 141, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/*
+ * Addresses style set to 'bolder' in FF3+, S4/5, Chrome
+*/
+/* line 150, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/* line 154, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+blockquote {
+  margin: 1em 40px;
+}
+
+/*
+ * Addresses styling not present in S5, Chrome
+ */
+/* line 162, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/*
+ * Addresses styling not present in IE6/7/8/9
+ */
+/* line 170, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/*
+ * Addresses margins set differently in IE6/7
+ */
+/* line 180, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+p,
+pre {
+  margin: 1em 0;
+}
+
+/*
+ * Corrects font family set oddly in IE6, S4/5, Chrome
+ * en.wikipedia.org/wiki/User:Davidgothberg/Test59
+ */
+/* line 192, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, serif;
+  _font-family: 'courier new', monospace;
+  font-size: 1em;
+}
+
+/*
+ * Improves readability of pre-formatted text in all browsers
+ */
+/* line 202, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/*
+ * 1. Addresses CSS quotes not supported in IE6/7
+ * 2. Addresses quote property not supported in S4
+ */
+/* 1 */
+/* line 215, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+q {
+  quotes: none;
+}
+
+/* 2 */
+/* line 222, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+/* line 227, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+small {
+  font-size: 75%;
+}
+
+/*
+ * Prevents sub and sup affecting line-height in all browsers
+ * gist.github.com/413930
+ */
+/* line 237, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 244, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 248, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+/*
+ * Addresses margins set differently in IE6/7
+ */
+/* line 264, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+dl,
+menu,
+ol,
+ul {
+  margin: 1em 0;
+}
+
+/* line 268, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+dd {
+  margin: 0 0 0 40px;
+}
+
+/*
+ * Addresses paddings set differently in IE6/7
+ */
+/* line 278, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+menu,
+ol,
+ul {
+  padding: 0 0 0 40px;
+}
+
+/*
+ * Corrects list images handled incorrectly in IE7
+ */
+/* line 287, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+nav ul,
+nav ol {
+  list-style: none;
+  list-style-image: none;
+}
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+/*
+ * 1. Removes border when inside 'a' element in IE6/7/8/9, FF3
+ * 2. Improves image quality when scaled in IE7
+ *    code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+ */
+/* line 303, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+img {
+  border: 0;
+  /* 1 */
+  -ms-interpolation-mode: bicubic;
+  /* 2 */
+}
+
+/*
+ * Corrects overflow displayed oddly in IE9
+ */
+/* line 312, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* =============================================================================
+   Figures
+   ========================================================================== */
+/*
+ * Addresses margin not present in IE6/7/8/9, S5, O11
+ */
+/* line 325, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+figure {
+  margin: 0;
+}
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+/*
+ * Corrects margin displayed oddly in IE6/7
+ */
+/* line 338, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+form {
+  margin: 0;
+}
+
+/*
+ * Define consistent border, margin, and padding
+ */
+/* line 346, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/*
+ * 1. Corrects color not being inherited in IE6/7/8/9
+ * 2. Corrects text not wrapping in FF3 
+ * 3. Corrects alignment displayed oddly in IE6/7
+ */
+/* line 358, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  white-space: normal;
+  /* 2 */
+  *margin-left: -7px;
+  /* 3 */
+}
+
+/*
+ * 1. Corrects font size not being inherited in all browsers
+ * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome
+ * 3. Improves appearance and consistency in all browsers
+ */
+/* line 374, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  vertical-align: baseline;
+  /* 3 */
+  *vertical-align: middle;
+  /* 3 */
+}
+
+/*
+ * Addresses FF3/4 setting line-height on 'input' using !important in the UA stylesheet
+ */
+/* line 386, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+button,
+input {
+  line-height: normal;
+  /* 1 */
+}
+
+/*
+ * 1. Improves usability and consistency of cursor style between image-type 'input' and others
+ * 2. Corrects inability to style clickable 'input' types in iOS
+ * 3. Removes inner spacing in IE7 without affecting normal text inputs
+ *    Known issue: inner spacing remains in IE6
+ */
+/* line 400, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  /* 1 */
+  -webkit-appearance: button;
+  /* 2 */
+  *overflow: visible;
+  /* 3 */
+}
+
+/*
+ * Re-set default cursor for disabled elements
+ */
+/* line 411, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+
+/*
+ * 1. Addresses box sizing set to content-box in IE8/9
+ * 2. Removes excess padding in IE8/9
+ * 3. Removes excess padding in IE7
+      Known issue: excess padding remains in IE6
+ */
+/* line 423, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+  *height: 13px;
+  /* 3 */
+  *width: 13px;
+  /* 3 */
+}
+
+/*
+ * 1. Addresses appearance set to searchfield in S5, Chrome
+ * 2. Addresses box-sizing set to border-box in S5, Chrome (include -moz to future-proof)
+ */
+/* line 435, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/*
+ * Removes inner padding and search cancel button in S5, Chrome on OS X
+ */
+/* line 447, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/*
+ * Removes inner padding and border in FF3+
+ * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
+ */
+/* line 457, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/*
+ * 1. Removes default vertical scrollbar in IE6/7/8/9
+ * 2. Improves readability and alignment in all browsers
+ */
+/* line 467, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+textarea {
+  overflow: auto;
+  /* 1 */
+  vertical-align: top;
+  /* 2 */
+}
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+/*
+ * Remove most spacing between table cells
+ */
+/* line 481, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*
+*  Zoomable baseline grid, with mixins intended for responsive zooming.
+*  Along with some sensible typographic defaults. 
+*
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/*
+*  Base configuration stylesheet for the takitapart CSS framework.
+*  This module will be included by the other modules.
+*  These variables can be overridden in your site's stylesheets.
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/* line 42, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+body {
+  /* 16px / 24px */
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+/* line 52, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+.small {
+  /* 13px / 18px */
+  font-size: 0.8125em;
+  line-height: 1.38462em;
+  margin: 1.5em 0;
+}
+
+/* line 60, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+.medium, .normal, h3, p {
+  /* 16px / 24px */
+  font-size: 1em;
+  line-height: 1.5em;
+  /* 24 */
+  margin: 1.5em 0;
+}
+
+/* line 68, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+.large, h2, h1 {
+  /* 26 / 36px */
+  font-size: 1.625em;
+  line-height: 1.38462em;
+  margin: 0.92308em 0;
+}
+
+/* line 76, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+.huge {
+  /* 42px / 48px */
+  font-size: 2.625em;
+  line-height: 1.14286em;
+  margin: 0.57143em 0;
+}
+
+/* line 84, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+.massive {
+  /* 68px / 72px */
+  font-size: 4.25em;
+  line-height: 1.05882em;
+  margin: 1.5em 0;
+}
+
+/* line 92, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+.gigantic {
+  /* 110px / 120px */
+  font-size: 6.875em;
+  line-height: 1.09091em;
+  margin: 1.5em 0;
+}
+
+/*
+*  A semantic, fluid, responsive grid system.
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/*
+*  Base configuration stylesheet for the takitapart CSS framework.
+*  This module will be included by the other modules.
+*  These variables can be overridden in your site's stylesheets.
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/*
+*  A fluid, responsive-friendly form framework. 
+*
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*
+*  Notes on use
+*  ------------
+*  + Wrap field elements with label elements. 
+*
+*/
+/*
+*  Base configuration stylesheet for the takitapart CSS framework.
+*  This module will be included by the other modules.
+*  These variables can be overridden in your site's stylesheets.
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/* line 25, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
+form {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 32, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
+form fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+/* line 42, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
+form fieldset input, form fieldset textarea, form fieldset select {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0 0.25em;
+}
+/* line 53, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
+form fieldset label {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+*  Print specifc style defaults. From HTML5 Boilerplate.
+*
+*  Part of the takitapart CSS framework [ http://takitapart.net/framework ].
+*
+*  See readme.md for details, licensing, and acknowledgments. 
+*
+*/
+/* ==|== print styles =======================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+  /* line 16, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  /* Black prints faster: h5bp.com/s */
+  /* line 17, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  a, a:visited {
+    text-decoration: underline;
+  }
+
+  /* line 18, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* line 19, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /* line 20, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: "";
+  }
+
+  /* Don't show links for images, or javascript/internal links */
+  /* line 21, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /* line 22, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  thead {
+    display: table-header-group;
+  }
+
+  /* h5bp.com/t */
+  /* line 23, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  tr, img {
+    page-break-inside: avoid;
+  }
+
+  /* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  /* line 26, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* line 27, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}
+/* line 43, ../sass/tmb4.scss */
+body {
+  display: block;
+  width: 100%;
+  margin: 0 0;
+  *zoom: 1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Univers Next W01', sans-serif;
+  background-color: #fbfaf5;
+  color: #222222;
+  font-weight: 400;
+}
+/* line 23, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_grid.scss */
+body:before, body:after {
+  content: "";
+  display: table;
+}
+/* line 27, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_grid.scss */
+body:after {
+  clear: both;
+}
+
+/* line 52, ../sass/tmb4.scss */
+strong,
+b {
+  font-weight: 500;
+}
+/* line 56, ../sass/tmb4.scss */
+strong em,
+strong i,
+b em,
+b i {
+  font-style: italic;
+}
+
+/* line 62, ../sass/tmb4.scss */
+em,
+i {
+  font-style: italic;
+}
+
+/* line 66, ../sass/tmb4.scss */
+a {
+  color: #bb4444;
+  text-decoration: none;
+}
+
+/* line 80, ../sass/tmb4.scss */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2em;
+}
+/* line 87, ../sass/tmb4.scss */
+h1 em,
+h1 i,
+h2 em,
+h2 i,
+h3 em,
+h3 i,
+h4 em,
+h4 i,
+h5 em,
+h5 i,
+h6 em,
+h6 i {
+  font-style: italic;
+}
+/* line 91, ../sass/tmb4.scss */
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  color: #222222;
+  text-decoration: none;
+}
+
+/* line 97, ../sass/tmb4.scss */
+p {
+  margin-top: 0;
+  margin-bottom: 0.8em;
+}
+
+/* line 102, ../sass/tmb4.scss */
+.header {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: 1em;
+  padding-bottom: 2em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+/* line 109, ../sass/tmb4.scss */
+.header .logo {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 0 1em;
+  color: #222222;
+  text-decoration: none;
+  position: relative;
+  font-size: 1.2em;
+}
+/* line 117, ../sass/tmb4.scss */
+.header .logo .balls {
+  display: inline-block;
+  padding-right: 0.2em;
+}
+/* line 121, ../sass/tmb4.scss */
+.header .logo .balls .ball {
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #bb4444;
+  width: 1em;
+  height: 1em;
+}
+/* line 128, ../sass/tmb4.scss */
+.header .logo .balls .ball.mindfulness {
+  background-color: #bb4444;
+}
+/* line 132, ../sass/tmb4.scss */
+.header .logo .balls .ball.technology {
+  background-color: #44bb44;
+}
+/* line 136, ../sass/tmb4.scss */
+.header .logo .balls .ball.design {
+  background-color: #4444bb;
+}
+/* line 142, ../sass/tmb4.scss */
+.header .logo h1 {
+  position: relative;
+  top: -0.05em;
+  font-size: 1.1em;
+  display: inline-block;
+  margin: 0;
+  line-height: 1em;
+}
+/* line 152, ../sass/tmb4.scss */
+.header form {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+/* line 156, ../sass/tmb4.scss */
+.header form input {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: transparent;
+  font-family: 'Univers Next W01', sans-serif;
+  border: 0;
+  border-top: 1px dotted #cccccc;
+  border-bottom: 1px dotted #cccccc;
+  padding: 0.5em 0.5em;
+  color: #222222;
+  font-size: 0.9em;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  outline: none;
+}
+/* line 170, ../sass/tmb4.scss */
+.header form input:focus {
+  border-color: #222222;
+}
+
+/* line 177, ../sass/tmb4.scss */
+.core {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 180, ../sass/tmb4.scss */
+.core .post {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+/* line 189, ../sass/tmb4.scss */
+.core .post .post-banner,
+.core .post .post-caption,
+.core .post .post-title,
+.core .post .post-date,
+.core .post .post-content,
+.core .post .post-meta {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+/* line 193, ../sass/tmb4.scss */
+.core .post .post-banner img,
+.core .post .post-caption img,
+.core .post .post-title img,
+.core .post .post-date img,
+.core .post .post-content img,
+.core .post .post-meta img {
+  max-width: 100%;
+  height: auto;
+}
+/* line 199, ../sass/tmb4.scss */
+.core .post .post-title {
+  font-size: 1.2em;
+  margin-bottom: 0.2em;
+}
+/* line 204, ../sass/tmb4.scss */
+.core .post .post-date {
+  color: #999999;
+  font-size: 0.9em;
+}
+/* line 209, ../sass/tmb4.scss */
+.core .post .post-meta {
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+/* line 213, ../sass/tmb4.scss */
+.core .post .post-meta ul {
+  padding: 0;
+}
+
+/* line 220, ../sass/tmb4.scss */
+.footer {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 0.75em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
