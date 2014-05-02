@@ -818,12 +818,12 @@ body:after {
   clear: both;
 }
 
-/* line 52, ../sass/tmb4.scss */
+/* line 53, ../sass/tmb4.scss */
 strong,
 b {
   font-weight: 500;
 }
-/* line 56, ../sass/tmb4.scss */
+/* line 57, ../sass/tmb4.scss */
 strong em,
 strong i,
 b em,
@@ -831,31 +831,32 @@ b i {
   font-style: italic;
 }
 
-/* line 62, ../sass/tmb4.scss */
+/* line 63, ../sass/tmb4.scss */
 em,
 i {
   font-style: italic;
 }
 
-/* line 66, ../sass/tmb4.scss */
+/* line 67, ../sass/tmb4.scss */
 a {
   color: #bb4444;
   text-decoration: none;
 }
 
-/* line 80, ../sass/tmb4.scss */
+/* line 81, ../sass/tmb4.scss */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+  font-family: 'Univers Next W01', sans-serif;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   line-height: 1.2em;
 }
-/* line 87, ../sass/tmb4.scss */
+/* line 89, ../sass/tmb4.scss */
 h1 em,
 h1 i,
 h2 em,
@@ -870,7 +871,7 @@ h6 em,
 h6 i {
   font-style: italic;
 }
-/* line 91, ../sass/tmb4.scss */
+/* line 93, ../sass/tmb4.scss */
 h1 a,
 h2 a,
 h3 a,
@@ -881,13 +882,13 @@ h6 a {
   text-decoration: none;
 }
 
-/* line 97, ../sass/tmb4.scss */
+/* line 99, ../sass/tmb4.scss */
 p {
   margin-top: 0;
   margin-bottom: 0.8em;
 }
 
-/* line 102, ../sass/tmb4.scss */
+/* line 104, ../sass/tmb4.scss */
 .header {
   display: block;
   float: left;
@@ -902,7 +903,7 @@ p {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
-/* line 109, ../sass/tmb4.scss */
+/* line 111, ../sass/tmb4.scss */
 .header .logo {
   display: block;
   float: left;
@@ -918,12 +919,12 @@ p {
   position: relative;
   font-size: 1.2em;
 }
-/* line 117, ../sass/tmb4.scss */
+/* line 119, ../sass/tmb4.scss */
 .header .logo .balls {
   display: inline-block;
   padding-right: 0.2em;
 }
-/* line 121, ../sass/tmb4.scss */
+/* line 123, ../sass/tmb4.scss */
 .header .logo .balls .ball {
   display: inline-block;
   border-radius: 50%;
@@ -931,19 +932,19 @@ p {
   width: 1em;
   height: 1em;
 }
-/* line 128, ../sass/tmb4.scss */
+/* line 130, ../sass/tmb4.scss */
 .header .logo .balls .ball.mindfulness {
   background-color: #bb4444;
 }
-/* line 132, ../sass/tmb4.scss */
+/* line 134, ../sass/tmb4.scss */
 .header .logo .balls .ball.technology {
   background-color: #44bb44;
 }
-/* line 136, ../sass/tmb4.scss */
+/* line 138, ../sass/tmb4.scss */
 .header .logo .balls .ball.design {
   background-color: #4444bb;
 }
-/* line 142, ../sass/tmb4.scss */
+/* line 144, ../sass/tmb4.scss */
 .header .logo h1 {
   position: relative;
   top: -0.05em;
@@ -952,7 +953,7 @@ p {
   margin: 0;
   line-height: 1em;
 }
-/* line 152, ../sass/tmb4.scss */
+/* line 154, ../sass/tmb4.scss */
 .header form {
   display: block;
   float: left;
@@ -964,7 +965,7 @@ p {
   box-sizing: border-box;
   padding: 0;
 }
-/* line 156, ../sass/tmb4.scss */
+/* line 158, ../sass/tmb4.scss */
 .header form input {
   display: block;
   float: left;
@@ -986,12 +987,12 @@ p {
   letter-spacing: 0.05em;
   outline: none;
 }
-/* line 170, ../sass/tmb4.scss */
+/* line 172, ../sass/tmb4.scss */
 .header form input:focus {
   border-color: #222222;
 }
 
-/* line 177, ../sass/tmb4.scss */
+/* line 179, ../sass/tmb4.scss */
 .core {
   display: block;
   float: left;
@@ -1002,7 +1003,7 @@ p {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 180, ../sass/tmb4.scss */
+/* line 182, ../sass/tmb4.scss */
 .core .post {
   display: block;
   float: left;
@@ -1014,7 +1015,7 @@ p {
   box-sizing: border-box;
   padding: 0;
 }
-/* line 189, ../sass/tmb4.scss */
+/* line 191, ../sass/tmb4.scss */
 .core .post .post-banner,
 .core .post .post-caption,
 .core .post .post-title,
@@ -1031,7 +1032,7 @@ p {
   box-sizing: border-box;
   padding: 0;
 }
-/* line 193, ../sass/tmb4.scss */
+/* line 195, ../sass/tmb4.scss */
 .core .post .post-banner img,
 .core .post .post-caption img,
 .core .post .post-title img,
@@ -1041,27 +1042,27 @@ p {
   max-width: 100%;
   height: auto;
 }
-/* line 199, ../sass/tmb4.scss */
+/* line 201, ../sass/tmb4.scss */
 .core .post .post-title {
   font-size: 1.2em;
   margin-bottom: 0.2em;
 }
-/* line 204, ../sass/tmb4.scss */
+/* line 206, ../sass/tmb4.scss */
 .core .post .post-date {
   color: #999999;
   font-size: 0.9em;
 }
-/* line 209, ../sass/tmb4.scss */
+/* line 211, ../sass/tmb4.scss */
 .core .post .post-meta {
   text-transform: uppercase;
   font-size: 0.8em;
 }
-/* line 213, ../sass/tmb4.scss */
+/* line 215, ../sass/tmb4.scss */
 .core .post .post-meta ul {
   padding: 0;
 }
 
-/* line 220, ../sass/tmb4.scss */
+/* line 222, ../sass/tmb4.scss */
 .footer {
   display: block;
   float: left;

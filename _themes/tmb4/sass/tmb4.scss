@@ -43,6 +43,7 @@ $dark-gray: #999999;
 body {
   @include grid();
   font-family: 'Univers Next W01', sans-serif;
+  // font-family: 'Bembo W01', serif;
   background-color: $white;
   color: $black;
   font-weight: 400;
@@ -78,7 +79,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+  font-family: 'Univers Next W01', sans-serif;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   line-height: 1.2em;
