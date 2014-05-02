@@ -23,11 +23,11 @@ _site_name: The Mindful Bit
 _content_root: _content
 
 # Used for permalinks
-_site_url: http://themindfulbit.com
+_site_url: http://themindfulbit.com/
 
 # Test value
 
-_link_url: http://themindfulbit.com
+_link_url: http://themindfulbit.com/
 
 # Running above Webroot, you'll need this
 _public_path: public_html
