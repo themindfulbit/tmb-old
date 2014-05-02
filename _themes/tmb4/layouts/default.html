@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ _site_name }} :: {{ if title }} {{ title }} {{ endif }}</title>
+  <link rel="stylesheet" href="{{ theme:css }}" />
+  <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/37ff5fac-8017-4f01-962e-ffa68239e3c0.css"/>
+  {{ fancybox:head }}
+</head>
+<body>
+  
+  {{ theme:partial src="header" }}
+
+  {{ layout_content }}
+
+  {{ theme:partial src="footer" }}
+
+</body>
+</html>

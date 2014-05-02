@@ -75,7 +75,8 @@ _parse_order:
 _environments:
   dev:
     - 'http://localhost*'
-    - '*.dev:8888'
+    - 'http://akimbokimono.com:8888*'
+    - '*.dev:8888*'
     - '*.localip'
   live:
     - '*.com'

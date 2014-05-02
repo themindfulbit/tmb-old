@@ -1,0 +1,224 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "takitapart/normalize";
+@import "takitapart/typography";
+@import "takitapart/grid";
+@import "takitapart/form";
+@import "takitapart/print";
+
+// Base font-size in pixels.
+
+$font-size: 16;
+
+// Base line-height.
+
+$line: $font-size * 1.5;
+$em: $font-size * 1;
+
+// Number of columns.
+
+$columns: 12;
+
+// Width of the outer margin, in percent.
+
+$outer-margin: 0;
+
+// Colors
+
+$red: #bb4444;
+$green: #44bb44;
+$blue: #4444bb;
+$white: #fbfaf5;
+$black: #222222;
+$light-gray: #e0e0e0;
+$medium-gray: #cccccc;
+$dark-gray: #999999;
+
+// Fonts
+
+body {
+  @include grid();
+  font-family: 'Univers Next W01', sans-serif;
+  // font-family: 'Bembo W01', serif;
+  background-color: $white;
+  color: $black;
+  font-weight: 400;
+}
+
+strong,
+b {
+  font-weight: 500;
+
+    em,
+    i {
+      font-style: italic;
+    }
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+a {
+  color: $red;
+  text-decoration: none;
+
+  &:hover {
+    
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Univers Next W01', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2em;
+
+  em,
+  i {
+    font-style: italic;
+  }
+
+  a {
+    color: $black;
+    text-decoration: none;
+  }
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.8em;
+}
+
+.header {
+  @include column(12);
+  padding-top: 1em;
+  padding-bottom: 2em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  .logo {
+    @include column(12,12);
+    padding: 0 0 1em;
+    color: $black;
+    text-decoration: none;
+    position: relative;
+    font-size: 1.2em;
+
+    .balls {
+      display: inline-block;
+      padding-right: 0.2em;
+
+      .ball {
+        display: inline-block;
+        border-radius: 50%;
+        background-color: $red;
+        width: 1em;
+        height: 1em;
+
+        &.mindfulness {
+          background-color: $red;
+        }
+
+        &.technology {
+          background-color: $green;
+        }
+
+        &.design {
+          background-color: $blue;
+        }
+      }
+    }
+
+    h1 { 
+      position: relative;
+      top: -0.05em;
+      font-size: 1.1em;
+      display: inline-block;
+      margin: 0;
+      line-height: 1em;
+    }
+  }
+
+  form {
+    @include column(12,12);
+    padding: 0;
+
+    input {
+      @include column(12,12);
+      background-color: transparent;
+      font-family: 'Univers Next W01', sans-serif;
+      border: 0;
+      border-top: 1px dotted $medium-gray;
+      border-bottom: 1px dotted $medium-gray;
+      padding: 0.5em 0.5em;
+      color: $black;
+      font-size: 0.9em;
+      font-style: italic;
+      letter-spacing: 0.05em;
+      outline: none;
+
+      &:focus {
+        border-color: $black;
+      }
+    }
+  }
+}
+
+.core {
+  @include column(12,12);
+
+  .post {
+    @include column(12,12);
+    padding: 0;
+
+    .post-banner,
+    .post-caption,
+    .post-title,
+    .post-date,
+    .post-content,
+    .post-meta {
+      @include column(12,12);
+      padding: 0;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    .post-title {
+      font-size: 1.2em;
+      margin-bottom: 0.2em;
+    }
+
+    .post-date {
+      color: $dark-gray;
+      font-size: 0.9em;
+    }
+
+    .post-meta {
+      text-transform: uppercase;
+      font-size: 0.8em;
+
+      ul {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.footer {
+  @include column(12,12);
+}

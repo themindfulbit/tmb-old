@@ -1,7 +1,7 @@
 ---
 title: 'Blogging Platforms with Bob&nbsp;VanderClay'
 categories: [technology, design]
-tags: [generational, blogging, docpad, statamic, ruhoh, appfog, squarespace, sublime text, textexpander, takitapart, macminicolo]
+tags: [generational, blogging, docpad, statamic, ruhoh, appfog, squarespace, sublime text, textexpander, takitapart, macminicolo, bob vanderclay]
 banner: bob.jpg
 link: http://www.70decibels.com/generational/2013/4/27/032-blogging-platforms-with-bob-vanderclay.html
 ---

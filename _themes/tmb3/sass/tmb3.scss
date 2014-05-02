@@ -39,6 +39,7 @@ $mid-text: #777;
 $dark-text: #333;
 $shadow: #555;
 $white: #ffffff;
+$ecru: #fbfaf5;
 
 $hover-background: #ddd;
 $input-background: #eee;
@@ -635,6 +636,7 @@ body {
 
   font-family: "adobe-caslon-pro", serif;
   color: $dark-text;
+  background-color: $ecru;
 
   .background {
     display: none;
@@ -1144,8 +1146,8 @@ body {
     @include column(12,12);
     padding: 0.5em 0 0;
     margin-bottom: 0.5em;
-    border-top: 1px solid $border-color;
-    border-bottom: 1px solid $border-color;
+    // border-top: 1px solid $border-color;
+    // border-bottom: 1px solid $border-color;
 
     .title {
       @include column(4,12);
@@ -1233,7 +1235,7 @@ body {
     li a:active,
     li a:focus {
       @include column(12,12);
-      padding : 1em;
+      padding-top: 1em;
       background-color: transparent;
 
       .banner img {
@@ -1573,8 +1575,10 @@ body {
         background-position: 0.6em 0.5em;
         color: $light-text;
         font-size: 0.9em;
+        background-color: $ecru;
 
         -webkit-appearance: none;
+        outline: none;
       }
 
       .list {
@@ -1712,7 +1716,7 @@ body {
           font-family: "futura-pt", sans-serif;
           text-transform: uppercase;
           color: $dark-text;
-          background-color: $blockquote-color;
+          background-color: $ecru;
 
           h3 {
             @include column(12,12);
@@ -1858,7 +1862,7 @@ body {
           a:active {
             @include column(12,12);
             padding: 0.5em;
-            background-color: $blockquote-color;
+            background-color: $ecru;
 
             &:hover {
               text-decoration: none;
@@ -2051,7 +2055,7 @@ body {
       @include column(12,12);
       margin-bottom: 0;
       padding: 0;
-      border-bottom: 1px solid $border-color;
+      // border-bottom: 1px solid $border-color;
       line-height: 2.4em;
 
       &.menu-title {
@@ -2064,7 +2068,7 @@ body {
         color: $dark-text;
 
         &:hover {
-          background-color: $input-background;
+          // background-color: $input-background;
           text-decoration: none;
         }
       }
@@ -2204,7 +2208,7 @@ body {
 footer {
   @include column(12,12);
 
-  border-top: 1px solid $border-color;
+  // border-top: 1px solid $border-color;
     
   font-family: "futura-pt", sans-serif;
   text-transform: uppercase;
@@ -2386,18 +2390,18 @@ footer {
 @media screen and (min-width: 35em) { 
     
   body .background {
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      z-index: -1;
-      background-image: url('../img/potatowire.jpg');
-      background-size: cover;
-      background-position: center center;
+      // display: block;
+      // width: 100%;
+      // height: 100%;
+      // position: fixed;
+      // top: 0;
+      // right: 0;
+      // left: 0;
+      // bottom: 0;
+      // z-index: -1;
+      // background-image: url('../img/potatowire.jpg');
+      // background-size: cover;
+      // background-position: center center;
 
   }
 
@@ -2411,7 +2415,7 @@ footer {
 
   body .container .core,
   body .container footer {
-    background-color: rgba(255,255,255,0.9);
+    background-color: $ecru;
   }
 
   body .container .core {
@@ -2434,13 +2438,13 @@ footer {
     padding-right: 0;
     
     .post .post-body {
-      background-color: rgba(255,255,255,1);
+      background-color: $ecru;
       padding: 1em;
 
     }
 
     ul.more-posts li a:hover {
-      background-color: $white;
+      background-color: $blockquote-color;
     }
 
     &.archive img.logo,
@@ -2471,7 +2475,7 @@ footer {
       padding-top: 1em;
 
       .post a, {
-        background-color: $white;
+        background-color: $ecru;
 
         &:hover {
           background-color: $input-background;
@@ -2535,10 +2539,9 @@ footer {
     }
 
     ul li a {
-      padding-left: 0.5em;
+      // padding-left: 0.5em;
 
       &:hover {
-        background-color: $white;
       }
     }
 
@@ -2737,7 +2740,7 @@ footer {
         @include column(7,9);
         padding-top: 1em;
         padding-bottom: 1em;
-        background-color: rgba(255,255,255,1);
+        background-color: $ecru;
 
         h2.title {
           padding-bottom: 0.5em;

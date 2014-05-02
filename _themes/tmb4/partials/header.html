@@ -1,0 +1,14 @@
+<div class="header">
+  <a class="logo" href="{{ _site_url }}">
+    <div class="balls">
+      <div class="ball mindfulness"></div>
+      <div class="ball technology"></div>
+      <div class="ball design"></div>
+    </div>
+    <h1>The Mindful Bit</h1>
+  </a>
+  <form action="/search" method="get">
+    <p>
+      <input class="search" placeholder="Search posts..." type="text" name="query" value="{{ get:query|sanitize }}">
+    </p>
+</div>
