@@ -1237,6 +1237,7 @@ body {
       @include column(12,12);
       padding-top: 1em;
       background-color: transparent;
+      border: 1px dotted $ecru;
 
       .banner img {
         margin: 0;
@@ -1244,6 +1245,7 @@ body {
 
       &:hover {
         text-decoration: none;
+        border: 1px dotted $border-color;
         background-color: $input-background;
       }
 
@@ -1366,9 +1368,9 @@ body {
     color: $dark-text;
     font-size: 0.9em;
     margin-top: 0;
-    border-top: 1px solid $border-color;
-    border-bottom: 1px solid $border-color;
-    background-color: #ffffff;
+    // border-top: 1px solid $border-color;
+    // border-bottom: 1px solid $border-color;
+    background-color: $ecru;
 
     li {
       @include column(12,12);
@@ -1390,7 +1392,7 @@ body {
           float: left;
           position: relative;
           top: 0.1em;
-          background-color: #fff;
+          background-color: $ecru;
           line-height: 1em;
           padding-bottom: 0.1em;
         }
@@ -1399,7 +1401,7 @@ body {
           float: right;
           position: relative;
           top: 0.1em;
-          background-color: #fff;
+          background-color: $ecru;
           line-height: 1em;
           padding-bottom: 0.1em;
         }
@@ -1420,6 +1422,10 @@ body {
     @include column(12,12);
     padding: 1em 0em;
     @include column-width(4em);
+
+    img {
+      @include column-break-before(always);
+    }
   } 
 
   h1.page-header {
@@ -1575,7 +1581,6 @@ body {
         background-position: 0.6em 0.5em;
         color: $light-text;
         font-size: 0.9em;
-        background-color: $ecru;
 
         -webkit-appearance: none;
         outline: none;
@@ -1592,7 +1597,12 @@ body {
           font-family: "futura-pt", sans-serif;
           text-transform: uppercase;
           color: $dark-text;
-          border-left: 0.5em solid $no-color;
+          border: 1px dotted $border-color;
+          border-color: $border-color;
+          border-left-width: 0.5em;
+          border-left-style: solid;
+          border-left-color: $no-color;
+          background-color: $input-background !important;
 
           a,
           a:visited,
@@ -1619,35 +1629,35 @@ body {
           }
 
           &.mindfulness {
-            border-color: $m-color !important;
+            border-left-color: $m-color !important;
           }
 
           &.design {
-            border-color: $d-color !important;
+            border-left-color: $d-color !important;
           }
 
           &.technology {
-            border-color: $t-color !important;
+            border-left-color: $t-color !important;
           }
 
           &.mindfulness.design {
-            border-color: $md-color !important;
+            border-left-color: $md-color !important;
           }
 
           &.design.technology {
-            border-color: $dt-color !important;
+            border-left-color: $dt-color !important;
           }
 
           &.mindfulness.technology {
-            border-color: $tm-color !important;
+            border-left-color: $tm-color !important;
           }
 
           &.mindfulness.design.technology {
-            border-color: $all-color !important;
+            border-left-color: $all-color !important;
           }
 
           &.no-color {
-            border-color: $no-color !important;
+            border-left-color: $no-color !important;
           }
         }
       }
@@ -1716,7 +1726,12 @@ body {
           font-family: "futura-pt", sans-serif;
           text-transform: uppercase;
           color: $dark-text;
-          background-color: $ecru;
+          border: 1px dotted $border-color;
+          border-color: $border-color;
+          border-left-width: 0.5em;
+          border-left-style: solid;
+          border-left-color: $no-color;
+          background-color: $input-background !important;
 
           h3 {
             @include column(12,12);
@@ -1782,6 +1797,7 @@ body {
       @include column(4,12);
       @include push(4,12);
       padding: 0 0 1em;
+      margin-bottom: 0.5em;
     }
 
     &.mindfulness,
@@ -1854,7 +1870,12 @@ body {
           font-family: "futura-pt", sans-serif;
           text-transform: uppercase;
           color: $dark-text;
-          border-left: 0.5em solid $no-color;
+          border: 1px dotted $border-color;
+          border-color: $border-color;
+          border-left-width: 0.5em;
+          border-left-style: solid;
+          border-left-color: $no-color;
+          background-color: $input-background !important;
 
           a,
           a:visited,
@@ -1862,11 +1883,11 @@ body {
           a:active {
             @include column(12,12);
             padding: 0.5em;
-            background-color: $ecru;
+            background-color: $input-background;
 
             &:hover {
               text-decoration: none;
-              background-color: $input-background;
+              background-color: $hover-background;
             }
 
             .date {
@@ -1881,35 +1902,35 @@ body {
           }
 
           &.mindfulness {
-            border-color: $m-color !important;
+            border-left-color: $m-color !important;
           }
 
           &.design {
-            border-color: $d-color !important;
+            border-left-color: $d-color !important;
           }
 
           &.technology {
-            border-color: $t-color !important;
+            border-left-color: $t-color !important;
           }
 
           &.mindfulness.design {
-            border-color: $md-color !important;
+            border-left-color: $md-color !important;
           }
 
           &.design.technology {
-            border-color: $dt-color !important;
+            border-left-color: $dt-color !important;
           }
 
           &.mindfulness.technology {
-            border-color: $tm-color !important;
+            border-left-color: $tm-color !important;
           }
 
           &.mindfulness.design.technology {
-            border-color: $all-color !important;
+            border-left-color: $all-color !important;
           }
 
           &.no-color {
-            border-color: $no-color !important;
+            border-left-color: $no-color !important;
           }
         }
       }
@@ -2475,10 +2496,10 @@ footer {
       padding-top: 1em;
 
       .post a, {
-        background-color: $ecru;
+        background-color: $input-background;
 
         &:hover {
-          background-color: $input-background;
+          background-color: $hover-background;
         }
       }
     }
@@ -2509,31 +2530,32 @@ footer {
     a.logo-link:visited,
     a.logo-link:active {
       @include column(4,4);
-      padding-top: 0.2em; 
-      padding-bottom: 0.2em;
-      margin-bottom: 1em;
+      padding: 0.2em 0;
+      margin-bottom: 0;
 
       .logo {
-        @include column(4,4);
-        padding: 0 0.5em 0.8em;
+        display: inline-block;
+        width: 2.5em;
+        padding: 0 0 0.8em 0;
         line-height: 0.5em;
         text-align: center;
 
         img {
           padding: 0;
-          width: 6em;
+          width: 100%;
           height: auto;
         }
       }
 
       h1 {
-        @include column(4,4);
-        padding: 0;
+        display: inline-block;
+        width: auto;
+        padding: 0 0 0 0.5em;
         margin: 0;
         font-family: "adobe-caslon-pro";
         font-size: 1.2em;
-        line-height: 1em;
-        text-align: center;
+        line-height: 2.7em;
+        text-align: left;
         text-transform: none;
       }
     }
