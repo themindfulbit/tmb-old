@@ -8,6 +8,7 @@
 @import "compass/css3/hyphenation";
 @import "compass/css3/columns";
 @import "compass/css3/box-shadow";
+@import "compass/css3/opacity";
 @import "takitapart/normalize";
 @import "takitapart/typography";
 @import "takitapart/grid";
@@ -163,6 +164,8 @@ body
     background-position: 50% 50%;
     background-size: 3.5em auto;
     background-repeat: no-repeat;
+    @include opacity(0.9);
+    @include column-break-inside(avoid);
   }
 
   &.tomcat {
@@ -634,7 +637,9 @@ body {
     @include grid();
     padding: 0;
 
-  font-family: "adobe-caslon-pro", serif;
+  // font-family: "adobe-caslon-pro", serif;
+  font-family: 'Bembo W01', serif;
+
   color: $dark-text;
   background-color: $ecru;
 
@@ -660,9 +665,11 @@ body {
   h4,
   h5,
   h6 {
-    font-family: "futura-pt", sans-serif;
+    // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
     text-transform: uppercase;
     color: $dark-text;
+    letter-spacing: 0.05em;
   }
 
   p,
@@ -1039,12 +1046,14 @@ body {
 
   h2 {
     font-size: 1.3em;
-    margin: 0 0 0.5em;
+    margin: 0.8em 0 0.8em;
+    font-weight: 500;
   }
 
   h3 {
     font-size: 1.2em;
-    margin: 0 0 0.5em;
+    margin: 0.8em 0 0.8em;
+    font-weight: 500;
   } 
 
   h4 {
@@ -1103,17 +1112,20 @@ body {
   h2.title {
     @include column(12,12);
     padding: 0;
-    margin: 0.5em 0 0.2em 0;
+    margin: 0.5em 0 0.5em 0;
     line-height: 1.2em;
+    font-weight: 500;
   }
 
   .title-date {
-    font-family: "futura-pt", sans-serif;
+    // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
     text-transform: uppercase;
     color: $light-text;
     font-size: 0.8em;
     line-height: 1.2em;
     margin-bottom: 1em;
+    font-weight: 200;
 
     .nice-date,
     .time {
@@ -1154,7 +1166,8 @@ body {
       clear: both;
       padding: 0;
       margin-bottom: 0.4em;
-      font-family: "futura-pt", sans-serif;
+      // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
       text-transform: uppercase;
       color: $light-text;
       font-size: 0.8em;
@@ -1173,7 +1186,8 @@ body {
 
       li {
         display: inline;
-        font-family: "futura-pt", sans-serif;
+        // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
         text-transform: uppercase;
         padding-left: 0.3em;
         
@@ -1201,7 +1215,8 @@ body {
 
       li {
         display: block;
-        font-family: "futura-pt", sans-serif;
+        // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
         text-transform: uppercase;
         padding-left: 0.3em;
         
@@ -1251,6 +1266,7 @@ body {
 
       h2.title {
         margin-top: 0;
+        margin-bottom: 0.3em;
       }
     }
   }
@@ -1258,7 +1274,8 @@ body {
   .pagination {
     @include column(12,12);
     margin-bottom: 1.5em;
-    font-family: "futura-pt", sans-serif;
+    // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
     text-transform: uppercase;
         font-size: 0.75em;
         line-height: 1em;
@@ -1361,12 +1378,13 @@ body {
 
   ul#tag-index {
     @include column(12,12);
-    padding: 0 1em 1em;
+    padding: 0 0 1em;
     list-style-type: none;
-    font-family: "futura-pt", sans-serif;
+    // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
     text-transform: uppercase;
     color: $dark-text;
-    font-size: 0.9em;
+    font-size: 0.8em;
     margin-top: 0;
     // border-top: 1px solid $border-color;
     // border-bottom: 1px solid $border-color;
@@ -1450,7 +1468,8 @@ body {
     padding: 0;
     margin-top: 0;
     list-style-type: none;
-    font-family: "futura-pt", sans-serif;
+    // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
     text-transform: uppercase;
     color: $dark-text;
 
@@ -1546,7 +1565,8 @@ body {
     h1 {
       @include column(12,12);
       padding: 0 0 0.5em;
-      font-family: "adobe-caslon-pro", serif;
+      // font-family: "adobe-caslon-pro", serif;
+      font-family: 'Bembo W01', serif;
       color: $dark-text;
       text-transform: none;
       line-height: 1em;
@@ -1570,7 +1590,8 @@ body {
         @include push(1,12);
         padding: 0.4em 0 0 2.2em;
         margin-bottom: 1em;
-        font-family: "adobe-caslon-pro", serif;
+        // font-family: "adobe-caslon-pro", serif;
+        font-family: 'Bembo W01', serif;
         font-style: italic;
         border: 1px solid $border-color;
         border-radius: 1em;
@@ -1594,7 +1615,8 @@ body {
         .post {
           @include column(12,12);
           padding: 0;
-          font-family: "futura-pt", sans-serif;
+          // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
           text-transform: uppercase;
           color: $dark-text;
           border: 1px dotted $border-color;
@@ -1675,7 +1697,8 @@ body {
     h1 {
       @include column(12,12);
       padding: 0 0 0.5em;
-      font-family: "adobe-caslon-pro", serif;
+      // font-family: "adobe-caslon-pro", serif;
+  font-family: 'Bembo W01', serif;
       color: $dark-text;
       text-transform: none;
       line-height: 1em;
@@ -1699,7 +1722,8 @@ body {
         @include push(1,12);
         padding: 0.4em 0 0 2.2em;
         margin-bottom: 1em;
-        font-family: "adobe-caslon-pro", serif;
+        // font-family: "adobe-caslon-pro", serif;
+  font-family: 'Bembo W01', serif;
         font-style: italic;
         border: 1px solid $border-color;
         border-radius: 1em;
@@ -1723,7 +1747,8 @@ body {
           @include column(12,12);
           padding: 0;
           margin-bottom: 1em;
-          font-family: "futura-pt", sans-serif;
+          // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
           text-transform: uppercase;
           color: $dark-text;
           border: 1px dotted $border-color;
@@ -1766,7 +1791,8 @@ body {
 
           p {
             @include column(12,12);
-            font-family: "adobe-caslon-pro", serif;
+            // font-family: "adobe-caslon-pro", serif;
+  font-family: 'Bembo W01', serif;
             font-style: italic;
             text-transform: none;
             text-align: center;
@@ -1820,7 +1846,8 @@ body {
     h1 {
       @include column(12,12);
       padding: 0 0 0.5em;
-      font-family: "adobe-caslon-pro", serif;
+      // font-family: "adobe-caslon-pro", serif;
+  font-family: 'Bembo W01', serif;
       color: $dark-text;
       text-transform: none;
       line-height: 1em;
@@ -1844,7 +1871,8 @@ body {
         @include push(1,12);
         padding: 0.4em 0 0 2.2em;
         margin-bottom: 1em;
-        font-family: "adobe-caslon-pro", serif;
+        // font-family: "adobe-caslon-pro", serif;
+  font-family: 'Bembo W01', serif;
         font-style: italic;
         border: 1px solid $border-color;
         border-radius: 1em;
@@ -1867,7 +1895,8 @@ body {
         .post {
           @include column(12,12);
           padding: 0;
-          font-family: "futura-pt", sans-serif;
+          // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
           text-transform: uppercase;
           color: $dark-text;
           border: 1px dotted $border-color;
@@ -1951,7 +1980,8 @@ body {
     h1 {
       @include column(12,12);
       padding: 0 0 0.5em;
-      font-family: "adobe-caslon-pro", serif;
+      // font-family: "adobe-caslon-pro", serif;
+  font-family: 'Bembo W01', serif;
       color: $dark-text;
       text-transform: none;
       line-height: 1em;
@@ -1985,7 +2015,8 @@ body {
       @include column(10,12);
       @include push(1);
       padding: 0.5em 1em;
-      font-family: "futura-pt", sans-serif;
+      // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
       text-transform: uppercase;
       color: $dark-text;
       font-size: 0.8em;
@@ -2032,9 +2063,10 @@ body {
       @include column(10,12);
       padding: 0;
       margin: 0;
-      font-family: "adobe-caslon-pro";
+      // font-family: "adobe-caslon-pro";
+  font-family: 'Bembo W01', serif;
       font-size: 2em;
-      line-height: 2.2em;
+      line-height: 2em;
       text-transform: none;
     }
   }
@@ -2043,7 +2075,8 @@ body {
     @include column(12,12);
     padding: 0 0 1em;
     text-align: center;
-    font-family: "futura-pt", sans-serif;
+    // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
     text-transform: uppercase;
     color: $border-color;
     font-size: 0.8em;
@@ -2067,10 +2100,13 @@ body {
     margin-bottom: 1em;
     list-style-type: none;
     padding: 0;
-    font-family: "futura-pt", sans-serif;
+    // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
     text-transform: uppercase;
-    color: $light-text;
-    font-size: 0.9em;
+    color: $dark-text;
+    font-size: 0.7em;
+    font-weight: 400;
+    letter-spacing: 0.05em;
 
     li {
       @include column(12,12);
@@ -2080,7 +2116,7 @@ body {
       line-height: 2.4em;
 
       &.menu-title {
-
+        font-weight: 500;
       }
 
       a {
@@ -2175,12 +2211,12 @@ body {
       .ball {
         display: inline-block;
         position: relative;
-        top: 0.4em;
+        top: 0.35em;
         width: 1.5em;
         height: 1.5em;
         border-radius: 50%;
         background-color: $no-color;
-        margin-right: 0.5em;
+        margin-right: 0.8em;
       }
 
       .mindfulness-link .ball {
@@ -2217,9 +2253,9 @@ body {
     &.feed-menu {
       li a img {        
         position: relative;
-        top: 0.3em;
+        top: 0.25em;
         height: 16px;
-        padding-right: 0.4em;
+        padding-right: 0.5em;
       }
     }
   }
@@ -2231,18 +2267,21 @@ footer {
 
   // border-top: 1px solid $border-color;
     
-  font-family: "futura-pt", sans-serif;
+  // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
   text-transform: uppercase;
-  color: $light-text;
-  font-size: 0.8em;
+  color: $dark-text;
+  font-size: 0.7em;
   line-height: 1.3em;
   margin-top: 0em;
   margin-bottom: 1em;
+  font-weight: 200;
 
   a,
   a:visited,
   a:active {
     color: $dark-text;
+    font-weight: 400;
   }
 
   a:hover {
@@ -2373,30 +2412,35 @@ footer {
               // font-size: 0.8em;
               font-weight: 100;
               color: #ccc;
+              line-height: 1em;
             }
 
             &.small-tag {
               // font-size: 0.9em;
               font-weight: 300;
               color: #999;
+              line-height: 1em;
             }
 
             &.middle-tag {
               // font-size: 1em;
               font-weight: 500;
               color: #444;
+              line-height: 1em;
             }
 
             &.large-tag {
               // font-size: 1.2em;
               font-weight: 700;
               color: #222;
+              line-height: 1em;
             }
 
             &.larger-tag {
               // font-size: 1.4em;
               font-weight: 900;
               color: #000;
+              line-height: 1em;
             }
 
           }
@@ -2514,7 +2558,7 @@ footer {
     }
 
     #tag-index {
-      padding-left: 1em !important;
+      // padding-left: 1em !important;
       padding-right: 1em !important;
     }
   } 
@@ -2552,9 +2596,10 @@ footer {
         width: auto;
         padding: 0 0 0 0.5em;
         margin: 0;
-        font-family: "adobe-caslon-pro";
+        // font-family: "adobe-caslon-pro";
+  font-family: 'Bembo W01', serif;
         font-size: 1.2em;
-        line-height: 2.7em;
+        line-height: 2.4em;
         text-align: left;
         text-transform: none;
       }
@@ -2725,16 +2770,17 @@ footer {
         padding-top: 2em;
 
         .date-ball {
-          font-family: "futura-pt", sans-serif;
+          // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
           text-transform: uppercase;
           display: block;
           color: $dark-text;
-          font-size: 0.5em;
-          line-height: 1em;
+          font-size: 0.3em;
+          line-height: 1.2em;
           background-color: $no-color;
-          width: 7em;
-          height: 4.3em;
-          padding-top: 2.7em;
+          width: 8em;
+          height: 4.75em;
+          padding-top: 3em;
           border-radius: 50%;
           margin: 0 auto 1em;
           text-align: center;
@@ -2779,7 +2825,8 @@ footer {
         .has-pullquote:before {
         content: attr(data-pullquote);
           @include column(5,9);
-          font-family: "futura-pt", sans-serif;
+          // font-family: "futura-pt", sans-serif;
+    font-family:'Univers Next W01', sans-serif;
           text-transform: uppercase;
           text-align: right;
           color: $bright-link;
