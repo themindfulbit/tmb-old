@@ -893,6 +893,11 @@ body {
     @include column(12,12);
     margin: 0 0 1em;
 
+    .post-header {
+      @include column(12,12);
+
+    }
+
     .pre-bar {
       display: none;
     }
@@ -2038,6 +2043,7 @@ body {
 .sidebar {
   @include column(12,12);
   padding-top: 1.5em;
+  padding-right: 0;
 
   a.logo-link,
   a.logo-link:hover,
@@ -2501,11 +2507,19 @@ footer {
     @include column(8,12);
     padding-top: 0em;
     padding-right: 0;
+
+    .post {
+      padding-left: 0;
+    }
     
     .post .post-body {
       background-color: $ecru;
       padding: 1em;
 
+    }
+
+    .more-header {
+      padding-left: 0;
     }
 
     ul.more-posts li a:hover {
@@ -2565,8 +2579,9 @@ footer {
 
   body .container .core .sidebar {
     @include column(4,12);
-    padding-top: 1em;
+    padding-top: 0;
     padding-left: 0;
+    padding-right: 0;
     font-size: 0.9em;
 
     a.logo-link,
@@ -2574,7 +2589,7 @@ footer {
     a.logo-link:visited,
     a.logo-link:active {
       @include column(4,4);
-      padding: 0.2em 0;
+      padding: 0;
       margin-bottom: 0;
 
       .logo {
@@ -2758,12 +2773,23 @@ footer {
 /* @media screen and (min-width: 784px) */
 @media screen and (min-width: 49em) { 
 
+  body .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   body .container .core .content {
     @include column(9,12);
+    padding-left: 0;
 
     .post {
       @include column(9,9);
-      padding: 0;
+      padding-left: 0;
+
+      .post-header {
+        @include column(9,9);
+        padding: 0;
+      }
 
       .pre-bar {
         @include column(2,9);
@@ -2771,7 +2797,7 @@ footer {
 
         .date-ball {
           // font-family: "futura-pt", sans-serif;
-    font-family:'Univers Next W01', sans-serif;
+          font-family:'Univers Next W01', sans-serif;
           text-transform: uppercase;
           display: block;
           color: $dark-text;
@@ -2826,7 +2852,7 @@ footer {
         content: attr(data-pullquote);
           @include column(5,9);
           // font-family: "futura-pt", sans-serif;
-    font-family:'Univers Next W01', sans-serif;
+          font-family:'Univers Next W01', sans-serif;
           text-transform: uppercase;
           text-align: right;
           color: $bright-link;
@@ -2937,18 +2963,18 @@ footer {
 
   body .container .core .sidebar {
     @include column(3,12);
-    padding-top: 1em;
+    padding-top: 0;
     padding-left: 0;
   }
 }
 
-/* @media screen and (min-width: 880px) */
-@media screen and (min-width: 55em) { 
+/* @media screen and (min-width: 960px) */
+@media screen and (min-width: 60em) { 
 
   body .container {
     @include column(10,12);
     @include push(1);
-    padding: 1em;
+    padding: 1em 0;
   }
 }
 

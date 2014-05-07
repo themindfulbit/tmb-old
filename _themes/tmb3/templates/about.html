@@ -4,14 +4,7 @@
 <div class="content">
   <div class="post about">
 
-    <div class="pre-bar">
-      {{ tags }}
-        <a class="icon {{ name }}" href="{{ _site_root }}blog/tags/{{ name|slugify }}"></a>
-      {{ /tags }}
-    </div>
-    <div class="post-body">
-
-    
+    <div class="post-header">
       <div class="title-banner {{ categories_spaced_list }}">
         <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
             <img src="{{ _site_url }}assets/img/{{ banner }}" />
@@ -20,6 +13,14 @@
       {{ if caption }}
       <div class="caption">{{ caption|markdown }}</div>
       {{ endif }}
+    </div>
+
+    <div class="pre-bar">
+      {{ tags }}
+        <a class="icon {{ name }}" href="{{ _site_root }}blog/tags/{{ name|slugify }}"></a>
+      {{ /tags }}
+    </div>
+    <div class="post-body">
 
         {{ content|widont }}
 

@@ -14,7 +14,7 @@ _fieldset: page
 
 ## About the Author
 
-My name is Erik Hess and I'm a a web designer, illustrator and recovering fighter pilot living in Carson City, NV. I spent thirteen years in the Navy flying [Tomcats](http://en.wikipedia.org/wiki/F-14_Tomcat) and [Super Hornets](http://en.wikipedia.org/wiki/Boeing_F/A-18E/F_Super_Hornet) off aircraft carriers and teaching others to do the same.
+My name is Erik Hess and I'm a web designer, illustrator and recovering fighter pilot living in Carson City, NV. I spent thirteen years in the Navy flying [Tomcats](http://en.wikipedia.org/wiki/F-14_Tomcat) and [Super Hornets](http://en.wikipedia.org/wiki/Boeing_F/A-18E/F_Super_Hornet) off aircraft carriers and teaching others to do the same.
 
 In 2010, I left active duty to work full-time as partner, designer and developer at [high90](http://high90.com), a software company I founded with [Bob VanderClay](http://takitapart.com/) in 2005. I'm also co-founder of [Carrier Landing Consultants, LLC](http://carrierlandingconsultants.com), the world’s only Landing Signal Officer and Carrier Operations consulting firm.
 
@@ -26,6 +26,6 @@ I created The Mindful Bit in late 2011 to look for an intersection of mindfulnes
 
 Since its launch, I've posted a lot of flying stories and pictures, along with a few articles on technology and related fields. I'm still working on the mindfulness part and probably will be for the rest of my life.
 
-The site has been rebuilt five times in 18 months, using [Tumblr](http://tumblr.com), [WordPress](http://wordpress.org), [Squarespace](http://squarespace.com), [Ruhoh](http://ruhoh.com) and now [Statamic](http://statamic.com). I also use the site to prototype new web technologies, so it changes a bunch. I hope it doesn't get too annoying for you.
+The site was been rebuilt five times in 18 months, using [Tumblr](http://tumblr.com), [WordPress](http://wordpress.org), [Squarespace](http://squarespace.com), [Ruhoh](http://ruhoh.com) and now [Statamic](http://statamic.com). Statamic seems to have stuck for a while, so that must mean something. I also use the site to prototype new web technologies, so it changes a bunch. I hope it doesn't get too annoying for you.
 
 We are what we do, not what we claim to be. In that regard, this site is no exception.
