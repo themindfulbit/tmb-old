@@ -3,16 +3,7 @@
   {{ entries:listing folder="blog" limit="1" }}
   <div class="post">
 
-    <div class="pre-bar">
-      <a href="{{ url }}" class="date-ball {{ categories_spaced_list }}">
-        <div class="nice-date">{{ datestamp format="M d, 'y" }}</div>
-        <div class="time">{{ datestamp format="g:i A" }}</div>
-      </a>
-      {{ tags }}
-        <a class="icon {{ name }}" href="{{ _site_root }}blog/tags/{{ name|slugify }}"></a>
-      {{ /tags }}
-    </div>
-    <div class="post-body">
+    <div class="post-header">
 
       {{ if banner }}
         {{ if link }}
@@ -63,6 +54,18 @@
 
         {{ endif }}
       {{ endif }}
+    </div>
+
+    <div class="pre-bar">
+      <a href="{{ url }}" class="date-ball {{ categories_spaced_list }}">
+        <div class="nice-date">{{ datestamp format="M d, 'y" }}</div>
+        <div class="time">{{ datestamp format="g:i A" }}</div>
+      </a>
+      {{ tags }}
+        <a class="icon {{ name }}" href="{{ _site_root }}blog/tags/{{ name|slugify }}"></a>
+      {{ /tags }}
+    </div>
+    <div class="post-body">
 
       <h2 class="title">
         {{ if link }}

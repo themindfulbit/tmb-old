@@ -3,6 +3,59 @@
 <div class="content">
   <div class="post">
 
+    <div class="post-header">
+
+      {{ if banner }}
+        {{ if link }}
+
+          <div class="title-banner {{ categories_spaced_list }}">
+            <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ link }}" >
+              <img src="{{ _site_url }}assets/img/{{ banner }}" />
+            </a>
+          </div>
+          {{ if caption }}
+          <div class="caption">{{ caption|markdown }}</div>
+          {{ endif }}
+
+        {{ else }}
+
+          <div class="title-banner {{ categories_spaced_list }}">
+            <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
+              <img src="{{ _site_url }}assets/img/{{ banner }}" />
+            </a>
+          </div>
+          {{ if caption }}
+          <div class="caption">{{ caption|markdown }}</div>
+          {{ endif }}
+
+        {{ endif }}
+      {{ else }}
+        {{ if link }}
+
+          <div class="title-pattern {{ categories_spaced_list }}">
+            <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ link }}" >
+              &nbsp;
+            </a>
+          </div>
+          {{ if caption }}
+          <div class="caption">{{ caption|markdown }}</div>
+          {{ endif }}
+
+        {{ else }}
+
+          <div class="title-pattern {{ categories_spaced_list }}">
+            <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
+              &nbsp;
+            </a>
+          </div>
+          {{ if caption }}
+          <div class="caption">{{ caption|markdown }}</div>
+          {{ endif }}
+
+        {{ endif }}
+      {{ endif }}
+    </div>
+
     <div class="pre-bar">
       <a href="{{ url }}" class="date-ball {{ categories_spaced_list }}">
         <div class="nice-date">{{ datestamp format="M d, 'y" }}</div>
@@ -13,56 +66,6 @@
       {{ /tags }}
     </div>
     <div class="post-body">
-
-     {{ if banner }}
-      {{ if link }}
-
-        <div class="title-banner {{ categories_spaced_list }}">
-          <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ link }}" >
-            <img src="{{ _site_url }}assets/img/{{ banner }}" />
-          </a>
-        </div>
-        {{ if caption }}
-        <div class="caption">{{ caption|markdown }}</div>
-        {{ endif }}
-
-      {{ else }}
-
-        <div class="title-banner {{ categories_spaced_list }}">
-          <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
-            <img src="{{ _site_url }}assets/img/{{ banner }}" />
-          </a>
-        </div>
-        {{ if caption }}
-        <div class="caption">{{ caption|markdown }}</div>
-        {{ endif }}
-
-      {{ endif }}
-    {{ else }}
-      {{ if link }}
-
-        <div class="title-pattern {{ categories_spaced_list }}">
-          <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ link }}" >
-            &nbsp;
-          </a>
-        </div>
-        {{ if caption }}
-        <div class="caption">{{ caption|markdown }}</div>
-        {{ endif }}
-
-      {{ else }}
-
-        <div class="title-pattern {{ categories_spaced_list }}">
-          <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
-            &nbsp;
-          </a>
-        </div>
-        {{ if caption }}
-        <div class="caption">{{ caption|markdown }}</div>
-        {{ endif }}
-
-      {{ endif }}
-    {{ endif }}
 
       <h2 class="title">
         {{ if link }}
