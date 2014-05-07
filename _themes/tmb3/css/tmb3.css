@@ -4264,100 +4264,85 @@ footer .cc-text img {
   }
 }
 /* @media screen and (min-width: 960px) */
-@media screen and (min-width: 60em) {
-  /* line 2974, ../sass/tmb3.scss */
-  body .container {
-    display: block;
-    float: left;
-    width: 83.33333%;
-    padding: 0 0.75em;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    margin-left: 8.33333%;
-    padding: 1em 0;
-  }
-}
 /* @media screen and (min-width: 960px) */
-@media screen and (min-width: 65em) {
+@media screen and (min-width: 60em) {
   /* line 14, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.125em;
   }
 }
 /* @media screen and (min-width: 1120px) */
-@media screen and (min-width: 75em) {
+@media screen and (min-width: 70em) {
   /* line 14, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.25em;
   }
 }
 /* @media screen and (min-width: 1280px) */
-@media screen and (min-width: 85em) {
+@media screen and (min-width: 80em) {
   /* line 14, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.375em;
   }
 }
 /* @media screen and (min-width: 1280px) */
-@media screen and (min-width: 95em) {
+@media screen and (min-width: 90em) {
   /* line 14, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.5em;
   }
 }
 /* @media screen and (min-width: 1440px) */
-@media screen and (min-width: 105em) {
+@media screen and (min-width: 100em) {
   /* line 14, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.625em;
   }
 }
 /* @media screen and (min-width: 1760px) */
-@media screen and (min-width: 115em) {
+@media screen and (min-width: 110em) {
   /* line 14, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.75em;
   }
 }
 /* @media screen and (min-width: 1920px) */
-@media screen and (min-width: 125em) {
+@media screen and (min-width: 120em) {
   /* line 14, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.875em;
   }
 }
 /* @media screen and (min-width: 2080px) */
-@media screen and (min-width: 135em) {
+@media screen and (min-width: 130em) {
   /* line 14, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 2em;
   }
 }
 /* @media screen and (min-width: 2080px) */
-@media screen and (min-width: 145em) {
+@media screen and (min-width: 140em) {
   /* line 14, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 2.125em;
   }
 }
 /* @media screen and (min-width: 2080px) */
-@media screen and (min-width: 155em) {
+@media screen and (min-width: 150em) {
   /* line 14, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 2.25em;
   }
 }
 /* @media screen and (min-width: 2080px) */
-@media screen and (min-width: 165em) {
+@media screen and (min-width: 160em) {
   /* line 14, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 2.375em;
   }
 }
 /* @media screen and (min-width: 2080px) */
-@media screen and (min-width: 175em) {
+@media screen and (min-width: 170em) {
   /* line 14, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 2.5em;
