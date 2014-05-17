@@ -859,7 +859,7 @@ body {
   .caption {
     @include column(12,12);
     padding: 0;
-    padding-top: 0.5em;
+    // padding-top: 0.5em;
     font-size: 0.8em;
     font-style: italic;
 
@@ -871,9 +871,11 @@ body {
       content: "\00a0";
       background-image: url("../../../assets/img/photo.svg");
       background-repeat: no-repeat;
-      width: 1.2em;
+      width: 1.25em;
       display: inline-block;
       background-size: 1.1em auto;
+      position: relative;
+      top: 0.15em;
     }
   }
 
@@ -910,6 +912,45 @@ body {
     .title-banner img {
       margin-top: 0;
       margin-bottom: 0;
+    }
+
+    aside {
+      font-style: italic;
+      font-size: 0.9em;
+      margin-bottom: 0.8em;
+      border-top: 1px dotted $border-color;
+      border-bottom: 1px dotted $border-color;
+      padding-top: 0.5em;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-top: 0.5em;
+        font-size: 0.9em;
+        line-height: 1em;
+        margin-bottom: 0.5em;
+      }
+
+      &.large {
+        font-size: 1.5em;
+      }
+
+      blockquote {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+      }
+
+      cite {
+        display: block;
+        font-size: 0.8em;
+        text-align: right;
+        color: $mid-text;
+      }
     }
 
     .bluf {
@@ -1249,6 +1290,12 @@ body {
     @include column(12,12);
     padding: 0;
     margin: 0;
+
+    .no-more {
+      @include column(12,12);
+      font-style: italic;
+      margin-bottom: 2em;
+    }
 
     li a,
     li a:visited,
@@ -2846,6 +2893,49 @@ footer {
 
         blockquote.epigram {
 
+        }
+
+        aside {
+          @include column(3,7);
+          @include push(-2,7);
+          padding-right: 1.5em;
+          border: 0;
+          text-align: justify;
+          margin-bottom: 0;
+          margin-top: 0;
+
+          &.narrow {
+            @include column(2,7);
+            padding-right: 1.5em;
+          }
+
+          &.wide {
+            @include column(4,7);
+            padding-right: 1.5em;
+          }
+
+          &.right {
+            @include push(0);
+            float: right;
+            padding-right: 0;
+          }
+
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            margin-bottom: 0.8em;
+          }
+
+          p {
+            line-height: 1.3em;
+          }
+
+          .fancybox img {
+            margin: 0.5em 0 0;
+          }
         }
 
         .has-pullquote:before {
