@@ -41,12 +41,12 @@ Tragically, the military shares a misconception with the rest of the government 
 Reality is messy, and that's scary. Bullet points seem to address this by placing things in safe, easily-digestible boxes. [Edward Tufte](http://en.wikipedia.org/wiki/Edward_Tufte) provided the classic analysis of this topic in his essays [Visual and Statistical Thinking](http://www.edwardtufte.com/tufte/ebooks) and [The Cognitive Style of PowerPoint](http://www.edwardtufte.com/tufte/ebooks). If you're up for purchasing some beautiful and informative books, the first essay can be found in [Visual Explanations](http://www.amazon.com/Visual-Explanations-Quantities-Evidence-Narrative/dp/0961392126/ref=sr_1_1?s=books&ie=UTF8&qid=1400335342&sr=1-1&keywords=visual+explanations) and the second in [Beautiful Evidence](http://www.amazon.com/Beautiful-Evidence-Edward-R-Tufte/dp/0961392177/ref=sr_1_1?ie=UTF8&qid=1400334131&sr=8-1&keywords=beautiful+evidence+tufte).
 Tufte primarily focuses on the slides and diagrams leading up to the [Challenger](http://en.wikipedia.org/wiki/Space_Shuttle_Challenger_disaster) and [Columbia](http://en.wikipedia.org/wiki/Space_Shuttle_Columbia_disaster) mishaps, but the lessons are broadly applicable. For a quick look at the second essay's key points, as well as some enlightening discussion around the topic, I highly recommend the [PowerPoint Does Rocket Science](http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001yB) and [PowerPoint and Military Intelligence](http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0000fv&topic_id=1&topic=) forum threads on Tufte's site.
 
-The central lesson is this: *The illusion of clarity offered by bulleted-lists can be misleading at best, and deadly at worst.* 
-
 <aside class="wide large">
-  <blockquote>Making a presentation is a moral act as well as an intellectual activity.</blockquote>
-  <cite>&ndash; Edward Tufte</cite>
+  <blockquote>Making a presentation is a moral act as well as an intellectual activity.
+  <cite>&ndash; Edward Tufte</cite></blockquote>
 </aside>
+
+The central lesson is this: *The illusion of clarity offered by bulleted-lists can be misleading at best, and deadly at worst.* 
 
 It's easy to sit back on our design high-horse and laugh at the weaknesses in these presentations. The painful reality is that these are just normal people, without any design training, trying to do their jobs the best they can. They don't have experts advising them, and even if they did, they probably wouldn't have the time to listen.
 
