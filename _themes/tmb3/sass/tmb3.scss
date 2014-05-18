@@ -157,7 +157,8 @@ body
   &.flickr,
   &.sonos,
   &.huffduffer,
-  &.clc {
+  &.clc,
+  &.powerpoint {
     @include column(2,2);
     padding: 0;
     height: 5em;
@@ -628,6 +629,10 @@ body
   &.clc {
     background-image: url('../../../assets/icons/clc.png');
     background-size: 4em;
+  }
+
+  &.powerpoint {
+    background-image: url('../../../assets/icons/powerpoint.png');
   }
 }
 
