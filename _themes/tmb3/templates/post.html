@@ -123,7 +123,15 @@
 
   <ul class="more-posts">
 
-    {{ entries:listing folder="blog" conditions="tags:{ tags_option_list }, url:!{ page_url }" }}
+    {{ entries:listing folder="blog" conditions="tags:{ tags_option_list }, url:!{ current_url }" }}
+
+    {{ if no_results }}
+
+    <!-- Do nothing -->
+    <p class="no-more">This article is (to the best of our knowledge) unique. We found no other posts on this topic.</p>
+
+
+    {{ else }}
     
     <li class="post">
       <a alt="{{ title }}" title="{{ title }}" rel="page" href="{{ url }}" >
@@ -148,6 +156,8 @@
 
       </a>
     </li> 
+
+    {{ endif }}
 
     {{ /entries:listing }}
 
