@@ -31,6 +31,7 @@
       <input type="hidden" name="page[original_datestamp]" value="<?php print $original_datestamp ?>" />
       <input type="hidden" name="page[original_timestamp]" value="<?php print $original_timestamp ?>" />
       <input type="hidden" name="page[original_numeric]" value="<?php print $original_numeric ?>" />
+      <input type="hidden" name="return" value="<?php print $return ?>" />
 
       <?php if (isset($new)): ?>
         <input type="hidden" name="page[new]" value="1" />
@@ -115,7 +116,7 @@
         <?php if ($slug !== '/'): ?>
         <div class="input-block input-text required<?php if (array_get($fields, 'slug:hide', false) === true):?> hidden<?php endif ?>">
           <label for="publish-slug"><?php echo Localization::fetch('slug') ?></label>
-          <input type="text" id="publish-slug" data-required="true" tabindex="<?php print tabindex(); ?>" class="text<?php if (isset($new)): ?> auto-slug <?php endif ?>" name="page[meta][slug]" value="<?php print $slug ?>" />
+          <input type="text" id="publish-slug" data-required="true" tabindex="<?php print tabindex(); ?>" class="text<?php if (isset($new)): ?> new-slug <?php endif ?>" name="page[meta][slug]" value="<?php print $slug ?>" />
         </div>
         <?php else: ?>
           <input type="hidden" id="publish-slug" tabindex="<?php print tabindex(); ?>" name="page[meta][slug]" value="<?php print $slug ?>" />
@@ -200,7 +201,8 @@
     </div>
 
     <div id="publish-action" class="footer-controls push-down">
-      <input type="submit" class="btn" value="<?php echo Localization::fetch('save_publish') ?>" id="publish-submit">
+      <button type="submit" class="btn" id="publish-submit"><?php echo Localization::fetch('save_publish') ?></button>
+      <button type="submit" class="btn" id="publish-continue-submit" name="continue" value="true"><?php echo Localization::fetch('save_publish_continue') ?></button>
     </div>
 
   </form>

@@ -2,14 +2,20 @@
   $current_user = Auth::getCurrentMember();
   $name = $current_user->get('name');
 ?><!doctype html>
-<html lang="en">
+<html lang="<?php echo Config::getCurrentLanguage(); ?>">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
   <title>Statamic Control Panel</title>
   <link rel="stylesheet" href="<?php echo Path::tidy(Config::getSiteRoot().'/'.$app->config['theme_path']) ?>css/ascent.min.css">
   <link rel="shortcut icon" href="<?php print Path::tidy(Config::getSiteRoot().'/'.$app->config['theme_path'])?>img/favicon.ico" />
-  <script type="text/javascript" src="<?php echo Path::tidy(Config::getSiteRoot().'/'.$app->config['theme_path'])?>js/ascent.min.js"></script>
+  <script>
+      var transliterate = <?php echo json_encode(Config::get('custom_transliteration', array())); ?>;
+  </script>
+  <script>
+      var content_type = "<?php echo Config::getContentType(); ?>";
+  </script>
+  <script type="text/javascript" src="<?php echo Path::tidy(Config::getSiteRoot().'/'.$app->config['theme_path'])?>js/ascent.min.js?v=1.8.2"></script>
   <?php echo Hook::run('control_panel', 'add_to_head', 'cumulative') ?>
 </head>
 <body id="<?php echo $route; ?>">
@@ -56,6 +62,22 @@
             </a>
           </li>
           <?php endif ?>
+
+
+          <?php foreach (CP_Helper::addon_nav_items() as $item): ?>
+
+            <li id="item-<?php echo $item ?>">
+              <a href="<?php echo URL::assemble($app->request()->getRootUri(), $item); ?>"<?php if ($route === $item):?> class="active"<?php endif ?>>
+                <span class="ss-icon">
+                  <?php if (Localization::fetch('nav_icon_' . $item) !== 'nav_icon_' . $item): ?>
+                    <?php echo Localization::fetch('nav_icon_' . $item)?>
+                  <?php endif ?>
+                </span>
+                <span class="title"><?php echo Localization::fetch('nav_title_' . $item)?></span>
+              </a>
+            </li>
+
+          <?php endforeach; ?>
 
         </ul>
 

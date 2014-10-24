@@ -158,7 +158,10 @@ body
   &.sonos,
   &.huffduffer,
   &.clc,
-  &.powerpoint {
+  &.powerpoint,
+  &.dawn.patrol,
+  &.dr.drang,
+  &.heretics {
     @include column(2,2);
     padding: 0;
     height: 5em;
@@ -634,6 +637,18 @@ body
   &.powerpoint {
     background-image: url('../../../assets/icons/powerpoint.png');
   }
+
+  &.dawn.patrol {
+    background-image: url('../../../assets/icons/dp.png');
+  }
+
+  &.dr.drang {
+    background-image: url('../../../assets/icons/drang-avatar.png');
+  }
+
+  &.heretics {
+    background-image: url('../../../assets/icons/heretics-icon.png');
+  }
 }
 
 
@@ -688,7 +703,7 @@ body {
   }
 
   blockquote {
-    @include column(12,12);
+    // @include column(12,12);
     padding: 0;
     margin: 1em 0 1.5em 0;
     padding: 0em 1.5em 0em 1em;
@@ -2857,8 +2872,8 @@ footer {
           font-size: 0.3em;
           line-height: 1.2em;
           background-color: $no-color;
-          width: 8em;
-          height: 4.75em;
+          width: 72px;
+          height: 43px;
           padding-top: 3em;
           border-radius: 50%;
           margin: 0 auto 1em;

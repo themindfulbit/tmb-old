@@ -98,6 +98,7 @@ class Plugin_transform extends Plugin
         $blur      = $this->fetchParam('blur', false, 'is_numeric');
         $pixelate  = $this->fetchParam('pixelate', false, 'is_numeric');
         $greyscale = $this->fetchParam(array('greyscale', 'grayscale'), false, false, true);
+        $watermark = $this->fetchParam('watermark', false, false, false, false);
 
 
         /*
@@ -248,6 +249,19 @@ class Plugin_transform extends Plugin
 
         if ($pixelate) {
             $image->pixelate($pixelate);
+        }
+
+        // Positioning options via ordered pipe settings:
+        // source|position|x offset|y offset
+        if ($watermark) {
+            $watermark_options = Helper::explodeOptions($watermark);
+
+            $source = Path::tidy(BASE_PATH . '/' . array_get($watermark_options, 0, null));
+            $anchor = array_get($watermark_options, 1, null);
+            $pos_x  = array_get($watermark_options, 2, 0);
+            $pos_y  = array_get($watermark_options, 3, 0);
+
+            $image->insert($source, $pos_x, $pos_y, $anchor);
         }
 
 
