@@ -1,10 +1,9 @@
 <?php
 /**
  * Plugin_location
- * Display helper for location-based entries
+ * Display helper for locations and maps
  *
  * @author  Jack McDade <jack@statamic.com>
- * @author  Mubashar Iqbal <mubs@statamic.com>
  * @author  Fred LeBlanc <fred@statamic.com>
  *
  * @copyright  2014
@@ -15,10 +14,40 @@ class Plugin_location extends Plugin {
 
     var $meta = array(
         'name'       => 'Location',
-        'version'    => '1.0',
-        'author'     => 'Fred LeBlanc',
+        'version'    => '1.1',
+        'author'     => 'Statamic',
         'author_url' => 'http://statamic.com'
     );
+
+
+    public function map()
+    {
+        // parse settings
+        $settings = $this->parseParameters();
+
+        $latitude = $this->fetchParam('latitude');
+        $longitude = $this->fetchParam('longitude');
+
+        // check for valid center point
+        if (preg_match(Pattern::COORDINATES, $this->fetchParam('center_point'), $matches)) {
+            $settings['starting_latitude']  = $matches[1];
+            $settings['starting_longitude'] = $matches[2];
+        } else {
+            $settings['starting_latitude']  = $latitude;
+            $settings['starting_longitude'] = $longitude;
+        }
+
+        // overrides
+        $settings['auto_center'] = 'false';
+        $settings['clusters'] = 'false';
+
+        $content['marker'] = array(
+            'latitude' => $latitude,
+            'longitude' => $longitude
+        );
+
+        return $this->buildScript($content, $settings);
+    }
     
     
     public function map_url()
@@ -389,12 +418,12 @@ class Plugin_location extends Plugin {
 
         return '
             <!-- leaflet maps -->
-            <link rel="stylesheet" href="' . $add_on_path . '/css/leaflet.css">
+            <link rel="stylesheet" href="' . ENVIRONMENT_PATH_PREFIX . $add_on_path . '/css/leaflet.css">
             <!--[if lte IE 8]>
-                <link rel="stylesheet" href="' . $add_on_path . '/css/leaflet.ie.css">
+                <link rel="stylesheet" href="' . ENVIRONMENT_PATH_PREFIX . $add_on_path . '/css/leaflet.ie.css">
             <![endif]-->
             ' . $override . '
-            <script type="text/javascript" src="' . $add_on_path . '/js/leaflet.js"></script>
+            <script type="text/javascript" src="' . ENVIRONMENT_PATH_PREFIX . $add_on_path . '/js/leaflet.js"></script>
             <script>
                 try {
                     if (typeof _location_maps !== "object") {

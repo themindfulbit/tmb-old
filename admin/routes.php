@@ -200,7 +200,7 @@ $admin_app->get('/pages', function() use ($admin_app) {
   |
   */
 
-  $pages = Statamic::get_content_tree('/', 1, 1000, false, false, false, false, '/');
+  $pages = Statamic::get_content_tree('/', 1, 1000, false, false, false, true, '/');
 
   // Home page isn't included by default
   $meta = Statamic::get_content_meta("page", '');
@@ -286,7 +286,7 @@ $admin_app->get('/entries', function() use ($admin_app) {
       'app'      => $admin_app,
       'errors'   => $errors,
       'path'     => $path,
-      'folder'   => preg_replace(Pattern::NUMERIC, '', $path),
+      'folder'   => Path::addStartingSlash(preg_replace(Pattern::NUMERIC, '', $path)),
       'entries'  => $entries,
       'type'     => $entry_type,
       'listings' => Statamic::get_listings()
@@ -317,6 +317,15 @@ $admin_app->post('/publish', function() use ($admin_app) {
   if ($path) {
     $index_file = false;
     $form_data = Request::post('page');
+
+    // By HTML specifications, browsers are required to canonicalize line breaks
+    // in user input to CR LF (\r\n), and I don’t think any browser gets this wrong.
+    // Reference: clause 17.13.4 Form content types in the HTML 4.01 spec.
+    // Source: http://stackoverflow.com/questions/14217101/what-character-represents-a-new-line-in-a-text-area
+    // Anyway, we want \n for this
+    array_walk_recursive($form_data, function(&$item, $key) {
+      $item = str_replace("\r\n", Config::get('admin_line_endings', "\n"), $item);
+    });
 
     // 1. Validate
     if ($form_data) {
@@ -547,10 +556,8 @@ $admin_app->post('/publish', function() use ($admin_app) {
       $file = $content_root."/".$path."/".$status_prefix.$date_or_datetime."-".$slug.".".$content_type;
 
     } elseif ($form_data['type'] == 'number') {
-      if (!preg_match(Pattern::NUMERIC, $slug, $matches)) {
-        $slug = $numeric.".".$slug;
-      }
-      $file = $content_root."/".$path."/".$slug.".".$content_type;
+      $slug = $numeric.".".$slug;
+      $file = $content_root."/".$path."/".$status_prefix.$slug.".".$content_type;
 
     } elseif ($form_data['type'] == 'none') {
       if (!preg_match(Pattern::NUMERIC, $slug, $matches)) {
@@ -558,7 +565,7 @@ $admin_app->post('/publish', function() use ($admin_app) {
         $slug = $numeric."-".$slug;
       }
         
-      $file = $content_root."/".$path."/".$slug."/page.".$content_type;
+      $file = $content_root."/".$path."/".$status_prefix.$slug."/page.".$content_type;
       $file = Path::tidy($file);
 
       if ( ! File::exists(dirname($file))) {
@@ -662,6 +669,8 @@ $admin_app->post('/publish', function() use ($admin_app) {
       $fields_data = $fs->get_data();
       $field_settings = $fields_data['fields'];
     }
+  } else {
+    $field_settings = array_get($data, 'fields', array());
   }
 
   /*
@@ -680,48 +689,8 @@ $admin_app->post('/publish', function() use ($admin_app) {
       $form_data['yaml'][$field] = 0;
     }
   }
-  /*
-  |--------------------------------------------------------------------------
-  | File uploads
-  |--------------------------------------------------------------------------
-  |
-  | This isn't great. We need to rewrite this. AJAX would probably be
-  | best course of action.
-  |
-  */
 
 
-  if (isset($_FILES['page']['name']['yaml'])) {
-    $form_data['yaml'] = Helper::arrayCombineRecursive($form_data['yaml'], $_FILES['page']['name']['yaml']);
-
-    foreach ($_FILES['page']['name']['yaml'] as $field => $value) {
-      if (array_get($field_settings[$field], 'type') === 'file') {
-        if ($value != '') {
-          $file_values = array();
-          $file_values['name'] = $_FILES['page']['name']['yaml'][$field];
-          $file_values['type'] = $_FILES['page']['type']['yaml'][$field];
-          $file_values['tmp_name'] = $_FILES['page']['tmp_name']['yaml'][$field];
-          $file_values['error'] = $_FILES['page']['error']['yaml'][$field];
-          $file_values['size'] = $_FILES['page']['size']['yaml'][$field];
-          $val = Fieldtype::process_field_data('file', $file_values, $field_settings[$field]);
-          $file_data[$field] = $val;
-          
-          $form_data['yaml'][$field] = $val;
-        } else {
-          if (isset($form_data['yaml'][$field.'_remove'])) {
-            $form_data['yaml'][$field] = '';
-            $file_data[$field] = '';
-          } else {
-            $file_data[$field] = isset($form_data['yaml'][$field]) ? $form_data['yaml'][$field] : '';
-          }
-        }
-        // unset the remove column
-        if (isset($form_data['yaml']["{$field}_remove"])) {
-          unset($form_data['yaml']["{$field}_remove"]);
-        }
-      }
-    }
-  }
   /*
   |--------------------------------------------------------------------------
   | Fieldtype Process Method
@@ -733,7 +702,7 @@ $admin_app->post('/publish', function() use ($admin_app) {
   */
 
   foreach ($form_data['yaml'] as $field => $value) {
-    if (isset($field_settings[$field]['type']) && $field_settings[$field]['type'] != 'file') {
+    if (isset($field_settings[$field]['type'])) {
       $file_data[$field] = Fieldtype::process_field_data($field_settings[$field]['type'], $value, $field_settings[$field], $field);
     } else {
       $file_data[$field] = $value;
@@ -769,6 +738,20 @@ $admin_app->post('/publish', function() use ($admin_app) {
     unset($file_data['status']);
   }
 
+  
+  /*
+  |--------------------------------------------------------------------------
+  | Prep data & run hook
+  |--------------------------------------------------------------------------
+  |
+  | Set up an array of useful data for the hook and then run that sucker.
+  |
+  */
+   
+  $publish_data = array('yaml' => $file_data, 'content' => $form_data['content'], 'file' => $file);
+  
+  $publish_data = Hook::run('control_panel', 'publish', 'replace', $publish_data, $publish_data);
+
   /*
   |--------------------------------------------------------------------------
   | Build and write content
@@ -778,7 +761,7 @@ $admin_app->post('/publish', function() use ($admin_app) {
   |
   */
 
-  $file_content = File::buildContent($file_data, $form_data['content']);
+  $file_content = File::buildContent($publish_data['yaml'], $publish_data['content']);
 
   File::put(Path::assemble(BASE_PATH, $file), $file_content);
 
@@ -791,8 +774,6 @@ $admin_app->post('/publish', function() use ($admin_app) {
   |
   */
 
-
-
   if ( ! isset($form_data['new'])) {
 
     $new_slug = ($form_data['meta']['slug'] === '/') ? '/' : Slug::make($form_data['meta']['slug']);
@@ -804,18 +785,18 @@ $admin_app->post('/publish', function() use ($admin_app) {
       if (Config::getEntryTimestamps()) {
         $new_timestamp = $form_data['meta']['publish-time'];
         $new_datestamp = $form_data['meta']['publish-date'];
-        $new_file = $content_root . "/" . dirname($path) . "/" . $status_prefix .  $new_datestamp . "-" . $new_timestamp . "-" . $new_slug.".".$content_type;
+        $new_file = Path::assemble($content_root, dirname($path), $status_prefix . $new_datestamp . "-" . $new_timestamp . "-" . $new_slug.".".$content_type);
 
       // Without Timestamps
       } else {
         $new_datestamp = $form_data['meta']['publish-date'];
-        $new_file = $content_root . "/" . dirname($path) . "/" . $status_prefix . $new_datestamp . "-" . $new_slug.".".$content_type;
+        $new_file = Path::assemble($content_root, dirname($path), $status_prefix . $new_datestamp . "-" . $new_slug.".".$content_type);
       }
 
     // Numerical Entry
     } elseif ($form_data['type'] == 'number') {
       $new_numeric = $form_data['meta']['publish-numeric'];
-      $new_file = $content_root . "/" . dirname($path) . "/" . $status_prefix . $new_numeric . "." . $new_slug . "." . $content_type;
+      $new_file = Path::assemble($content_root, dirname($path), $status_prefix . $new_numeric . "." . $new_slug . "." . $content_type);
 
     // Pages
     } else {
@@ -854,17 +835,20 @@ $admin_app->post('/publish', function() use ($admin_app) {
   |--------------------------------------------------------------------------
   |
   | Pages go back to the tree, entries to their respective Entry Listing
+  | Or, if a custom return was specified, we'll go there.
   |
   */
 
   if ($form_data['type'] == 'none') {
     $app->flash('success', Localization::fetch('page_saved'));
-    $url = $app->urlFor('pages')."?path=".$folder;
-    $app->redirect($url);
   } else {
     $app->flash('success', Localization::fetch('entry_saved'));
-    $url = $app->urlFor('entries')."?path=".$folder;
-    $app->redirect($url);
+  }
+
+  if (Request::post('continue')) {
+    $app->redirect(Request::getReferrer());
+  } else {
+    $app->redirect(Request::post('return'));
   }
 
 });
@@ -881,6 +865,18 @@ $admin_app->map('/delete/entry', function() use ($admin_app) {
 
   foreach ($entries as $path) {
     $file = $content_root . "/" . $path . "." . $content_type;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Delete Hook
+    |--------------------------------------------------------------------------
+    |
+    | Runs the delete hook, passing the file path
+    |
+    */
+
+    Hook::run('control_panel', 'delete', null, $file);
+
     File::delete($file);
   }
 
@@ -890,7 +886,7 @@ $admin_app->map('/delete/entry', function() use ($admin_app) {
     $admin_app->flash('success', Localization::fetch('entry_deleted'));
   }
 
-  $url = $admin_app->urlFor('entries')."?path=".dirname($path);
+  $url = $admin_app->request()->getReferrer();
   $admin_app->redirect($url);
 
 })->name('delete_entry')->via('GET', 'POST');;
@@ -918,8 +914,23 @@ $admin_app->get('/delete/page', function() use ($admin_app) {
     }
 
     if (File::exists($path)) {
+      
+      /*
+      |--------------------------------------------------------------------------
+      | Delete Hook
+      |--------------------------------------------------------------------------
+      |
+      | Runs the delete hook, passing the file path
+      |
+      */
+
+      Hook::run('control_panel', 'delete', null, $path);
+
       File::delete($path);
+
       $admin_app->flash('success', Localization::fetch('page_deleted'));
+
+
     } else {
       $admin_app->flash('failure', Localization::fetch('page_unable_delete'));
     }
@@ -933,8 +944,10 @@ $admin_app->get('/delete/page', function() use ($admin_app) {
 
 // GET: PUBLISH
 $admin_app->get('/publish', function() use ($admin_app) {
+  
   authenticateForRole('admin');
   doStatamicVersionCheck($admin_app);
+  
   $content_root = Config::getContentRoot();
   $app = \Slim\Slim::getInstance();
 
@@ -948,7 +961,7 @@ $admin_app->get('/publish', function() use ($admin_app) {
 
     if ($new) {
       $data['new'] = 'true';
-      $page = 'new-slug';
+      $page = '';
       $folder = $path;
 
       $data['full_slug'] = dirname($path);
@@ -1099,11 +1112,12 @@ $admin_app->get('/publish', function() use ($admin_app) {
 
         }
       } else {
-        if (isset($data['_fieldset'])) {
-          $fs = Statamic_Fieldset::load($data['_fieldset']);
+        $fieldset = array_get($data, '_fieldset', Config::get('default_fieldset'));
+        if ($fieldset) {
+          $fs = Statamic_Fieldset::load($fieldset);
           $fields_data = $fs->get_data();
-          $data['fields'] = isset($fields_data['fields']) ? $fields_data['fields'] : array();
-          $data['fieldset'] = $data['_fieldset'];
+          $data['fields'] = array_get($fields_data, 'fields', array());
+          $data['fieldset'] = $fieldset;
         }
         $data['type'] = 'none';
       }
@@ -1159,12 +1173,39 @@ $admin_app->get('/publish', function() use ($admin_app) {
 
   if ($new) $data['status_message'] .=  ' ' . Localization::fetch('in', null, true);
 
+  // Set the return URL
+  if ($custom_return = Request::get('return')) {
+    $data['return'] = $app->request()->getRootUri() . $custom_return;
+  } else {
+    $data['return'] = ($data['type'] == 'none')
+                      ? $app->urlFor('pages')."?path=".Path::addStartingSlash($folder)
+                      : $app->urlFor('entries')."?path=".Path::addStartingSlash($folder);
+  }
+
   $data['templates'] = Theme::getTemplates();
   $data['layouts'] = Theme::getLayouts();
 
   $template_list = array("publish");
   Statamic_View::set_templates(array_reverse($template_list));
+
+  /*
+  |--------------------------------------------------------------------------
+  | Hook: Can Publish
+  |--------------------------------------------------------------------------
+  |
+  | Gives the ability to prevent editing/publishing.
+  |
+  */
+ 
+  $can_edit = Hook::run('control_panel', 'can_publish', 'replace', true, $data);
+
+  if ( ! $can_edit) {
+    $admin_app->redirect($admin_app->urlFor('denied'));
+  }
+
   $admin_app->render(null, array('route' => 'publish', 'app' => $admin_app)+$data);
+
+
 })->name('publish');
 
 
@@ -1203,6 +1244,10 @@ $admin_app->post('/member', function() use ($admin_app) {
     
   // prepare submission
   array_walk_recursive($submission, function(&$item, $key) {
+      // we don't need to special-chars a password
+      if (strpos($key, '[password]') !== 0) {
+          return;
+      }
       $item = htmlspecialchars($item);
   });
     
@@ -1385,9 +1430,11 @@ $admin_app->get('/account', function() use ($admin_app) {
   authenticateForRole('admin');
   doStatamicVersionCheck($admin_app);
 
-  $template_list = array("account");
-  Statamic_View::set_templates(array_reverse($template_list));
-  $admin_app->render(null, array('route' => 'members', 'app' => $admin_app));
+  $user = Auth::getCurrentMember();
+  $username = $user->get('username');
+
+  $admin_app->redirect($admin_app->urlFor('member').'?name=' . $username);
+
 })->name('account');
 
 
@@ -1515,6 +1562,8 @@ $admin_app->get('/system/logs', function() use ($admin_app) {
       $data['logs_exist'] = TRUE;
     }
 
+    ksort($data['logs']);
+
     closedir($dir);
 
     // flip the order of logs
@@ -1614,6 +1663,19 @@ $admin_app->get('/system/logs', function() use ($admin_app) {
 })->name('logs');
 
 
+// Uploads
+// --------------------------------------------------------
+$admin_app->post('/upload', function() use ($admin_app) {
+
+  authenticateForRole('admin');
+  doStatamicVersionCheck($admin_app);
+
+  $files = _Upload::uploadBatch();
+
+  $admin_app->contentType('application/json');
+  echo json_encode(array('files' => $files));
+
+})->name('upload');
 
 
 
@@ -1643,27 +1705,16 @@ $admin_app->get('/images',  function() use ($admin_app) {
 })->name('images');
 
 
+/*
+|--------------------------------------------------------------------------
+| Hook: Add Routes
+|--------------------------------------------------------------------------
+|
+| Allows add-ons to add their own hooks to the control panel.
+|
+*/
 
-
-
-// POST: File Upload
-// --------------------------------------------------------
-$admin_app->post('/file/upload',  function() use ($admin_app) {
-  authenticateForRole('admin');
-  doStatamicVersionCheck($admin_app);
-
-  $file = $_FILES['file']['tmp_name'];
-  $filename = $_FILES['file']['name'];
-  $destination = $admin_app->request()->get('destination');
-
-  File::upload($file, $destination, $filename);
-
-  echo $destination . $filename;
-
-})->name('file_upload');
-
-
-
+Hook::run('control_panel', 'add_routes');
 
 
 

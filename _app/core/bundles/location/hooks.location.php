@@ -93,7 +93,7 @@ class Hooks_location extends Hooks
                 $(document).ready(function() {
                     var location_options = {$options};
                     $('.input-location').each(function() {
-                        $(this).location(location_options);
+                        $(this).addClass('location-enabled').location(location_options);
                     });
 
                     // for dynamically loaded rows
@@ -104,6 +104,11 @@ class Hooks_location extends Hooks
                             .each(function() {
                                 $(this).location(location_options);
                             });
+                    });
+
+                    // now for replicator
+                    $('body').on('addSet', function() {
+                        $('.input-location').not('.location-enabled').addClass('location-enabled').location(location_options);
                     });
                 });
             ");

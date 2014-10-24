@@ -20,6 +20,8 @@ class Fieldtype_suggest extends Fieldtype
         $max_items = array_get($this->field_config, 'max_items', 'null');
         $force_list = array_get($this->field_config, 'force_list', false);
         $multiple = array_get($this->field_config, 'multiple', true);
+        $allow_blank = array_get($this->field_config, 'allow_blank', false);
+        $placeholder = array_get($this->field_config, 'placeholder', false);
 
         if ($max_items === 1 && !$force_list) {
             $multiple = false;
@@ -27,6 +29,7 @@ class Fieldtype_suggest extends Fieldtype
 
         $multiple_array_holder = $multiple ? '[]' : '';
         $multiple_string = $multiple ? "multiple='multiple'" : '';
+        $placeholder_string = $placeholder ? "placeholder='$placeholder'" : '';
 
         $suggestions = array();
 
@@ -79,10 +82,15 @@ class Fieldtype_suggest extends Fieldtype
             );
             $entries = $content_set->get();
 
-            foreach ($entries as $key => $entry) {
-                if (isset($entry[$label]) && isset($entry[$value])) {
-                    $suggestions[$entry[$value]] = $entry[$label];
+            foreach ($entries as $entry) {
+                $pieces = array();
+                foreach (Helper::ensureArray($label) as $label_part) {
+                    if (isset($entry[$label_part]) && isset($entry[$value])) {
+                        $pieces[] = $entry[$label_part];
+                    }
                 }
+
+                $suggestions[$entry[$value]] = join(' – ', $pieces);
             }
         }
 
@@ -104,6 +112,7 @@ class Fieldtype_suggest extends Fieldtype
 
             // now filter that down to just what we want
             $taxonomy_set->filter(array(
+                "min_count" => 1,
                 "folders"   => array($folder)
             ));
 
@@ -120,15 +129,61 @@ class Fieldtype_suggest extends Fieldtype
 
         /*
         |--------------------------------------------------------------------------
+        | Members
+        |--------------------------------------------------------------------------
+        |
+        | Fetch a list of members, using any existing fields as labels and values
+        |
+        */
+
+        if (isset($this->field_config['members'])) {
+
+            $config = $this->field_config['members'];
+
+            $value   = array_get($config, 'value', '_uid');
+            $label   = array_get($config, 'label', 'username');
+
+            $member_set = MemberService::getMembers();
+            $member_set->filter(array(
+                'role'   => array_get($config, 'role')
+            ));
+            $members = $member_set->get();
+
+            foreach ($members as $key => $member) {
+                if (isset($member[$label]) && isset($member[$value])) {
+                    $suggestions[$member[$value]] = $member[$label];
+                }
+            }
+        }
+
+        /*
+        |--------------------------------------------------------------------------
         | Input HTML
         |--------------------------------------------------------------------------
         |
         | Generate the HTML for the select field. A single, blank option is
-        | needed if in single select mode.
+        | needed if allow blank is true.
         |
         */
+       
+        if ($max_items === null && $multiple === false) {
+            $max_items = 1;
+        }
 
-        $html = "<div id='$this->field_id'><select name='{$this->fieldname}{$multiple_array_holder}' tabindex='{$this->tabindex}' $multiple_string class='suggest'>\n";
+        $options = json_encode(array(
+            'sortField'      => 'text',
+            'maxItems'      => $max_items,
+            'delimiter'      => ',',
+            'create'         => array_get($this->field_config, 'create', false),
+            'persist'        => array_get($this->field_config, 'persist', true),
+            'hideSelected'   => array_get($this->field_config, 'hide_selected', true),
+            'sortDirection'  => array_get($this->field_config, 'sort_dir', 'asc'),
+            'plugins'        => array('drag_drop'),
+            'dropdownParent' => 'body'
+        ));
+
+        $html = "<div id='$this->field_id' class='suggest-field-container' data-config='$options'>";
+        $html .= "<select name='{$this->fieldname}{$multiple_array_holder}' tabindex='{$this->tabindex}' $multiple_string $placeholder_string class='suggest'>\n";
 
         $is_indexed = (array_values($suggestions) === $suggestions);
 
@@ -136,6 +191,10 @@ class Fieldtype_suggest extends Fieldtype
         if (is_array($field_data)) {
             $field_data = array_combine($field_data, $field_data);
             $suggestions = array_merge($field_data, $suggestions);
+        }
+
+        if ($allow_blank) {
+            $html .= "<option value=''></option>\n";
         }
 
         foreach ($suggestions as $value => $label) {
@@ -154,61 +213,7 @@ class Fieldtype_suggest extends Fieldtype
         $html .= "</select>";
         $html .= "<div class='count-placeholder'></div></div>";
 
-        /*
-        |--------------------------------------------------------------------------
-        | The JavaScript
-        |--------------------------------------------------------------------------
-        |
-        | Set the config options, instantiate Selectize, and so forth.
-        |
-        */
-
-        if ($max_items === null && $multiple === false) {
-            $max_items = 1;
-        }
-
-        $options = json_encode(array(
-            'sortField'      => 'text',
-            'maxItems'      => $max_items,
-            'delimiter'      => ',',
-            'create'         => array_get($this->field_config, 'create', false),
-            'persist'        => array_get($this->field_config, 'persist', true),
-            'hideSelected'   => array_get($this->field_config, 'hide_selected', true),
-            'sortDirection'  => array_get($this->field_config, 'sort_dir', 'asc'),
-            'plugins'        => array('drag_drop'),
-            'dropdownParent' => 'body'
-        ));
-
-        $html .= "
-        <script>
-        $(function() {
-
-            var selectize = $('#$this->field_id select'),
-                options = $options;
-
-            // @TODO: Rewrite in KO to avoid scoping issues in Grid fields
-            // if (max_items != null) {
-            //    var count = (value === null) ? 0 : value.length,
-            //        value = selectize.val(),
-            //        max_items = $max_items;
-            //        remaining = max_items - count,
-            //        placeholder = $('#$this->field_id .count-placeholder');
-            //     $.extend(options, {
-            //             'onChange': function(value) {
-            //                 count = (value === null) ? 0 : value.length;
-            //                 remaining = max_items - count;
-            //                 placeholder.text(remaining + ' remaining');
-            //             }
-            //         }
-            //     );
-            //     placeholder.text(remaining + ' remaining');
-            // }
-
-            $(selectize).selectize($options);
-        });
-
-        </script>
-        ";
+        $html .= "<script>$('#{$this->field_id}').statamicSuggest();</script>";
 
         return $html;
     }

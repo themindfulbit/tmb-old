@@ -115,6 +115,17 @@ class Helper
         return array_map( 'self::objectToArray', $object);
     }
 
+    public static function prettifyZeroIndexes($array)
+    {
+        if (array_values($array) === $array) {
+            $new_array = array_values($array);
+
+            return array_combine($new_array, array_map('Slug::prettify', $new_array));
+        }
+
+        return $array;
+    }
+
 
     /**
      * Explodes options into an array
@@ -323,6 +334,7 @@ class Helper
      */
     public static function makeHash()
     {
+        $hash = Debug::markStart('math', 'hashing');
         $args = func_get_args();
         $data = array();
         
@@ -338,31 +350,103 @@ class Helper
         }
         
         // return a hash of the flattened $data array
-        return md5(join('%', $data));
+        $result = md5(join('%', $data));
+        Debug::markEnd($hash);
+        
+        return $result;
     }
     
     public static function strrpos_count($haystack, $needle, $instance=0)
     {
-//        r('---');
-//        r($haystack);
-//        r($instance);
-        
         do {
             // get the last occurrence in the current haystack
             $last = strrpos($haystack, $needle);
-//            d($last);
             
             if ($last === false) {
                 return false;
             }
             
-            $haystack = substr($haystack, 0, $last);
-//            d($haystack);
-            
+            $haystack = substr($haystack, 0, $last);            
             $instance--;
         } while ($instance >= 0);
         
-//        d('out: ' . $last);
         return $last;
+    }
+
+    /**
+     * Convert a value to camel case.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public static function camelCase($value)
+    {
+        $value = ucwords(str_replace(array('-', '_'), ' ', $value));
+
+        return lcfirst(str_replace(' ', '', $value));
+    }
+    
+
+    /**
+     * Is a given $ip_address within any of the given $ip_ranges?
+     *
+     * @param string  $ip_address  IP Address to check
+     * @param mixed  $ip_ranges   One or more IP ranges to check
+     * @return boolean
+     */
+    public static function isIPInRange($ip_address, $ip_ranges)
+    {
+        if (!is_array($ip_ranges)) {
+            $ip_ranges = array($ip_ranges);
+        }
+
+        foreach ($ip_ranges as $ip_range) {
+            if (strpos($ip_range, '/')) {
+                // this is a CIDR range
+                list($range, $netmask) = explode('/', $ip_range, 2);
+
+                $range  = (float) sprintf("%u", ip2long($range));
+                $ip     = (float) sprintf("%u", ip2long($ip_address));
+
+                // NOT the wildcard value
+                $wildcard  = pow(2, (32 - $netmask)) - 1;
+                $netmask   = ~$wildcard;
+
+                // check by ANDing the origin IP and the range address
+                $result = (($ip & $netmask) == ($range & $netmask));
+
+                if ($result) {
+                    // found a good one, return true and break out
+                    return true;
+                }
+            } else {
+                if (strpos($ip_range, '-')) {
+                    // this is a start and end range
+                    list($lower, $upper)  = explode('-', $ip_range, 2);
+                } elseif (strpos($ip_range, '*')) {
+                    $lower  = str_replace('*', 0, $ip_range);
+                    $upper  = str_replace('*', 255, $ip_range);
+                } else {
+                    $lower  = $ip_range;
+                    $upper  = $ip_range;
+                }
+
+                // convert to long
+                $lower  = (float) sprintf("%u", ip2long($lower));
+                $upper  = (float) sprintf("%u", ip2long($upper));
+                $ip     = (float) sprintf("%u", ip2long($ip_address));
+
+                // compare
+                $result = (($ip >= $lower) && ($ip <= $upper));
+
+                if ($result) {
+                    // found a good one, return true and break out
+                    return true;
+                }
+            }
+        }
+
+        // didn't find any matches, must be false
+        return false;
     }
 }
