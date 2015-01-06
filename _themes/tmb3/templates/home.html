@@ -58,8 +58,10 @@
 
     <div class="pre-bar">
       <a href="{{ url }}" class="date-ball {{ categories_spaced_list }}">
-        <div class="nice-date">{{ datestamp format="M d, 'y" }}</div>
-        <div class="time">{{ datestamp format="g:i A" }}</div>
+        <div class="date-time-block">
+          <div class="nice-date">{{ datestamp format="M d, 'y" }}</div>
+          <div class="time">{{ datestamp format="g:i A" }}</div>
+        </div>
       </a>
       {{ tags }}
         <a class="icon {{ name }}" href="{{ _site_root }}blog/tags/{{ name|slugify }}"></a>

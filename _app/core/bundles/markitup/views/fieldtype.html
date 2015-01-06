@@ -14,7 +14,7 @@
 		tabindex="{{ tabindex }}"
 		class='input-textarea markitup'
 		{{ if field_config:required }}required{{ /if }}
-	>{{ field_data }}</textarea>
+	>{{ field_data|noparse }}</textarea>
 
 </div>
 

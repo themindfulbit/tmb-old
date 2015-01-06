@@ -82,7 +82,9 @@ _environments:
     - '*.com'
 
 # Set to 'true' if you need more robust debug errors
-_debug: true
+_debug: false
+
+_display_debug_panel: false
 
 
 ###########################################################################################

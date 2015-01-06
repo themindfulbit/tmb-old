@@ -143,7 +143,7 @@
       <?php if (isset($page['has_entries']) && $page['has_entries']): ?>
         <div class="control-entries">
           <span class="ss-icon">textfile</span>
-          <span class="muted"><?php echo Localization::fetch('entries')?>:</span>
+          <span class="muted"><?php echo $page['entries_label'] ?>:</span>
           <a href="<?php print $app->urlFor('entries')."?path={$base}/{$page['slug']}"; ?>">
             <?php echo Localization::fetch('list')?>
           </a>

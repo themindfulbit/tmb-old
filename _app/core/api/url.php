@@ -76,7 +76,18 @@ class URL
 
         return ! array_get($parts, 'scheme', false);
     }
-    
+
+
+    /**
+     * Checks whether a URL is external or not
+     * @param  string  $url
+     * @return boolean
+     */
+    public static function isExternalUrl($url)
+    {
+        return ! Pattern::startsWith(URL::makeFull($url), URL::getSiteUrl());
+    }
+
 
     /**
      * Get the current site url from Apache headers

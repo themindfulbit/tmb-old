@@ -20,7 +20,7 @@ class YAML
      */
     public static function getMode()
     {
-        return Config::get('yaml_mode', 'quick');
+        return Config::get('yaml_mode', 'loose');
     }
 
 

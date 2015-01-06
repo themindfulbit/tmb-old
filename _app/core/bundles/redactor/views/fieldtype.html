@@ -10,7 +10,7 @@
 		tabindex="{{ tabindex }}"
 		class='input-textarea redactor'
 		{{ if field_config:required }}required{{ /if }}
-	>{{ field_data }}</textarea>
+	>{{ field_data|noparse }}</textarea>
 
 </div>
 

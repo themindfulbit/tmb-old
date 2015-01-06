@@ -846,7 +846,8 @@ $admin_app->post('/publish', function() use ($admin_app) {
   }
 
   if (Request::post('continue')) {
-    $app->redirect(Request::getReferrer());
+    $path = rtrim(Path::trimSlashes(str_replace(Config::getContentRoot(), '', Path::tidy($file))), '.' . Config::getContentType());
+    $app->redirect($admin_app->urlFor('publish') . '?path=' . $path);
   } else {
     $app->redirect(Request::post('return'));
   }
