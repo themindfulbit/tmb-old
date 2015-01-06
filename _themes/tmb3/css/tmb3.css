@@ -2,7 +2,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 5, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass-core-1.1.0.alpha.2/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,45 +24,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass-core-1.1.0.alpha.2/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass-core-1.1.0.alpha.2/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass-core-1.1.0.alpha.2/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass-core-1.1.0.alpha.2/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass-core-1.1.0.alpha.2/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass-core-1.1.0.alpha.2/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass-core-1.1.0.alpha.2/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass-core-1.1.0.alpha.2/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../var/lib/gems/2.1.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -82,7 +82,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /*
  * Corrects block display not defined in IE6/7/8/9 & FF3
  */
-/* line 20, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 20, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 article,
 aside,
 details,
@@ -100,7 +100,7 @@ summary {
 /*
  * Corrects inline-block display not defined in IE6/7/8/9 & FF3
  */
-/* line 38, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 38, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 audio,
 canvas,
 video {
@@ -112,7 +112,7 @@ video {
 /*
  * Prevents modern browsers from displaying 'audio' without controls
  */
-/* line 50, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 50, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 audio:not([controls]) {
   display: none;
 }
@@ -121,7 +121,7 @@ audio:not([controls]) {
  * Addresses styling for 'hidden' attribute not present in IE7/8/9, FF3, S4
  * Known issue: no IE6 support
  */
-/* line 59, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 59, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 [hidden] {
   display: none;
 }
@@ -129,7 +129,7 @@ audio:not([controls]) {
 /* =============================================================================
    Base
    ========================================================================== */
-/* line 69, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 69, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, p, blockquote, th, td {
   margin: 0;
   padding: 0;
@@ -141,7 +141,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
  * 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
  *    www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
  */
-/* line 82, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 82, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 html {
   font-size: 100%;
   /* 1 */
@@ -154,7 +154,7 @@ html {
 /*
  * Addresses font-family inconsistency between 'textarea' and other form elements.
  */
-/* line 92, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 92, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 html,
 button,
 input,
@@ -166,7 +166,7 @@ textarea {
 /*
  * Addresses margins handled incorrectly in IE6/7
  */
-/* line 104, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 104, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 body {
   margin: 0;
 }
@@ -177,7 +177,7 @@ body {
 /*
  * Addresses outline displayed oddly in Chrome
  */
-/* line 119, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 119, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 a:focus {
   outline: thin dotted;
 }
@@ -186,7 +186,7 @@ a:focus {
  * Improves readability when focused and also mouse hovered in all browsers
  * people.opera.com/patrickl/experiments/keyboard/test
  */
-/* line 128, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 128, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 a:hover,
 a:active {
   outline: 0;
@@ -198,7 +198,7 @@ a:active {
 /*
  * Addresses styling not present in IE7/8/9, S5, Chrome
  */
-/* line 141, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 141, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 abbr[title] {
   border-bottom: 1px dotted;
 }
@@ -206,13 +206,13 @@ abbr[title] {
 /*
  * Addresses style set to 'bolder' in FF3+, S4/5, Chrome
 */
-/* line 149, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 149, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 b,
 strong {
   font-weight: bold;
 }
 
-/* line 154, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 154, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 blockquote {
   margin: 1em 40px;
 }
@@ -220,7 +220,7 @@ blockquote {
 /*
  * Addresses styling not present in S5, Chrome
  */
-/* line 162, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 162, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 dfn {
   font-style: italic;
 }
@@ -228,7 +228,7 @@ dfn {
 /*
  * Addresses styling not present in IE6/7/8/9
  */
-/* line 170, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 170, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 mark {
   background: #ff0;
   color: #000;
@@ -237,7 +237,7 @@ mark {
 /*
  * Addresses margins set differently in IE6/7
  */
-/* line 179, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 179, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 p,
 pre {
   margin: 1em 0;
@@ -247,7 +247,7 @@ pre {
  * Corrects font family set oddly in IE6, S4/5, Chrome
  * en.wikipedia.org/wiki/User:Davidgothberg/Test59
  */
-/* line 189, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 189, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 pre,
 code,
 kbd,
@@ -260,7 +260,7 @@ samp {
 /*
  * Improves readability of pre-formatted text in all browsers
  */
-/* line 202, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 202, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 pre {
   white-space: pre;
   white-space: pre-wrap;
@@ -272,20 +272,20 @@ pre {
  * 2. Addresses quote property not supported in S4
  */
 /* 1 */
-/* line 215, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 215, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 q {
   quotes: none;
 }
 
 /* 2 */
-/* line 221, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 221, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 q:before,
 q:after {
   content: '';
   content: none;
 }
 
-/* line 227, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 227, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 small {
   font-size: 75%;
 }
@@ -294,7 +294,7 @@ small {
  * Prevents sub and sup affecting line-height in all browsers
  * gist.github.com/413930
  */
-/* line 236, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 236, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 sub,
 sup {
   font-size: 75%;
@@ -303,12 +303,12 @@ sup {
   vertical-align: baseline;
 }
 
-/* line 244, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 244, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 sup {
   top: -0.5em;
 }
 
-/* line 248, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 248, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 sub {
   bottom: -0.25em;
 }
@@ -319,7 +319,7 @@ sub {
 /*
  * Addresses margins set differently in IE6/7
  */
-/* line 261, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 261, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 dl,
 menu,
 ol,
@@ -327,7 +327,7 @@ ul {
   margin: 1em 0;
 }
 
-/* line 268, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 268, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 dd {
   margin: 0 0 0 40px;
 }
@@ -335,7 +335,7 @@ dd {
 /*
  * Addresses paddings set differently in IE6/7
  */
-/* line 276, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 276, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 menu,
 ol,
 ul {
@@ -345,7 +345,7 @@ ul {
 /*
  * Corrects list images handled incorrectly in IE7
  */
-/* line 286, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 286, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 nav ul,
 nav ol {
   list-style: none;
@@ -360,7 +360,7 @@ nav ol {
  * 2. Improves image quality when scaled in IE7
  *    code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
  */
-/* line 303, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 303, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 img {
   border: 0;
   /* 1 */
@@ -371,7 +371,7 @@ img {
 /*
  * Corrects overflow displayed oddly in IE9
  */
-/* line 312, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 312, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 svg:not(:root) {
   overflow: hidden;
 }
@@ -382,7 +382,7 @@ svg:not(:root) {
 /*
  * Addresses margin not present in IE6/7/8/9, S5, O11
  */
-/* line 325, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 325, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 figure {
   margin: 0;
 }
@@ -393,7 +393,7 @@ figure {
 /*
  * Corrects margin displayed oddly in IE6/7
  */
-/* line 338, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 338, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 form {
   margin: 0;
 }
@@ -401,7 +401,7 @@ form {
 /*
  * Define consistent border, margin, and padding
  */
-/* line 346, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 346, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
@@ -413,7 +413,7 @@ fieldset {
  * 2. Corrects text not wrapping in FF3 
  * 3. Corrects alignment displayed oddly in IE6/7
  */
-/* line 358, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 358, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 legend {
   border: 0;
   /* 1 */
@@ -429,7 +429,7 @@ legend {
  * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome
  * 3. Improves appearance and consistency in all browsers
  */
-/* line 371, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 371, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 button,
 input,
 select,
@@ -447,7 +447,7 @@ textarea {
 /*
  * Addresses FF3/4 setting line-height on 'input' using !important in the UA stylesheet
  */
-/* line 385, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 385, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 button,
 input {
   line-height: normal;
@@ -460,7 +460,7 @@ input {
  * 3. Removes inner spacing in IE7 without affecting normal text inputs
  *    Known issue: inner spacing remains in IE6
  */
-/* line 397, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 397, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 button,
 input[type="button"],
 input[type="reset"],
@@ -476,7 +476,7 @@ input[type="submit"] {
 /*
  * Re-set default cursor for disabled elements
  */
-/* line 410, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 410, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 button[disabled],
 input[disabled] {
   cursor: default;
@@ -488,7 +488,7 @@ input[disabled] {
  * 3. Removes excess padding in IE7
       Known issue: excess padding remains in IE6
  */
-/* line 422, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 422, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
@@ -505,7 +505,7 @@ input[type="radio"] {
  * 1. Addresses appearance set to searchfield in S5, Chrome
  * 2. Addresses box-sizing set to border-box in S5, Chrome (include -moz to future-proof)
  */
-/* line 435, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 435, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -518,7 +518,7 @@ input[type="search"] {
 /*
  * Removes inner padding and search cancel button in S5, Chrome on OS X
  */
-/* line 446, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 446, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
@@ -528,7 +528,7 @@ input[type="search"]::-webkit-search-cancel-button {
  * Removes inner padding and border in FF3+
  * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
  */
-/* line 456, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 456, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
@@ -539,7 +539,7 @@ input::-moz-focus-inner {
  * 1. Removes default vertical scrollbar in IE6/7/8/9
  * 2. Improves readability and alignment in all browsers
  */
-/* line 467, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 467, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 textarea {
   overflow: auto;
   /* 1 */
@@ -553,7 +553,7 @@ textarea {
 /*
  * Remove most spacing between table cells
  */
-/* line 481, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
+/* line 481, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_normalize.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -579,14 +579,14 @@ table {
 *  See readme.md for details, licensing, and acknowledgments. 
 *
 */
-/* line 42, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+/* line 42, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
 body {
   /* 16px / 24px */
   font-size: 1em;
   line-height: 1.5em;
 }
 
-/* line 52, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+/* line 52, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
 .small {
   /* 13px / 18px */
   font-size: 0.8125em;
@@ -594,7 +594,7 @@ body {
   margin: 1.5em 0;
 }
 
-/* line 60, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+/* line 60, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
 .medium, .normal, h3, p {
   /* 16px / 24px */
   font-size: 1em;
@@ -603,7 +603,7 @@ body {
   margin: 1.5em 0;
 }
 
-/* line 68, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+/* line 68, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
 .large, h2, h1 {
   /* 26 / 36px */
   font-size: 1.625em;
@@ -611,7 +611,7 @@ body {
   margin: 0.92308em 0;
 }
 
-/* line 76, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+/* line 76, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
 .huge {
   /* 42px / 48px */
   font-size: 2.625em;
@@ -619,7 +619,7 @@ body {
   margin: 0.57143em 0;
 }
 
-/* line 84, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+/* line 84, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
 .massive {
   /* 68px / 72px */
   font-size: 4.25em;
@@ -627,7 +627,7 @@ body {
   margin: 1.5em 0;
 }
 
-/* line 92, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+/* line 92, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
 .gigantic {
   /* 110px / 120px */
   font-size: 6.875em;
@@ -677,20 +677,20 @@ body {
 *  See readme.md for details, licensing, and acknowledgments. 
 *
 */
-/* line 25, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
+/* line 25, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
 form {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 32, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
+/* line 32, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
 form fieldset {
   border: 0;
   margin: 0;
   padding: 0;
 }
-/* line 42, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
+/* line 42, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
 form fieldset input, form fieldset textarea, form fieldset select {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -701,7 +701,7 @@ form fieldset input, form fieldset textarea, form fieldset select {
   margin: 0;
   padding: 0 0.25em;
 }
-/* line 53, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
+/* line 53, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_form.scss */
 form fieldset label {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -724,7 +724,7 @@ form fieldset label {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
-  /* line 16, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  /* line 16, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
   * {
     background: transparent !important;
     color: black !important;
@@ -735,45 +735,45 @@ form fieldset label {
   }
 
   /* Black prints faster: h5bp.com/s */
-  /* line 17, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  /* line 17, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
   a, a:visited {
     text-decoration: underline;
   }
 
-  /* line 18, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  /* line 18, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
   a[href]:after {
     content: " (" attr(href) ")";
   }
 
-  /* line 19, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  /* line 19, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
 
-  /* line 20, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  /* line 20, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
   .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
     content: "";
   }
 
   /* Don't show links for images, or javascript/internal links */
-  /* line 21, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  /* line 21, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
   pre, blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
 
-  /* line 22, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  /* line 22, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
   thead {
     display: table-header-group;
   }
 
   /* h5bp.com/t */
-  /* line 23, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  /* line 23, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
   tr, img {
     page-break-inside: avoid;
   }
 
-  /* line 24, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  /* line 24, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
   img {
     max-width: 100% !important;
   }
@@ -781,13 +781,13 @@ form fieldset label {
   @page {
     margin: 0.5cm;
   }
-  /* line 26, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  /* line 26, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
   p, h2, h3 {
     orphans: 3;
     widows: 3;
   }
 
-  /* line 27, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
+  /* line 27, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_print.scss */
   h2, h3 {
     page-break-after: avoid;
   }
@@ -1309,12 +1309,12 @@ body {
   color: #333;
   background-color: #fbfaf5;
 }
-/* line 22, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_grid.scss */
+/* line 22, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_grid.scss */
 body:before, body:after {
   content: "";
   display: table;
 }
-/* line 27, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_grid.scss */
+/* line 27, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_grid.scss */
 body:after {
   clear: both;
 }
@@ -4110,25 +4110,31 @@ footer .cc-text img {
   }
   /* line 2866, ../sass/tmb3.scss */
   body .container .core .content .post .pre-bar .date-ball {
+    position: relative;
     font-family: 'Univers Next W01', sans-serif;
     text-transform: uppercase;
     display: block;
     color: #333;
-    font-size: 0.3em;
-    line-height: 1.2em;
     background-color: #dddddd;
     width: 72px;
-    height: 43px;
-    padding-top: 3em;
+    height: 72px;
+    padding: 0;
     border-radius: 50%;
     margin: 0 auto 1em;
     text-align: center;
   }
-  /* line 2882, ../sass/tmb3.scss */
+  /* line 2881, ../sass/tmb3.scss */
   body .container .core .content .post .pre-bar .date-ball:hover {
     text-decoration: none;
   }
-  /* line 2887, ../sass/tmb3.scss */
+  /* line 2885, ../sass/tmb3.scss */
+  body .container .core .content .post .pre-bar .date-ball .date-time-block {
+    position: absolute;
+    font-size: 10px;
+    line-height: 12px;
+    margin: 25px 0 0 8px;
+  }
+  /* line 2893, ../sass/tmb3.scss */
   body .container .core .content .post .pre-bar h3 {
     display: block;
     float: left;
@@ -4144,11 +4150,11 @@ footer .cc-text img {
     color: #ccc;
     text-align: center;
   }
-  /* line 2895, ../sass/tmb3.scss */
+  /* line 2901, ../sass/tmb3.scss */
   body .container .core .content .post .pre-bar h3:first-of-type {
     margin: 0;
   }
-  /* line 2901, ../sass/tmb3.scss */
+  /* line 2907, ../sass/tmb3.scss */
   body .container .core .content .post .post-body {
     display: block;
     float: left;
@@ -4162,15 +4168,15 @@ footer .cc-text img {
     padding-bottom: 1em;
     background-color: #fbfaf5;
   }
-  /* line 2907, ../sass/tmb3.scss */
+  /* line 2913, ../sass/tmb3.scss */
   body .container .core .content .post .post-body h2.title {
     padding-bottom: 0.5em;
   }
-  /* line 2911, ../sass/tmb3.scss */
+  /* line 2917, ../sass/tmb3.scss */
   body .container .core .content .post .post-body .title-date {
     display: none;
   }
-  /* line 2919, ../sass/tmb3.scss */
+  /* line 2925, ../sass/tmb3.scss */
   body .container .core .content .post .post-body aside {
     display: block;
     float: left;
@@ -4187,7 +4193,7 @@ footer .cc-text img {
     margin-bottom: 0;
     margin-top: 0;
   }
-  /* line 2928, ../sass/tmb3.scss */
+  /* line 2934, ../sass/tmb3.scss */
   body .container .core .content .post .post-body aside.narrow {
     display: block;
     float: left;
@@ -4199,7 +4205,7 @@ footer .cc-text img {
     box-sizing: border-box;
     padding-right: 1.5em;
   }
-  /* line 2933, ../sass/tmb3.scss */
+  /* line 2939, ../sass/tmb3.scss */
   body .container .core .content .post .post-body aside.wide {
     display: block;
     float: left;
@@ -4211,13 +4217,13 @@ footer .cc-text img {
     box-sizing: border-box;
     padding-right: 1.5em;
   }
-  /* line 2938, ../sass/tmb3.scss */
+  /* line 2944, ../sass/tmb3.scss */
   body .container .core .content .post .post-body aside.right {
     margin-left: 0%;
     float: right;
     padding-right: 0;
   }
-  /* line 2944, ../sass/tmb3.scss */
+  /* line 2950, ../sass/tmb3.scss */
   body .container .core .content .post .post-body aside h1,
   body .container .core .content .post .post-body aside h2,
   body .container .core .content .post .post-body aside h3,
@@ -4226,15 +4232,15 @@ footer .cc-text img {
   body .container .core .content .post .post-body aside h6 {
     margin-bottom: 0.8em;
   }
-  /* line 2953, ../sass/tmb3.scss */
+  /* line 2959, ../sass/tmb3.scss */
   body .container .core .content .post .post-body aside p {
     line-height: 1.3em;
   }
-  /* line 2957, ../sass/tmb3.scss */
+  /* line 2963, ../sass/tmb3.scss */
   body .container .core .content .post .post-body aside .fancybox img {
     margin: 0.5em 0 0;
   }
-  /* line 2962, ../sass/tmb3.scss */
+  /* line 2968, ../sass/tmb3.scss */
   body .container .core .content .post .post-body .has-pullquote:before {
     content: attr(data-pullquote);
     display: block;
@@ -4254,27 +4260,27 @@ footer .cc-text img {
     margin-left: -30%;
     margin-right: 0.5em;
   }
-  /* line 2995, ../sass/tmb3.scss */
+  /* line 3001, ../sass/tmb3.scss */
   body .container .core .content.gallery #archive-list .list {
     -moz-column-width: 10em;
     -webkit-column-width: 10em;
     column-width: 10em;
   }
-  /* line 2998, ../sass/tmb3.scss */
+  /* line 3004, ../sass/tmb3.scss */
   body .container .core .content.gallery #archive-list .list h3 {
     font-size: 1em;
     line-height: 1.2em;
   }
-  /* line 3003, ../sass/tmb3.scss */
+  /* line 3009, ../sass/tmb3.scss */
   body .container .core .content.gallery #archive-list .list p {
     font-size: 0.8em;
   }
-  /* line 3007, ../sass/tmb3.scss */
+  /* line 3013, ../sass/tmb3.scss */
   body .container .core .content.gallery #archive-list .list .photo-post {
     display: inline-block;
     -webkit-column-break-inside: avoid;
   }
-  /* line 3013, ../sass/tmb3.scss */
+  /* line 3019, ../sass/tmb3.scss */
   body .container .core .content .more-header,
   body .container .core .content .more-posts {
     display: block;
@@ -4288,11 +4294,11 @@ footer .cc-text img {
     margin-left: 22.22222%;
     padding: 0;
   }
-  /* line 3021, ../sass/tmb3.scss */
+  /* line 3027, ../sass/tmb3.scss */
   body .container .core .content .more-header {
     padding-left: 0.5em;
   }
-  /* line 3025, ../sass/tmb3.scss */
+  /* line 3031, ../sass/tmb3.scss */
   body .container .core .content .pagination {
     display: block;
     float: left;
@@ -4304,7 +4310,7 @@ footer .cc-text img {
     box-sizing: border-box;
     margin-left: 22.22222%;
   }
-  /* line 3030, ../sass/tmb3.scss */
+  /* line 3036, ../sass/tmb3.scss */
   body .container .core .content .archive-link {
     display: block;
     float: left;
@@ -4317,7 +4323,7 @@ footer .cc-text img {
     margin-left: 22.22222%;
     padding-bottom: 1em;
   }
-  /* line 3036, ../sass/tmb3.scss */
+  /* line 3042, ../sass/tmb3.scss */
   body .container .core .content .archive {
     display: block;
     float: left;
@@ -4330,7 +4336,7 @@ footer .cc-text img {
     margin-left: 22.22222%;
   }
 
-  /* line 3054, ../sass/tmb3.scss */
+  /* line 3060, ../sass/tmb3.scss */
   body .container .core .content.index h2 li,
   body .container .core .content.index #tag-index li,
   body .container .core .content.index #icon-index li {
@@ -4344,7 +4350,7 @@ footer .cc-text img {
     box-sizing: border-box;
     clear: none;
   }
-  /* line 3058, ../sass/tmb3.scss */
+  /* line 3064, ../sass/tmb3.scss */
   body .container .core .content.index h2 li:nth-of-type(2n), body .container .core .content.index h2 li:nth-of-type(2n+1),
   body .container .core .content.index #tag-index li:nth-of-type(2n),
   body .container .core .content.index #tag-index li:nth-of-type(2n+1),
@@ -4359,20 +4365,20 @@ footer .cc-text img {
     -ms-box-sizing: border-box;
     box-sizing: border-box;
   }
-  /* line 3063, ../sass/tmb3.scss */
+  /* line 3069, ../sass/tmb3.scss */
   body .container .core .content.index h2 li:nth-of-type(3n+1),
   body .container .core .content.index #tag-index li:nth-of-type(3n+1),
   body .container .core .content.index #icon-index li:nth-of-type(3n+1) {
     padding-left: 0;
   }
-  /* line 3067, ../sass/tmb3.scss */
+  /* line 3073, ../sass/tmb3.scss */
   body .container .core .content.index h2 li:nth-of-type(3n),
   body .container .core .content.index #tag-index li:nth-of-type(3n),
   body .container .core .content.index #icon-index li:nth-of-type(3n) {
     padding-right: 0;
   }
 
-  /* line 3075, ../sass/tmb3.scss */
+  /* line 3081, ../sass/tmb3.scss */
   body .container .core .sidebar {
     display: block;
     float: left;
@@ -4389,125 +4395,125 @@ footer .cc-text img {
 /* @media screen and (min-width: 960px) */
 /* @media screen and (min-width: 960px) */
 @media screen and (min-width: 60em) {
-  /* line 14, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  /* line 14, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.125em;
   }
 }
 /* @media screen and (min-width: 1120px) */
 @media screen and (min-width: 70em) {
-  /* line 14, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  /* line 14, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.25em;
   }
 }
 /* @media screen and (min-width: 1280px) */
 @media screen and (min-width: 80em) {
-  /* line 14, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  /* line 14, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.375em;
   }
 }
 /* @media screen and (min-width: 1280px) */
 @media screen and (min-width: 90em) {
-  /* line 14, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  /* line 14, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.5em;
   }
 }
 /* @media screen and (min-width: 1440px) */
 @media screen and (min-width: 100em) {
-  /* line 14, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  /* line 14, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.625em;
   }
 }
 /* @media screen and (min-width: 1760px) */
 @media screen and (min-width: 110em) {
-  /* line 14, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  /* line 14, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.75em;
   }
 }
 /* @media screen and (min-width: 1920px) */
 @media screen and (min-width: 120em) {
-  /* line 14, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  /* line 14, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 1.875em;
   }
 }
 /* @media screen and (min-width: 2080px) */
 @media screen and (min-width: 130em) {
-  /* line 14, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  /* line 14, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 2em;
   }
 }
 /* @media screen and (min-width: 2080px) */
 @media screen and (min-width: 140em) {
-  /* line 14, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  /* line 14, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 2.125em;
   }
 }
 /* @media screen and (min-width: 2080px) */
 @media screen and (min-width: 150em) {
-  /* line 14, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  /* line 14, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 2.25em;
   }
 }
 /* @media screen and (min-width: 2080px) */
 @media screen and (min-width: 160em) {
-  /* line 14, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  /* line 14, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 2.375em;
   }
 }
 /* @media screen and (min-width: 2080px) */
 @media screen and (min-width: 170em) {
-  /* line 14, ../../../../../.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
+  /* line 14, ../../../../../../../var/lib/gems/2.1.0/gems/compass.takitapart.framework-0.0.2/stylesheets/takitapart/_typography.scss */
   body {
     font-size: 2.5em;
   }
 }
-/* line 4171, ../sass/tmb3.scss */
+/* line 4177, ../sass/tmb3.scss */
 .mindfulness {
   background-color: #f6a9a9 !important;
 }
 
-/* line 4175, ../sass/tmb3.scss */
+/* line 4181, ../sass/tmb3.scss */
 .design {
   background-color: #a9a9f6 !important;
 }
 
-/* line 4179, ../sass/tmb3.scss */
+/* line 4185, ../sass/tmb3.scss */
 .technology {
   background-color: #a9f6a9 !important;
 }
 
-/* line 4183, ../sass/tmb3.scss */
+/* line 4189, ../sass/tmb3.scss */
 .mindfulness.design {
   background-color: #ac76c3 !important;
 }
 
-/* line 4187, ../sass/tmb3.scss */
+/* line 4193, ../sass/tmb3.scss */
 .design.technology {
   background-color: #76acc3 !important;
 }
 
-/* line 4191, ../sass/tmb3.scss */
+/* line 4197, ../sass/tmb3.scss */
 .mindfulness.technology {
   background-color: #acc376 !important;
 }
 
-/* line 4195, ../sass/tmb3.scss */
+/* line 4201, ../sass/tmb3.scss */
 .mindfulness.design.technology {
   background-color: #000000 !important;
   color: #FFF !important;
 }
 
-/* line 4200, ../sass/tmb3.scss */
+/* line 4206, ../sass/tmb3.scss */
 .no-color {
   background-color: #dddddd !important;
 }

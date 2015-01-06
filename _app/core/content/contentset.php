@@ -893,7 +893,7 @@ class ContentSet
 
             // locate
             if ($context['locate_with']) {
-                $location_data = (isset($data[$context['locate_with']])) ? $data[$context['locate_with']] : null;
+                $location_data = array_get($data, $context['locate_with']);
 
                 // check that location data is fully set
                 if (is_array($location_data) && isset($location_data['latitude']) && $location_data['latitude'] && isset($location_data['longitude']) && $location_data['longitude']) {

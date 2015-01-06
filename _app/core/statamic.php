@@ -54,7 +54,7 @@ class Statamic
         */
 
         $preload_config  = YAML::parse(Config::getConfigPath() . '/settings.yaml');
-        $yaml_mode       = array_get($preload_config, '_yaml_mode', 'quick');
+        $yaml_mode       = array_get($preload_config, '_yaml_mode', 'loose');
 
         /*
         |--------------------------------------------------------------------------

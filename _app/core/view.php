@@ -188,16 +188,18 @@ class Statamic_View extends \Slim\View
                 $layout = Parse::frontMatter(File::get(self::$_layout . '.html'), false);
 
                 $html = Parse::template($layout['content'], Statamic_View::$_dataStore, array($this, 'callback'));
-                $html = Lex\Parser::injectNoparse($html);
-
             }
+            
+            // inject noparse
+            $html = Lex\Parser::injectNoparse($html);
         } else {
             $html = $_html;
         }
 
         // post-render hook
         $html = \Hook::run('_render', 'after', 'replace', $html, $html);
-
+        
+        Debug::setValue('memory_used', File::getHumanSize(memory_get_usage(true)));
         return $html;
     }
       

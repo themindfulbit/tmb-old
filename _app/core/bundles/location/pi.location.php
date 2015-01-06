@@ -350,7 +350,7 @@ class Plugin_location extends Plugin {
     public function getMappingServiceVariables($settings)
     {
         $osm      = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>';
-        $mapquest = 'Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png" style="width: auto !important; height: auto !important; display: inline !important; margin: 0 !important; vertical-align: text-bottom;">';
+        $mapquest = 'Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="//developer.mapquest.com/content/osm/mq_logo.png" style="width: auto !important; height: auto !important; display: inline !important; margin: 0 !important; vertical-align: text-bottom;">';
         
         switch ($settings['mapping_service']) {
             case 'mapbox':
@@ -391,7 +391,7 @@ class Plugin_location extends Plugin {
             
             default:
                 return array(
-                    'tiles' => 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    'tiles' => '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     'service_attr' => $osm
                 );
                 break;

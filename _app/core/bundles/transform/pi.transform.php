@@ -28,19 +28,44 @@ class Plugin_transform extends Plugin
         | Transform just needs the path to an image to get started. If it exists,
         | the fun begins.
         |
+        | The way to do this changes depending on whether its an internal or
+        | external file.
+        |
         */
 
         $image_src = $this->fetchParam('src', null, false, false, false);
-        
-        // Set full system path
-        $image_path = Path::standardize(Path::fromAsset($image_src));
 
-        // Check if image exists before doing anything.
-        if ( ! File::isImage($image_path)) {
+        // External URL
+        if ($is_external = URL::isExternalUrl($image_src)) {
 
-            Log::error("Could not find requested image to transform: " . $image_path, "core", "Transform");
+            $image_path = $image_src;
 
-            return;
+            // Check if file is an image before doing anything.
+            // @TODO: Maybe check that the file exists.
+            $img_info = pathinfo($image_src);
+            $is_image = in_array($img_info['extension'], array('jpg', 'jpeg', 'png', 'gif'));
+
+            if ( ! $is_image) {
+                Log::error("Requested file is not an image: " . $image_path, "core", "Transform");
+
+                return;
+            }
+
+        }
+
+        // Internal URL
+        else {
+
+            // Set full system path
+            $image_path = Path::standardize(Path::fromAsset($image_src));
+
+            // Check if image exists before doing anything.
+            if ( ! File::isImage($image_path)) {
+                Log::error("Could not find requested image to transform: " . $image_path, "core", "Transform");
+
+                return;
+            }
+
         }
 
 
@@ -113,7 +138,7 @@ class Plugin_transform extends Plugin
         */
 
         // Late modified time of original image
-        $last_modified = File::getLastModified($image_path);
+        $last_modified = ($is_external) ? false : File::getLastModified($image_path);
 
         // Find .jpg, .png, etc
         $extension = File::getExtension($image_path);

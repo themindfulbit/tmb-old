@@ -11,28 +11,28 @@ autoresize: true
 
 # Order and choose your buttons. Use '|' for a vertical seperator
 buttons:
- - formatting
- - bold
- - italic
- - deleted
- - unorderedlist
- - orderedlist
- - outdent
- - indent
- - image
- - file
- - video
- - table
- - link
- - horizontalrule
- - fontcolor
- - backcolor
- - alignleft
- - aligncenter
- - alignright
- - justify
- - html
-
+  - formatting
+  - bold
+  - italic
+  - deleted
+  - unorderedlist
+  - orderedlist
+  - outdent
+  - indent
+  - image
+  - file
+  - video
+  - table
+  - link
+  - horizontalrule
+  - fontcolor
+  - backcolor
+  - alignleft
+  - aligncenter
+  - alignright
+  - justify
+  - html
+  
 # Turn on/off cleanup on paste
 cleanup: true
 

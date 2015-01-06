@@ -81,8 +81,8 @@ class Hooks_location extends Hooks
                     </div>
                     <div class="modal-footer">
                         <small>
-                            Geocoding Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png"><br>
-                            © OpenStreetMap contributors — <a href="www.openstreetmap.org/copyright">License</a>
+                            Geocoding Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="//developer.mapquest.com/content/osm/mq_logo.png"><br>
+                            © OpenStreetMap contributors — <a href="http://www.openstreetmap.org/copyright">License</a>
                         </small>
                     </div>
                 </div>

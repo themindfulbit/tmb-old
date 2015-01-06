@@ -77,6 +77,12 @@ abstract class Addon
     protected $tasks;
 
     /**
+     * Related core functionality if it exists
+     * @protected Core
+     */
+    protected $core;
+
+    /**
      * Name of Addon
      * @protected string
      */
@@ -119,6 +125,12 @@ abstract class Addon
     protected $skip_tasks = false;
 
     /**
+     * Should we skip loading core? Only for the Core object
+     * @protected boolean
+     */
+    protected $skip_core = false;
+
+    /**
      * Array of add-on information for caching purposes
      * @protected array
      */
@@ -138,20 +150,21 @@ abstract class Addon
         $this->addon_location = BASE_PATH . '/' . self::find($this->addon_name);
         $this->config         = $this->getConfig();
         $this->tasks          = (!$this->skip_tasks) ? $this->getTasks() : null;
+        $this->core           = (!$this->skip_core) ? $this->getCore() : null;
 
         // contextual objects
-        $this->log        = ContextualLog::createObject($this);
-        $this->storage    = ContextualStorage::createObject($this);   // save data in long-term file storage, longest storage available
-        $this->cache      = ContextualCache::createObject($this);     // save data in volatile file storage
-        $this->cookies    = ContextualCookies::createObject($this);   // save data in cookie
-        $this->session    = ContextualSession::createObject($this);   // save data in session
-        $this->flash      = ContextualFlash::createObject($this);     // save data in flash
-        $this->blink      = ContextualBlink::createObject($this);     // save data until page loads, shortest cache available
-        $this->tokens     = ContextualTokens::createObject($this);    // create and check tokens for form submission
-        $this->css        = ContextualCSS::createObject($this);
-        $this->js         = ContextualJS::createObject($this);
-        $this->assets     = ContextualAssets::createObject($this);
-        $this->addon      = ContextualInteroperability::createObject($this);
+        $this->log            = ContextualLog::createObject($this);
+        $this->storage        = ContextualStorage::createObject($this);   // save data in long-term file storage, longest storage available
+        $this->cache          = ContextualCache::createObject($this);     // save data in volatile file storage
+        $this->cookies        = ContextualCookies::createObject($this);   // save data in cookie
+        $this->session        = ContextualSession::createObject($this);   // save data in session
+        $this->flash          = ContextualFlash::createObject($this);     // save data in flash
+        $this->blink          = ContextualBlink::createObject($this);     // save data until page loads, shortest cache available
+        $this->tokens         = ContextualTokens::createObject($this);    // create and check tokens for form submission
+        $this->css            = ContextualCSS::createObject($this);
+        $this->js             = ContextualJS::createObject($this);
+        $this->assets         = ContextualAssets::createObject($this);
+        $this->addon          = ContextualInteroperability::createObject($this);
     }
 
 
@@ -188,28 +201,32 @@ abstract class Addon
         if ($this->addon_type == "Tasks") {
             return null;
         }
-
-        // check that a task file exists
-        $tasks_object_path = null;
-        foreach (Config::getAddOnLocations() as $location) {
-            $file = BASE_PATH . '/' . $location . $this->addon_name . '/tasks.' . $this->addon_name . '.php';
-
-            if (File::exists($file)) {
-                $tasks_object_path = $file;
-                break;
-            }
+        
+        try {
+            return Resource::loadTasks($this->addon_name);            
+        } catch (ResourceNotFoundException $e) {
+            return null;
         }
-                
-        // did we find a tasks object?
-        if (!$tasks_object_path) {
+    }
+
+
+    /**
+     * Retrieves the Core object for this add-on
+     * 
+     * @return Core|null
+     */
+    private function getCore()
+    {
+        // only do this for non-Core objects
+        if ($this->addon_type == "Core") {
             return null;
         }
 
-        // make sure that the tasks file is loaded
-        require_once $tasks_object_path;
-
-        $class_name = "Tasks_" . $this->addon_name;
-        return new $class_name();
+        try {
+            return Resource::loadCore($this->addon_name);
+        } catch (ResourceNotFoundException $e) {
+            return null;
+        }
     }
 
 
